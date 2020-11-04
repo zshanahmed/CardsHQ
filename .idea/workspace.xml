@@ -19,7 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65010080-cd3a-4e16-bf28-32dfde6dfba5" name="Default Changelist" comment="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;">
+    <list default="true" id="65010080-cd3a-4e16-bf28-32dfde6dfba5" name="Default Changelist" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/test/features/support/User.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,6 +36,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jFQx9cmrzVJi1IBaDbNrvL6s9Y" />
@@ -46,6 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -67,7 +74,8 @@
       <workItem from="1604019428425" duration="507000" />
       <workItem from="1604374906395" duration="2769000" />
       <workItem from="1604444048883" duration="493000" />
-      <workItem from="1604449784920" duration="441000" />
+      <workItem from="1604449784920" duration="736000" />
+      <workItem from="1604454996721" duration="555000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;">
       <created>1604377669859</created>
@@ -76,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604377669859</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="initial commit">
+      <created>1604454847410</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604454847410</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -96,20 +111,34 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;" />
+    <MESSAGE value="initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
   </component>
   <component name="WindowStateProjectService">
     <state x="538" y="755" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604376281986">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
     <state x="538" y="755" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2048.1257@0.23.2048.1257" timestamp="1604376281986" />
-    <state x="348" y="672" key="Vcs.Push.Dialog.v2" timestamp="1604377672889">
+    <state x="348" y="661" key="Vcs.Push.Dialog.v2" timestamp="1604454855600">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="348" y="661" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1604454855600" />
+    <state x="348" y="672" key="Vcs.Push.Dialog.v2/0.23.2048.1257@0.23.2048.1257" timestamp="1604377672889" />
+    <state x="1315" y="283" key="chooseDestDirectoryDialog" timestamp="1604455350265">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
-    <state x="348" y="672" key="Vcs.Push.Dialog.v2/0.23.2048.1257@0.23.2048.1257" timestamp="1604377672889" />
+    <state x="1315" y="283" key="chooseDestDirectoryDialog/0.23.2048.1257@0.23.2048.1257" timestamp="1604455350265" />
     <state x="577" y="866" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604444054471">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
     <state x="577" y="866" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2048.1257@0.23.2048.1257" timestamp="1604444054471" />
+    <state x="688" y="304" key="run.anything.popup" timestamp="1604454626447">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="688" y="304" key="run.anything.popup/0.0.2048.1280@0.0.2048.1280" timestamp="1604454626447" />
+    <state x="1189" y="494" width="672" height="678" key="search.everywhere.popup" timestamp="1604455489600">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state x="1189" y="494" width="672" height="678" key="search.everywhere.popup/0.23.2048.1257@0.23.2048.1257" timestamp="1604455489600" />
   </component>
 </project>
