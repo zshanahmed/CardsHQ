@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65010080-cd3a-4e16-bf28-32dfde6dfba5" name="Default Changelist" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/test/features/support/User.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="65010080-cd3a-4e16-bf28-32dfde6dfba5" name="Default Changelist" comment="initial commit" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Sign-Up_ES" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,7 +72,7 @@
       <workItem from="1604374906395" duration="2769000" />
       <workItem from="1604444048883" duration="493000" />
       <workItem from="1604449784920" duration="736000" />
-      <workItem from="1604454996721" duration="555000" />
+      <workItem from="1604454996721" duration="882000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;">
       <created>1604377669859</created>
@@ -91,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604454847410</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="initial commit">
+      <created>1604455727313</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604455727313</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
