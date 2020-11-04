@@ -19,9 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65010080-cd3a-4e16-bf28-32dfde6dfba5" name="Default Changelist" comment="Began creating acceptance testing.">
-      <change afterPath="$PROJECT_DIR$/spec/users_controller_spec.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
+    <list default="true" id="65010080-cd3a-4e16-bf28-32dfde6dfba5" name="Default Changelist" comment="Create spec for unit testing rails generate rspec:install">
+      <change afterPath="$PROJECT_DIR$/spec/rails_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spec/spec_helper.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/users_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/users_controller_spec.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/features/step_definitions/sign-in_steps.rb" beforeDir="false" afterPath="$PROJECT_DIR$/features/step_definitions/sign-in_steps.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/features/support/Sign-up.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/support/Sign-up.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +78,7 @@
       <workItem from="1604374906395" duration="2769000" />
       <workItem from="1604444048883" duration="493000" />
       <workItem from="1604449784920" duration="736000" />
-      <workItem from="1604454996721" duration="4884000" />
+      <workItem from="1604454996721" duration="5211000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;">
       <created>1604377669859</created>
@@ -112,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604459477163</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Create spec for unit testing rails generate rspec:install">
+      <created>1604460134425</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604460134425</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,7 +144,8 @@
     <MESSAGE value="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;" />
     <MESSAGE value="initial commit" />
     <MESSAGE value="Began creating acceptance testing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Began creating acceptance testing." />
+    <MESSAGE value="Create spec for unit testing rails generate rspec:install" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create spec for unit testing rails generate rspec:install" />
   </component>
   <component name="WindowStateProjectService">
     <state x="538" y="745" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604459982166">
@@ -142,10 +153,10 @@
     </state>
     <state x="538" y="745" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1280@0.0.2048.1280" timestamp="1604459982166" />
     <state x="538" y="755" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2048.1257@0.23.2048.1257" timestamp="1604376281986" />
-    <state x="348" y="661" key="Vcs.Push.Dialog.v2" timestamp="1604459478718">
+    <state x="348" y="661" key="Vcs.Push.Dialog.v2" timestamp="1604460141088">
       <screen x="0" y="0" width="2048" height="1280" />
     </state>
-    <state x="348" y="661" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1604459478718" />
+    <state x="348" y="661" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1604460141088" />
     <state x="348" y="672" key="Vcs.Push.Dialog.v2/0.23.2048.1257@0.23.2048.1257" timestamp="1604455986027" />
     <state x="1315" y="283" key="chooseDestDirectoryDialog" timestamp="1604455350265">
       <screen x="0" y="23" width="2048" height="1257" />
