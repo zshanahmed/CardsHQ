@@ -19,16 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="65010080-cd3a-4e16-bf28-32dfde6dfba5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/User.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/migrate/20201103035047_users.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Team1_SELT2020.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Team1_SELT2020.iml" afterDir="false" />
+    <list default="true" id="65010080-cd3a-4e16-bf28-32dfde6dfba5" name="Default Changelist" comment="Generated the rspec environment. Moved feature testing directory to project root.s">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/users_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spec/controllers/users_controller_spec.rb" beforeDir="false" afterPath="$PROJECT_DIR$/spec/controllers/users_controller_spec.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +37,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Sign-Up_ES" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jFQx9cmrzVJi1IBaDbNrvL6s9Y" />
@@ -54,6 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/test" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,6 +61,13 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/spec/controllers" />
+      <recent name="$PROJECT_DIR$/spec/models" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
@@ -73,8 +80,62 @@
       <updated>1603397604000</updated>
       <workItem from="1603397605056" duration="2000" />
       <workItem from="1604019428425" duration="507000" />
-      <workItem from="1604374906395" duration="2526000" />
+      <workItem from="1604374906395" duration="2769000" />
+      <workItem from="1604444048883" duration="493000" />
+      <workItem from="1604449784920" duration="736000" />
+      <workItem from="1604454996721" duration="5290000" />
+      <workItem from="1604502390236" duration="3125000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;">
+      <created>1604377669859</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604377669859</updated>
+    </task>
+    <task id="LOCAL-00002" summary="initial commit">
+      <created>1604454847410</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604454847410</updated>
+    </task>
+    <task id="LOCAL-00003" summary="initial commit">
+      <created>1604455727313</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604455727313</updated>
+    </task>
+    <task id="LOCAL-00004" summary="initial commit">
+      <created>1604455906643</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604455906643</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Began creating acceptance testing.">
+      <created>1604459477163</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604459477163</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Create spec for unit testing rails generate rspec:install">
+      <created>1604460134425</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604460134425</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Generated the rspec environment. Moved feature testing directory to project root.">
+      <created>1604460487733</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604460487733</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,10 +153,40 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;Created users table, users_controller.rb, User.rb, modified schema.rb to include the user schema discussed during meeting.&quot;" />
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="Began creating acceptance testing." />
+    <MESSAGE value="Create spec for unit testing rails generate rspec:install" />
+    <MESSAGE value="Generated the rspec environment. Moved feature testing directory to project root." />
+    <option name="LAST_COMMIT_MESSAGE" value="Generated the rspec environment. Moved feature testing directory to project root." />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="538" y="755" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604376281986">
+    <state x="538" y="745" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604459982166">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="538" y="745" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1280@0.0.2048.1280" timestamp="1604459982166" />
+    <state x="538" y="755" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2048.1257@0.23.2048.1257" timestamp="1604376281986" />
+    <state x="348" y="661" key="Vcs.Push.Dialog.v2" timestamp="1604460489368">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="348" y="661" key="Vcs.Push.Dialog.v2/0.0.2048.1280@0.0.2048.1280" timestamp="1604460489368" />
+    <state x="348" y="672" key="Vcs.Push.Dialog.v2/0.23.2048.1257@0.23.2048.1257" timestamp="1604455986027" />
+    <state x="1315" y="283" key="chooseDestDirectoryDialog" timestamp="1604455350265">
       <screen x="0" y="23" width="2048" height="1257" />
     </state>
-    <state x="538" y="755" key="#com.intellij.fileTypes.FileTypeChooser/0.23.2048.1257@0.23.2048.1257" timestamp="1604376281986" />
+    <state x="1315" y="283" key="chooseDestDirectoryDialog/0.23.2048.1257@0.23.2048.1257" timestamp="1604455350265" />
+    <state x="577" y="866" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604444054471">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state x="577" y="866" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.2048.1257@0.23.2048.1257" timestamp="1604444054471" />
+    <state x="688" y="304" key="run.anything.popup" timestamp="1604454626447">
+      <screen x="0" y="0" width="2048" height="1280" />
+    </state>
+    <state x="688" y="304" key="run.anything.popup/0.0.2048.1280@0.0.2048.1280" timestamp="1604454626447" />
+    <state x="1189" y="494" width="672" height="678" key="search.everywhere.popup" timestamp="1604456155318">
+      <screen x="0" y="23" width="2048" height="1257" />
+    </state>
+    <state x="1189" y="494" width="672" height="678" key="search.everywhere.popup/0.23.2048.1257@0.23.2048.1257" timestamp="1604456155318" />
   </component>
 </project>
