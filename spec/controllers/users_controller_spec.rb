@@ -26,8 +26,20 @@ describe UsersController do
     request.env["HTTP_REFERER"] = "where_i_came_from"
   end
 
-  it 'Should flash a message "invalid entry" if username, password, or email is blank' do
-    post :create, :user=>{:username=>'', :password=>'', :email=>''}
-  end
+  testing123 = [{:username=>'', :password=>'', :email=>''},
+                {:username=>'glunk', :password=>'chunk', :email=>''},
+                {:username=>'bump', :password=>'', :email=>'fump'},
+                {:username=>'b1po8rc3r^^O(*SADAOql2keudaf[;][/]', :password=>'', :email=>'fump'},
+                {:username=>'fasdfl', :password=>'        ', :email=>'fpoiadsf'},
+                {:username=>'     ', :password=>'pas sword', :email=>'     '}]
 
+  invalid = "Invalid entry in one of the text-boxes"
+
+  it 'Should flash a message "Invalid entry in one of the text-boxes" if username, password, or email is blank' do
+    testing123.each do |testData|
+      post :create, :user=>testData
+      expect(flash[:notice]).to match(invalid)
+      puts testData
+    end
+  end
 end

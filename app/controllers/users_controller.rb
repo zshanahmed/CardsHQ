@@ -6,19 +6,22 @@ class UsersController < ApplicationController
   def new
   end
 
+
+
+
   def create
-    reg = /"^\s+$"/
-    p = user_params
+    reg = /(^[a-zA-z0-9_]+$)/
 
-    blank = p[:username].eql?("") || p[:password].eql?("") || p[:email].eql?("")
-    spaces = p[:username] =~ reg || p[:email] =~ reg  || p[:password] =~ reg
+    blank = user_params[:username].eql?("") || user_params[:password].eql?("") || user_params[:email].eql?("")
+    good_format = user_params[:username] =~ reg || user_params[:email] =~ reg  || user_params[:password] =~ reg
 
-    if blank || spaces
+
+    if !good_format || blank ||
       flash[:notice] = "Invalid entry in one of the text-boxes"
-    elsif !User.where(:username => p[:username]).blank?
-      flash[:notice] = "Username, \'#{p[:username]}\' has already been taken"
+    elsif not User.where(:username => user_params[:username]).blank?
+      flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
     else
-      User.create!(p)
+      User.create!(user_params)
     end
     redirect_to request.referrer
   end
