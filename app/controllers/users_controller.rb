@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     reg = /"^\s+$"/
     p = user_params
-    if p[:username].nil? || p[:password].nil? || p[:email].nil?
+    if p[:username].eql?("") || p[:password].eql?("") || p[:email].eql?("")
       flash[:notice] = "Invalid entry in one of the text-boxes"
     elsif p[:username] =~ reg || p[:email] =~ reg  || p[:password] =~ reg
       flash[:notice] = "Invalid entry in one of the text-boxes"
