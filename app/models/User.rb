@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   def self.valid_entry?(parameters)
-    reg = /(^[a-zA-z0-9_@]+$)/
+    reg = /(^[a-zA-z0-9_@.]+$)/
     valid = true
 
     parameters.each do |key,entry|

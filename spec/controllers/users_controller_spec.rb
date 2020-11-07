@@ -45,7 +45,6 @@ describe UsersController do
   it 'Should flash a message "Invalid entry in one of the text-boxes" if username, password, or email is blank' do
     testing123.each do |testData|
       post :create, :user=>testData
-      puts testData
       expect(flash[:notice]).to match(invalid)
     end
   end
