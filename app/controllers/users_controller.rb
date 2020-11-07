@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    if User.valid_entry?(user_params)
+    if !User.valid_entry?(user_params)
       flash[:notice] = "Invalid entry in one of the text-boxes"
 
     elsif not User.where(:username => user_params[:username]).blank?
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
     else
       User.create!(user_params)
+      flash[:notice] = "Account with Username \'#{user_params[:username]}\' has been created"
     end
     redirect_to request.referrer
   end
