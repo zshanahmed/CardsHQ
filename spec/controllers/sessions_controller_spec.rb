@@ -20,18 +20,22 @@ describe SessionsController do
     end
   end
   ########################
-
-  it 'Should flash a message "invalid entry" if username is blank or nil' do
-    post :create, :user=>{:username=>'', :password=>'123'}
-    expect(flash[:notice]).to be 'Invalid user-id/password combination.'
+  before(:all) do
+    DatabaseCleaner.clean
+    User.create!({username: "test_user", password: "asdfasdf",:email=>"holisticpanda"})
   end
-  it 'Should flash a message "invalid entry" if password is blank or nil' do
-    post :create, :user=>{:username=>'anc', :password=>''}
-    expect(flash[:notice]).to be 'Invalid user-id/password combination.'
+  it 'Should flash a message "invalid username" if username is blank or nil' do
+    post :create, {:username => {:username => ''}, :password => {:password => '123'}}
+    expect(flash[:notice]).to match(/Invalid username*/)
+  end
+  it 'Should flash a message "invalid password" if password is blank or nil' do
+    post :create, {:username => {:username => 'Test'}, :password => {:password => ''}}
+    expect(flash[:notice]).to match(/Invalid password*/)
   end
   it 'Should flash a message login successful if username and password are correct' do
-    post :create, :user=>{:username=>'GrumpyBunny', :password=>'123'}
-    expect(flash[:notice]).to be 'successful'
+    fake_results = [double('User')]
+    post :create, {:username => {:username => 'test_user'}, :password => {:password => 'asdfasdf'}}
+    expect(flash[:notice]).to match(/Login Successful*/)
   end
 
 end
