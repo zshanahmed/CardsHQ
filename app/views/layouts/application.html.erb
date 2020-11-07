@@ -14,6 +14,19 @@
           <%=  %>
         </ul>
       </nav>
+  <% if flash[:notice] %>
+    <div class="alert alert-danger">
+      <div class="flashMessage" id="notice">
+        <%= flash[:notice] %>
+      </div>
+    </div>
+  <% elsif flash[:warning] %>
+    <div class="alert alert-danger">
+      <div class="flashMessage" id="warning">
+        <%= flash[:warning] %>
+      </div>
+    </div>
+  <% end %>
   <%= yield %>
 </div>
 </body>

@@ -9,12 +9,14 @@ class UsersController < ApplicationController
   def create
     reg = /"^\s+$"/
     p = user_params
-    if p[:username].eql?("") || p[:password].eql?("") || p[:email].eql?("")
-      flash[:notice] = "Invalid entry in one of the text-boxes"
-    elsif p[:username] =~ reg || p[:email] =~ reg  || p[:password] =~ reg
+
+    blank = p[:username].eql?("") || p[:password].eql?("") || p[:email].eql?("")
+    spaces = p[:username] =~ reg || p[:email] =~ reg  || p[:password] =~ reg
+
+    if blank || spaces
       flash[:notice] = "Invalid entry in one of the text-boxes"
     elsif !User.where(:username => p[:username]).blank?
-      flash[:notice] = "Username, #{p[:username]} has already been taken"
+      flash[:notice] = "Username, \'#{p[:username]}\' has already been taken"
     else
       User.create!(p)
     end
