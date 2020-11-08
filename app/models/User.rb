@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
     usr['session_token'] = session_token
     @user = User.create!(usr)
   end
-  end
+
 
 
   def self.valid_entry?(parameters)

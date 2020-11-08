@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  ###
+  # This line was added so that i can test the endpoints for this controller
+  # from CORS.
   skip_before_action :verify_authenticity_token
   def new
    end
