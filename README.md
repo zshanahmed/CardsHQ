@@ -20,9 +20,10 @@ Once all the required software is installed. Open the project in ruby mine and f
 1. gem install bundler ( if bundler is not installed)
 2. bundle install ( to install all the gems listed in the .gemfile)
 3. bundle exec rake db:migrate ( to migrate the database )
-4. bundle exec rake db:seed ( to seed the database with dummy values in development)
-5. bundle exec rake routes 
-5. bundle exec rails server ( to start and run the server)
+4. bundle exec rake db:schema:load
+5. bundle exec rake db:seed ( to seed the database with dummy values in development)
+6. bundle exec rake routes 
+7. bundle exec rails server ( to start and run the server)
 
 Currently with our initial sprint the only user experience which you will see is the signup page at root and the login functionality.
 
