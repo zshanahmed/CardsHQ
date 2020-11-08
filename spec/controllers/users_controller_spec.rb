@@ -20,12 +20,50 @@ describe UsersController do
     end
   end
     ########################
-
-  it 'Should flash a message "invalid entry" if username is blank or nil' do
-    post :create, :user=>{:username=>'', :password=>'', :email=>''}
-    expect(flash[:notice]).to be "Invalid entry in one of the textboxes"
-    post :create, :user=>{:username=>nil, :password=>nil, :email=>nil}
-    expect(flash[:notice]).to be "Invalid entry in one of the text-boxes"
+  #
+  #https://stackoverflow.com/questions/6040479/rspec-testing-redirect-to-back
+  before(:each) do
+    request.env["HTTP_REFERER"] = "where_i_came_from"
   end
 
+  testing123 = [{:username=>'', :password=>'', :email=>''},
+                {:username=>'glunk', :password=>'chunk', :email=>''},
+                {:username=>'bump', :password=>'', :email=>'fump'},
+                {:username=>'b1po8rc3r^^O(*SADAOql2keudaf[;][/]', :password=>'', :email=>'fump'},
+                {:username=>'fasdfl', :password=>'        ', :email=>'fpoiadsf'},
+                {:username=>'     ', :password=>'pas sword', :email=>'     '}]
+
+  testing345 = [{:username=>'meltybuttyboi',:password=>"haxxorr",:email=>"holisticpanda"},
+                {:username=>'meltybuttyboi',:password=>"haxxorr",:email=>"holisticpanda"}]
+
+  testing567= [{:username=>'I_am_great', :password=>'But_dont_mind_me', :email=>'chumbleGUmpus'},
+                {:username=>'hello_123',:password=>'big', :email=>'boi'}]
+
+
+  invalid = "Invalid entry in one of the text-boxes"
+
+  it 'Should flash a message "Invalid entry in one of the text-boxes" if username, password, or email is blank' do
+    testing123.each do |testData|
+      post :create, :user=>testData
+      expect(flash[:notice]).to match(invalid)
+    end
+  end
+  it 'Should flash a message saying the username is taken when the username exists in the database.' do
+    post :create, :user=>testing345[0]
+    post :create, :user=>testing345[1]
+    username = testing345[0][:username]
+    expect(flash[:notice]).to match("Username, \'#{username}\' has already been taken")
+  end
+  it 'Should flash a message saying the account was created if they are valid entries' do
+    testing567.each do |testData|
+      post :create, :user=>testData
+      username = testData[:username]
+      expect(flash[:notice]).to match("Account with Username \'#{username}\' has been created")
+    end
+
+  end
 end
+
+
+
+

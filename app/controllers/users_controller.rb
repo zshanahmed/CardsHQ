@@ -3,17 +3,21 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password)
   end
 
+  def new
+  end
+
   def create
-    reg = /"^\s+$"/
-    p = user_params
-    if p[:username].nil? || p[:password].nil? || p[:email].nil?
+    if !User.valid_entry?(user_params)
       flash[:notice] = "Invalid entry in one of the text-boxes"
-    elsif p[:username] =~ reg || p[:email] =~ reg  || p[:password] =~ reg
-      flash[:notice] = "Invalid entry in one of the text-boxes"
+
+    elsif not User.where(:username => user_params[:username]).blank?
+      flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
+
     else
       User.create!(user_params)
-      redirect_to login_path
+      flash[:notice] = "Account with Username \'#{user_params[:username]}\' has been created"
     end
     redirect_to request.referrer
   end
 end
+
