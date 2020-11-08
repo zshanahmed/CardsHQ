@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div class="container">
+  <h1 class="title">SELT 2020!</h1>
+      <nav>
+        <ul class="navMenu">
+          <%=  %>
+        </ul>
+      </nav>
+  <% if flash[:notice] %>
+    <div class="alert alert-danger">
+      <div class="flashMessage" id="notice">
+        <%= flash[:notice] %>
+      </div>
+    </div>
+  <% elsif flash[:warning] %>
+    <div class="alert alert-danger">
+      <div class="flashMessage" id="warning">
+        <%= flash[:warning] %>
+      </div>
+    </div>
+  <% end %>
+  <%= yield %>
+</div>
 </body>
 </html>

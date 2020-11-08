@@ -16,10 +16,14 @@ Feature: a way to sign up for an account for the card game
 
     And I'm on the sign-up page
 
+Scenario: Creating account with badly formatted Info:
+  When I try to create new account with username, email, password: "gramp;[]!flop, botiqueBooth@gmail.com, 123"
+  Then I should see: "Invalid entry in one of the text-boxes"
+
 Scenario: Creating a new user account when the username and email are already taken
   When I try to create new account with username, email, password: "GrumpyBunny, botiqueBooth@gmail.com, 123"
-  Then I should see a flash telling me it already exists
+  Then I should see: "Username, 'GrumpyBunny' has already been taken"
 
 Scenario: Creating a new user account with fresh info
   When I try to create new account with username, email, password: "Glumps, glumps@gmail.com, 123"
-  Then the following username/email combination exists: "Glumps, glumps@gmail.com"
+  Then I should see: "Account with Username 'Glumps' has been created"
