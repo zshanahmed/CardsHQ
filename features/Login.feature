@@ -31,3 +31,8 @@ Feature:  Login for users
     And password as "yes"
     Then I should see: "Invalid password"
 
+  Scenario: attempt to login with incorrect combination
+    When I enter username as "GrumpyBunny"
+    And password as "12"
+    Then I should see: "Invalid user-id/email combination."
+
