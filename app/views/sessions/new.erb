@@ -8,14 +8,14 @@
 <%= form_tag login_create_path do %>
   <p>
     <%= label_tag :username, "Username" %>
-    <%= text_field_tag :username, params[:username] %>
+    <%= text_field_tag :username, params[:username], :id=>'loginUser'%>
   </p>
   <p>
     <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <%= password_field :password, 'Password', :id =>'loginEmail' %>
   </p>
   <p>
-    <%= submit_tag "Log in" %>
+    <%= submit_tag "Log in", :id=>'login_submit' %>
   </p>
   <% end %>
 </body>
