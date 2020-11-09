@@ -509,8 +509,6 @@
           1,
           1,
           null,
-          1,
-          null,
           null,
           null,
           1,
@@ -525,6 +523,10 @@
           null,
           null,
           0,
+          null,
+          null,
+          null,
+          1,
           null,
           null,
           null,
@@ -562,9 +564,6 @@
           1,
           1,
           null,
-          1,
-          1,
-          null,
           null
         ]
       },
@@ -595,6 +594,6 @@
         ]
       }
     },
-    "timestamp": 1604955403
+    "timestamp": 1604956685
   }
 }
