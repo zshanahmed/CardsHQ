@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     else
       User.create!(user_params)
       flash[:notice] = "Account with Username \'#{user_params[:username]}\' has been created"
+      redirect_to login_path
     end
     redirect_to request.referrer
   end
