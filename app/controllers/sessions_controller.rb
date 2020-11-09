@@ -23,10 +23,13 @@ class SessionsController < ApplicationController
   # }
   # return status 200 ok if everything is successful.
   def create
-    if(params[:username][:username].nil? ||params[:username][:username].empty?)
-      flash[:notice] = 'Invalid username'
+    puts params[:username] , 'username'
+    puts params[:password] , 'password'
+    if(params[:username][:username].nil? ||params[:username][:username].empty? || params[:password][:password].nil? || params[:password][:password].empty?)
+      flash[:notice] = 'Invalid username/password'
       redirect_to login_path
     elsif(params[:password][:password].nil? || params[:password][:password].empty?)
+      puts 'In here'
       flash[:notice] = 'Invalid password'
       redirect_to login_path
     else
