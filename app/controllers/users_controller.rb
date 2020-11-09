@@ -7,10 +7,8 @@ class UsersController < ApplicationController
   end
 
   def create
-    if !User.valid_entry?(user_params)
-      flash[:notice] = "Invalid entry in one of the text-boxes"
 
-    elsif not User.where(:username => user_params[:username]).blank?
+    if not User.where(:username => user_params[:username]).blank?
       flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
 
     else
