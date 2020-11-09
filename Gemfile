@@ -55,7 +55,7 @@ end
 
 group :test do
   gem 'rspec-expectations'
-  gem 'cucumber-rails', :require=>false
+  gem 'cucumber-rails'
   gem 'database_cleaner'
 
 end

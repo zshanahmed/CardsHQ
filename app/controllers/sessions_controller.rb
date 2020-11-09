@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
       flash[:notice] = 'Invalid username/password'
       redirect_to login_path
     elsif(params[:password][:password].nil? || params[:password][:password].empty?)
+      puts 'In here'
       flash[:notice] = 'Invalid password'
       redirect_to login_path
     else
@@ -42,10 +43,9 @@ class SessionsController < ApplicationController
         redirect_to login_path
       end
     end
-
   end
 
   def destroy
     reset_session
   end
-  end
+end
