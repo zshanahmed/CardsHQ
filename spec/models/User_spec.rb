@@ -39,11 +39,19 @@ describe User do
                {:username=>'glib_macaque', :password=>'broken_bottle', :email=>'moron@hotmail.com'},
                {:username=>'Beethoven', :password=>'Stupid_passoword', :email=>'great_email@uiowa.edu'}]
 
+  session_entry = {:username=>'fuzzyBunny', :password=>'bad_password', :email=>'eshaeffer@uiowa.edu'}
+
   it 'can recognize invalid entries via User#valid_entry?' do
     bad_entry.each {|info| expect(User.valid_entry?(info)).to be false}
   end
 
   it 'can recognize valid entries via User#valid_entry?' do
     good_entry.each {|info| puts info; expect(User.valid_entry?(info)).to be true}
+  end
+
+  it 'can set a session token for a valid user' do
+    DatabaseCleaner.clean
+    token = User.create_user!({username: "test_user", password: "asdfasdf",:email=>"holisticpanda"})
+    expect(token).not_to be_nil
   end
 end

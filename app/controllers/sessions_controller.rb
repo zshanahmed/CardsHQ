@@ -32,14 +32,13 @@ class SessionsController < ApplicationController
     else
       username = params[:username][:username]
       password = params[:password][:password]
-      #@@tempUser = User.find(:first, :conditions => ['username = ? AND password = ?', username , password])
       @@tempUser = User.where(:username => username).where(:password=> password).first
       if(!@@tempUser.nil?)
         flash[:notice] = 'Login Successful'
         session[:session_token] = @@tempUser.session_token
         redirect_to login_path
       else
-        flash[:notice] = 'Invalid user-id/email combination.'
+        flash[:notice] = 'Invalid user-id or password combination.'
         redirect_to login_path
       end
     end

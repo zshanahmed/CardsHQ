@@ -37,5 +37,10 @@ describe SessionsController do
     post :create, {:username => {:username => 'test_user'}, :password => {:password => 'asdfasdf'}}
     expect(flash[:notice]).to match(/Login Successful*/)
   end
+  it 'Should flash a message Invalid user-id or password combination if username and password are not nil' do
+    fake_results = [double('User')]
+    post :create, {:username => {:username => 'testuser'}, :password => {:password => 'aasdf'}}
+    expect(flash[:notice]).to match(/Invalid user-id or password combination.*/)
+  end
 
 end
