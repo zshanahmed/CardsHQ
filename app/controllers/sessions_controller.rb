@@ -23,9 +23,7 @@ class SessionsController < ApplicationController
   # }
   # return status 200 ok if everything is successful.
   def create
-    puts params[:username] , 'username'
-    puts params[:password] , 'password'
-    if(params[:username][:username].nil? ||params[:username][:username].empty? || params[:password][:password].nil? || params[:password][:password].empty?)
+    if(params[:username][:username].nil? ||params[:username][:username].empty?)
       flash[:notice] = 'Invalid username/password'
       redirect_to login_path
     elsif(params[:password][:password].nil? || params[:password][:password].empty?)
@@ -35,14 +33,13 @@ class SessionsController < ApplicationController
     else
       username = params[:username][:username]
       password = params[:password][:password]
-      #@@tempUser = User.find(:first, :conditions => ['username = ? AND password = ?', username , password])
       @@tempUser = User.where(:username => username).where(:password=> password).first
       if(!@@tempUser.nil?)
         flash[:notice] = 'Login Successful'
         session[:session_token] = @@tempUser.session_token
         redirect_to login_path
       else
-        flash[:notice] = 'Invalid user-id/email combination.'
+        flash[:notice] = 'Invalid user-id or password combination.'
         redirect_to login_path
       end
     end
