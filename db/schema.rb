@@ -21,22 +21,10 @@ ActiveRecord::Schema.define(version: 20201110023507) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "email"
-    t.string   "password"
-    t.string   "session_token"
-    t.string   "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer  "invitation_limit"
-    t.integer  "invited_by_id"
-    t.string   "invited_by_type"
-    t.integer  "invitations_count",      default: 0
+    t.string "username"
+    t.string "email"
+    t.string "password"
+    t.string "session_token"
   end
-
-  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true
-  add_index "users", ["invitations_count"], name: "index_users_on_invitations_count"
-  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
 
 end

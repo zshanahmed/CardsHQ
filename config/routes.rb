@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'game/decks'
+
   resources :users
   match '/login', to: 'sessions#new', via: :get
   match '/login_create', to: 'sessions#create', via: :post

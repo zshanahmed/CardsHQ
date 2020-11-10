@@ -37,7 +37,7 @@ class SessionsController < ApplicationController
       if(!@@tempUser.nil?)
         flash[:notice] = 'Login Successful'
         session[:session_token] = @@tempUser.session_token
-        redirect_to login_path
+        redirect_to game_decks_path
       else
         flash[:notice] = 'Invalid user-id or password combination.'
         redirect_to login_path
