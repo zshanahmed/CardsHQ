@@ -1,22 +1,22 @@
 <h1>GAME COMING SOON!</h1>
 <%= link_to 'Back to login screen', login_path %>
-<!--<table id="deck">-->
-<!--  <thead>-->
-<!--  <tr>-->
-<!--    <th>Suit</th>-->
-<!--    <th>Rank</th>-->
-<!--  </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-  <%# @deck.each do |card| %>
-<!--    <tr>-->
-<!--      <td>-->
-        <%#= card.suit %>
-<!--      </td>-->
-<!--      <td>-->
-        <%#= card.rank%>
-<!--      </td>-->
-<!--    </tr>-->
-  <%# end %>
-<!--  </tbody>-->
-<!--</table>-->
+<table id="deck">
+  <thead>
+  <tr>
+    <th>Suit</th>
+    <th>Rank</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @deck.each do |card| %>
+    <tr>
+      <td>
+        <%= card.suit %>
+      </td>
+      <td>
+        <%= card.rank%>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
