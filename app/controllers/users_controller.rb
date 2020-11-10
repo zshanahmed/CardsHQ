@@ -3,16 +3,14 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password)
   end
 
-  def index
-    @users = User.all
-  end
-
   def new
   end
 
   def create
+    if !User.valid_entry?(user_params)
+      flash[:notice] = "Invalid entry in one of the text-boxes"
 
-    if not User.where(:username => user_params[:username]).blank?
+    elsif not User.where(:username => user_params[:username]).blank?
       flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
 
     else
