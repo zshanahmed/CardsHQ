@@ -17,7 +17,7 @@ Feature: a way to sign up for an account for the card game
     And I'm on the sign-up page
 
 Scenario: Creating account with badly formatted Info:
-  When I try to create new account with username: "gramp;[]!flop"
+  When I enter Username: "gramp;!flop"
   And With email: "botiqueBooth@gmail"
   And With password: "123"
   And I press Create my account

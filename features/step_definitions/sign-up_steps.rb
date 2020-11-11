@@ -9,8 +9,7 @@ Given /^I'm on the sign-up page$/ do
   visit new_user_path
 end
 
-When /^I try to create new account with username: "(.*?)"$/ do |arg1|
-
+When /^I enter Username: "(.*?)"$/ do |arg1|
   fill_in "username", with: arg1
 end
 And  /^With email: "(.*?)"$/ do |arg1|
