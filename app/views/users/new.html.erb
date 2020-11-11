@@ -2,15 +2,18 @@
 <%=form_tag users_path, :class => 'form' do%>
   <%=label :user, :username, 'Username', :class => 'col-form-label' %>
   <div class = 'form-inline'>
-  <%=text_field :user, 'username', :class => 'form-control',:id => "username" %>
+  <%=text_field :user, 'username', :class => 'form-control' %>
   </div>
   <%=label :user, :email, 'Email', :class => 'col-form-label' %>
   <div class = 'form-inline'>
-  <%=text_field :user, 'email', :class => 'form-control', :id =>"email" %>
+  <%=email_field :user, 'email', :class => 'form-control' %>
   </div>
   <%=label :user, :password, 'Password', :class => 'col-form-label' %>
   <div class = 'form-inline'>
-  <%=password_field :user, 'password', :class => 'form-control', :id=> "password" %>
-  <%= button_to "Create my account", users_path, method: :create, :id =>"Create my account" %>
+  <%=password_field :user, 'password', :class => 'form-control' %>
+    <br>
+    <br>
+    <%= button_to "Create my account", users_path, method: :create %>
+    <%= link_to "Login", login_path %>
   </div>
 <% end %>
