@@ -17,22 +17,26 @@ Feature:  Login for users
     Then I should see a username field and password field
 
   Scenario: attempt to login with correct data
-    When I enter username as "user"
-    And password as "yes"
+    When I enter username as "GrumpyBunny"
+    And password as "123"
+    And I press submit
     Then I should see: "Login Successful"
 
   Scenario: attempt to login with not valid password
-    When I enter username as "user"
-    And password as ""
-    Then I should see: "Invalid password"
+    When I enter username as "GrumpyBunny"
+    And password as "12"
+    And I press submit
+    Then I should see: "Invalid user-id or password combination."
 
   Scenario: attempt to login with not valid user
     When I enter username as ""
     And password as "yes"
-    Then I should see: "Invalid password"
+    And I press submit
+    Then I should see: "Invalid user"
 
   Scenario: attempt to login with incorrect combination
     When I enter username as "GrumpyBunny"
     And password as "12"
-    Then I should see: "Invalid user-id/email combination."
+    And I press submit
+    Then I should see: "Invalid user-id or password combination."
 
