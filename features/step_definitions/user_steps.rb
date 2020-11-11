@@ -53,7 +53,7 @@ And /^With password: "(.*?)"$/ do |arg1|
 end
 
 And /^I press Create my account$/ do
-  click_button "createUser"
+  click_button("UserCreate")
 end
 
 Then /^I should see: "(.*?)"$/ do |arg1|

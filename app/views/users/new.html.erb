@@ -2,7 +2,7 @@
 <%=form_tag users_path, :class => 'form' do%>
   <%=label :user, :username, 'Username', :class => 'col-form-label', :id =>"Username"%>
   <div class = 'form-inline'>
-    <%=text_field :user, 'username', :class => 'form-control',:id => "Username" %>
+    <%=text_field :user, 'username', :class => 'form-control',:id => "username" %>
   </div>
   <%=label :user, :email, 'Email', :class => 'col-form-label' %>
   <div class = 'form-inline'>
@@ -13,7 +13,7 @@
   <%=password_field :user, 'password', :class => 'form-control', :id=> "password" %>
   <br>
   <br>
-  <%= button_to "Create my account", users_path, method: :create, :id =>"createUser" %>
+  <%= button_to "Create my account",  users_path, method: :create, :id =>"UserCreate" %>
   <%= link_to "Login", login_path %>
   </div>
 <% end %>
