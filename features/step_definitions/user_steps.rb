@@ -24,7 +24,3 @@ end
 And /^I press submit$/ do
   click_button 'login_submit'
 end
-
-Then /^I should see: "(.*?)"$/ do |arg1|
-  page.should have_selector ".alert", text: arg1
-end
