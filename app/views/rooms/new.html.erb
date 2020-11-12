@@ -1,0 +1,11 @@
+<h1>
+  Creating a room
+</h1>
+
+<%=form_tag rooms_path, :class => 'form' do%>
+  <%=label :room, :name, 'Room Name', :class => 'col-form-label', :id =>"RoomName"%>
+  <div class = 'form-inline'>
+    <%=text_field :room, 'name', :class => 'form-control',:id => "RoomName" %>
+  </div>
+
+<% end %>
