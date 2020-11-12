@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  post '/rooms/join'
   resources :rooms
   get 'game/decks'
 

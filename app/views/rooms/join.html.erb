@@ -1,0 +1,9 @@
+<h1> Join Room here</h1>
+
+<%=form_tag rooms_join_path, :class => 'form' do%>
+  <%=label :room, :name, 'Room ID', :class => 'col-form-label', :id =>"RoomID"%>
+  <div class = 'form-inline'>
+    <%=text_field :room, 'id', :class => 'form-control',:id => "RoomID" %>
+  </div>
+
+<% end %>

@@ -35,4 +35,8 @@ class RoomsController < ApplicationController
     end
   end
 
+  def join
+
+  end
+
 end
