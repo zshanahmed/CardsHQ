@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :rooms
   get 'game/decks'
 
   resources :users
