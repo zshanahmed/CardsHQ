@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_secure_password
+
+  belongs_to :room
 
   def self.create_user!(usr)
     session_token = SecureRandom.base64(10)
