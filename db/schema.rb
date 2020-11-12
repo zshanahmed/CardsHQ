@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201110023507) do
+ActiveRecord::Schema.define(version: 20201112065013) do
 
   create_table "decks", force: :cascade do |t|
     t.string   "suit"
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 20201110023507) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "rooms", ["name"], name: "index_rooms_on_name", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string "username"
