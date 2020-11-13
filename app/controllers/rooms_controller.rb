@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
 
   before_action :load_entities
-
+  before_filter :set_current_user
 
   def load_entities
     @rooms = Room.all

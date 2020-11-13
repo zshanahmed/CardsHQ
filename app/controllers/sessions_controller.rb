@@ -46,6 +46,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    session[:session_token] = nil
+    redirect_to login_path
   end
 end
