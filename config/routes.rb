@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 
-  post '/rooms/join'
+  match '/user/join_room', to: 'users#join_room', via: :post
+
   resources :rooms
   get 'game/decks'
 
