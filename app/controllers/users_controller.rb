@@ -18,10 +18,20 @@ class UsersController < ApplicationController
       flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
       redirect_to request.referrer
     else
-      User.create!(user_params)
+      @user = User.create!(user_params)
       flash[:notice] = "Account with Username \'#{user_params[:username]}\' has been created"
       redirect_to login_path
     end
   end
+
+  def join_room?
+
+  end
+
+  def join_room
+    @current_user.room_id = params[:user][:room_id]
+    redirect_to room_path room_id
+  end
+
 end
 
