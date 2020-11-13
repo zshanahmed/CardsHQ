@@ -31,9 +31,11 @@ class UsersController < ApplicationController
   end
 
   def join_room
-    @current_user.room_id = params[:user][:room_id]
+    room = Room.where(invitation_token: params[:user][:room_id])
+    room_id = room[0].id
+    @current_user.room_id = room_id
     @current_user.save
-    redirect_to room_path params[:user][:room_id]
+    redirect_to room_path room_id
   end
 
 end
