@@ -3,7 +3,7 @@ Feature: a way for players to log out of their accounts after they had logged in
   I'd like to log out of my account
   To keep my account secure/ sign into a different account
 
-  Background: The following users have been added to a database and the player is looged in
+  Background: The following users have been added to a database and the player is logged in
 
     Given the following users exist:
       | username      | email                                | password      |
@@ -16,7 +16,11 @@ Feature: a way for players to log out of their accounts after they had logged in
     And I'm on the login page
 
 Scenario: I log out of my account
-  When I login to the account with info: "GrumpyBunny, 123"
+  When I login to the account with info: "GrumpyBunny,123"
   And press logout button
   Then I should see: "User 'GrumpyBunny' has been logged out."
   And Im taken to the login page
+
+Scenario: I'm not logged in
+  When I login to the account with info: "nonExistantAccount,nonExistantPassword"
+  Then I shouldn't see a logout button
