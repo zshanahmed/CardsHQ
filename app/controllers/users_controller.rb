@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_filter :set_current_user, only:[:join_new_room, :join_room]
+
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
@@ -28,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def join_room
-    @current_user = set_current_user
     @current_user.room_id = params[:user][:room_id]
     @current_user.save
     redirect_to room_path params[:user][:room_id]
