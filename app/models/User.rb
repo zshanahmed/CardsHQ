@@ -22,4 +22,5 @@ class User < ActiveRecord::Base
     end
     return valid
   end
+
 end
