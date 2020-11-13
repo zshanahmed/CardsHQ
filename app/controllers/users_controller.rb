@@ -24,13 +24,14 @@ class UsersController < ApplicationController
     end
   end
 
-  def join_room?
-
+  def join_new_room
   end
 
   def join_room
+    @current_user = set_current_user
     @current_user.room_id = params[:user][:room_id]
-    redirect_to room_path room_id
+    @current_user.save
+    redirect_to room_path params[:user][:room_id]
   end
 
 end
