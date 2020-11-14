@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  match '/user/join_new_room', to: 'users#join_new_room', via: :get
+  match '/user/join_room', to: 'users#join_room', via: :post
+
+  resources :rooms
   get 'game/decks'
 
   resources :users

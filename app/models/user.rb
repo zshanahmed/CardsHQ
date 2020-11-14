@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  def User.create_user!(usr)
+
+  belongs_to :room
+
+  def self.create_user!(usr = {})
     session_token = SecureRandom.base64(10)
     usr['session_token'] = session_token
     @user = User.create!(usr)
@@ -19,4 +22,5 @@ class User < ActiveRecord::Base
     end
     return valid
   end
+
 end

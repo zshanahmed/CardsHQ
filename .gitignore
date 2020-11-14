@@ -19,3 +19,4 @@
 # Ignore .idea folder
 .idea
 /.idea/workspace.xml
+.byebug_history
