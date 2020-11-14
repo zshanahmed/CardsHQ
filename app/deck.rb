@@ -1,5 +1,6 @@
-require_relative '../card'
+require_relative './card'
 class Deck
+  attr_reader :deck, :suits, :ranks
   SUITS = ["Hearts", "Spades", "Clubs", "Diamonds"]
   RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
   def initialize suits, ranks
