@@ -18,7 +18,7 @@ Feature: a way for players to log out of their accounts after they had logged in
 Scenario: I log out of my account
   When I login to the account with info: "GrumpyBunny,123"
   And press logout button
-  Then I should see: "User 'GrumpyBunny' has been logged out."
+  Then I should see: "You have been logged out!"
   And Im taken to the login page
 
 Scenario: I'm not logged in

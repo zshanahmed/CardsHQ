@@ -1,6 +1,6 @@
 
 Given /^the following users exist:$/ do |user_table|
-  user_table.hashes.each {|usr| User.create!(usr)}
+  user_table.hashes.each {|usr| User.create_user!(usr)}
 end
 
 ###LOGIN
@@ -64,7 +64,8 @@ And /^press logout button$/ do
 end
 
 And /^Im taken to the login page$/ do
-  page.should have_content('loginEmail')
+  expect(page).to have_field('loginUser')
+  expect(page).to have_field('loginEmail')
 end
 
 Then /^I shouldn't see a logout button$/ do
