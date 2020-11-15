@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new permitted_parameters
-
+    @users = [User.where(:session_token => session).first]
     if @room.save
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
