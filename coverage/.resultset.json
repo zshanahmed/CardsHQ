@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/eliasshaeffer/Team1_SELT2020/spec/rails_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/spec/rails_helper.rb": {
         "lines": [
           null,
           1,
@@ -69,7 +69,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/environment.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -78,7 +78,7 @@
           1
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/application.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/application.rb": {
         "lines": [
           1,
           null,
@@ -108,14 +108,14 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/boot.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/boot.rb": {
         "lines": [
           1,
           null,
           1
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/environments/test.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -161,7 +161,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/assets.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -176,7 +176,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/backtrace_silencers.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/backtrace_silencers.rb": {
         "lines": [
           null,
           null,
@@ -187,14 +187,14 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/cookies_serializer.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/cookies_serializer.rb": {
         "lines": [
           null,
           null,
           1
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/filter_parameter_logging.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/filter_parameter_logging.rb": {
         "lines": [
           null,
           null,
@@ -202,7 +202,7 @@
           1
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/inflections.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/inflections.rb": {
         "lines": [
           null,
           null,
@@ -222,7 +222,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/mime_types.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/mime_types.rb": {
         "lines": [
           null,
           null,
@@ -230,14 +230,14 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/session_store.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/session_store.rb": {
         "lines": [
           null,
           null,
           1
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/to_time_preserves_timezone.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/to_time_preserves_timezone.rb": {
         "lines": [
           null,
           null,
@@ -251,7 +251,7 @@
           1
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/initializers/wrap_parameters.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/initializers/wrap_parameters.rb": {
         "lines": [
           null,
           null,
@@ -269,10 +269,14 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/config/routes.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/config/routes.rb": {
         "lines": [
           1,
           null,
+          1,
+          1,
+          null,
+          1,
           1,
           null,
           1,
@@ -336,13 +340,83 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/app/helpers/application_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/sessions_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/app/helpers/rooms_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/spec/controllers/sessions_controller_spec.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           null,
@@ -393,20 +467,13 @@
           null,
           1,
           0,
+          0,
+          0,
           null,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/Users/eliasshaeffer/Team1_SELT2020/spec/controllers/users_controller_spec.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/spec/controllers/users_controller_spec.rb": {
         "lines": [
           1,
           1,
@@ -479,9 +546,12 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/users_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/app/controllers/users_controller.rb": {
         "lines": [
           1,
+          null,
+          1,
+          null,
           1,
           21,
           null,
@@ -507,10 +577,41 @@
           null,
           null,
           null,
+          1,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/spec/models/User_spec.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/spec/helpers/rooms_helper_spec.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/spec/models/User_spec.rb": {
         "lines": [
           1,
           1,
@@ -571,14 +672,17 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/app/models/user.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/app/models/user.rb": {
         "lines": [
           1,
+          null,
           1,
+          null,
           1,
-          1,
-          1,
-          1,
+          4,
+          4,
+          4,
+          4,
           null,
           null,
           null,
@@ -594,10 +698,11 @@
           null,
           28,
           null,
+          null,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/spec/models/deck_spec.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/spec/models/deck_spec.rb": {
         "lines": [
           1,
           null,
@@ -606,13 +711,56 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020/app/models/deck.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/app/models/deck.rb": {
         "lines": [
           1,
           null
         ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/spec/models/room_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/app/models/room.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020_logout/spec/requests/rooms_request_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1605229930
+    "timestamp": 1605428994
   }
 }

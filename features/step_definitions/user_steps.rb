@@ -69,5 +69,5 @@ And /^Im taken to the login page$/ do
 end
 
 Then /^I shouldn't see a logout button$/ do
-  expect(page).to !have_field('logout')
+  expect {page.find_by_id('logout')}.to raise_error
 end
