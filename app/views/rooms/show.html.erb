@@ -3,14 +3,26 @@
 </h2>
 
 
-<table class="" id="usernames">
+<table class="table-bordered" id="users">
   <thead>
   <tr>
     <th>Username</th>
+
   </tr>
   </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= user.username %>
+      </td>
+
+
+
+
+    </tr>
+  <% end %>
+  </tbody>
 </table>
-
-
-
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
+
