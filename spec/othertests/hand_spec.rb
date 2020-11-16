@@ -1,8 +1,8 @@
 require 'rails_helper'
-require_relative '../../app/hand'
-require_relative '../../app/card'
+require_relative '../../app/hand.rb'
+require_relative '../../app/card.rb'
 
-describe Hand do
+RSpec.describe Hand do
   #https://github.com/rails/rails/issues/34790
   #######MONKEY PATCH#########
   if RUBY_VERSION>='2.6.0'
@@ -30,5 +30,18 @@ describe Hand do
 
   it 'Should be able to return the hand' do
     @hand.show_hand.each_with_index {|card,i| expect(card.suit).to eql(@suits[i]) }
+  end
+
+  it 'Should allow you to add to the hand' do
+    @hand.add_to_hand!(Card.new("Clubs","King"))
+    hand = @hand.show_hand
+    new_last_card = hand[hand.length - 1]
+    expect(new_last_card.suit == "Clubs" && new_last_card.rank == "King").to be true
+  end
+
+  it 'can discard' do
+    @hand.discard!(Card.new("Diamonds","2"))
+    last_card = @hand.show_hand[@hand.show_hand.length - 1]
+    expect(last_card.suit == "Clubs" && last_card.rank == "2").to be true
   end
 end
