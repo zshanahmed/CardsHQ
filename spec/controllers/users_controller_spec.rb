@@ -37,7 +37,7 @@ describe UsersController do
                 {:username=>'meltybuttyboi',:password=>"haxxorr",:email=>"holisticpanda"}]
 
   testing567= [{:username=>'I_am_great', :password=>'But_dont_mind_me', :email=>'chumbleGUmpus'},
-                {:username=>'hello_123',:password=>'big', :email=>'boi'}]
+               {:username=>'hello_123',:password=>'big', :email=>'boi'}]
 
 
   invalid = "Invalid entry in one of the text-boxes"
@@ -60,7 +60,6 @@ describe UsersController do
       username = testData[:username]
       expect(flash[:notice]).to match("Account with Username \'#{username}\' has been created")
     end
-
   end
 end
 

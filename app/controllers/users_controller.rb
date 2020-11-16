@@ -6,12 +6,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email, :password)
   end
 
-  def index
-    @users = User.all
-  end
+  def index; end
 
-  def new
-  end
+  def new; end
 
   def create
     if !User.valid_entry?(user_params)
@@ -35,6 +32,7 @@ class UsersController < ApplicationController
     room_id = room[0].id
     @current_user.room_id = room_id
     @current_user.save
+    flash[:notice] = 'You have successfully joined the room'
     redirect_to room_path room_id
   end
 
