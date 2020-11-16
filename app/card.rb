@@ -24,4 +24,8 @@ class Card
       ""
     end
   end
+
+  def == (other)
+    return (self.rank == other.rank) && (self.suit == other.suit)
+  end
 end

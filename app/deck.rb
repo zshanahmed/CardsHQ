@@ -50,7 +50,6 @@ class Deck
 
     @suits.push(suit) unless @suits.include? suit
     @ranks.push(suit) unless @ranks.include? rank
-
   end
 
 end
