@@ -18,6 +18,10 @@ describe RoomsController do
     end
   end
 
+  after(:all) do
+    DatabaseCleaner.clean
+  end
+
   test1 = {name: 'testroom123'}
   test2 = {name: ''}
 
@@ -36,4 +40,5 @@ describe RoomsController do
     post :create, room: test1
     expect(flash[:notice]).to match('Room name already taken')
   end
+
 end
