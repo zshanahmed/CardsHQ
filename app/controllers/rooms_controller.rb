@@ -17,16 +17,15 @@ class RoomsController < ApplicationController
   end
 
   def new
-
+    # @users = User.all
   end
 
   def show
-
+    @room.users << User.where(:session_token=> session[:session_token]).first
   end
 
   def create
     @room = Room.new permitted_parameters
-    @users = [User.where(:session_token => session).first]
     if @room.save
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room

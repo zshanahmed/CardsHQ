@@ -3,23 +3,19 @@
 </h2>
 
 
+
 <table class="table-bordered" id="users">
   <thead>
-  <tr>
-    <th>Username</th>
-
-  </tr>
+    <tr>
+      <th>Username</th>
+    </tr>
   </thead>
   <tbody>
-  <% @users.each do |user| %>
+  <% @room.users.all.each do |user| %>
     <tr>
       <td>
         <%= user.username %>
       </td>
-
-
-
-
     </tr>
   <% end %>
   </tbody>
