@@ -12,26 +12,23 @@ class RoomsController < ApplicationController
     params.require(:room).permit(:name)
   end
 
-  def index
-    @rooms = Room.all
-  end
+  def index; end
 
-  def new
+  def new; end
 
-  end
-
-  def show
-
-  end
+  def show; end
 
   def create
-    @room = Room.new permitted_parameters
-
-    if @room.save
+    if params[:room][:name].empty?
+      flash[:notice] = 'Room name cannot be empty'
+      redirect_to new_room_path
+    elsif Room.find_by(name: params[:room][:name])
+      flash[:notice] = 'Room name already taken'
+      redirect_to new_room_path
+    else
+      @room = Room.create!(permitted_parameters)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
-    else
-      render :new
     end
   end
 
