@@ -21,7 +21,7 @@
           1,
           null,
           1,
-          7,
+          6,
           null,
           null,
           null
@@ -116,9 +116,9 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
           null,
           null
         ]
@@ -126,7 +126,7 @@
       "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/controllers/users_controller.rb": {
         "lines": [
           1,
-          1,
+          null,
           1,
           null,
           1,
@@ -154,8 +154,6 @@
           1,
           null,
           null,
-          1,
-          1,
           1,
           1,
           1,
@@ -220,6 +218,6 @@
         ]
       }
     },
-    "timestamp": 1605564155
+    "timestamp": 1605566626
   }
 }
