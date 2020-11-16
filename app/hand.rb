@@ -17,6 +17,10 @@ class Hand
   end
 
   def discard!(card)
-    @cards.each_with_index {|cards, i| if cards == card; @cards.delete_at(i); break end}
+    if card.class.eql?(Card)
+      discarded = nil
+      @cards.each_with_index {|cards, i| if cards == card; @cards.delete_at(i); discarded = card; break end}
+      return discarded
+    end
   end
 end
