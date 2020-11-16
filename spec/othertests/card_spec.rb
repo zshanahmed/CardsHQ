@@ -24,6 +24,7 @@ RSpec.describe Card do
     rank = '8'
 
     @card = Card.new suit, rank
+    @card1 = Card.new "Spades","Ace"
   end
 
   it 'should respond to suit' do
@@ -48,6 +49,18 @@ RSpec.describe Card do
 
   it 'should return true for show' do
     expect(@card.show).to eq(true)
+  end
+
+  it 'should respond to ==' do
+    expect(@card).to respond_to(:==)
+  end
+
+  it 'should return True if asked if it equals itself' do
+    expect(@card == @card).to eq(true)
+  end
+
+  it 'Should return False asked 8 of hearts equals a king of spades' do
+    expect(@card == @card1).to eq(false)
   end
 
   # it 'should return the suit and rank if show is true' do
