@@ -68,7 +68,8 @@ describe UsersController do
     end
   end
   it 'Should flash a message if user successfully joins a room' do
-    post :create, user: test_valid
+    test_user = User.create_user!(test_valid)
+    request.session[:session_token] = test_user.session_token
     room_test = Room.create(name: 'alphabravo123')
     post :join_room, user: {room_id: room_test.invitation_token}
   end
