@@ -38,5 +38,13 @@ class UsersController < ApplicationController
     redirect_to room_path room_id
   end
 
+  def draw
+    deck = Room.current_deck
+    cards = deck.split(',')
+    @current_user.hand = cards[cards.length - 1]
+    @current_user.save
+    Room.remove_card
+  end
+
 end
 
