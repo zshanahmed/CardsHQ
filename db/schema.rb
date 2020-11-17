@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201113205346) do
+ActiveRecord::Schema.define(version: 20201116235518) do
 
   create_table "decks", force: :cascade do |t|
     t.string   "suit"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20201113205346) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "invitation_token"
+    t.string   "deck"
   end
 
   add_index "rooms", ["name"], name: "index_rooms_on_name", unique: true
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(version: 20201113205346) do
     t.string  "password"
     t.string  "session_token"
     t.integer "room_id"
+    t.string  "hand"
   end
 
   add_index "users", ["room_id"], name: "index_users_on_room_id"

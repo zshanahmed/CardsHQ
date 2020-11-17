@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = [
-    {:username => "GrumpyBunny", :email => "botiqueBooth@gmail.com", :password => '123'},
+    {:username => "GrumpyBunny", :email => "botiqueBooth@gmail.com", :password => '123', hand: 'Hearts 5, Diamond 3, Spade 10'},
     {:username => "bablingCreek", :email => "creepyLawyer@creepyLawyer.gov", :password => "1234"},
     {:username => "WarmBlanket", :email => "Beethoven@vienna.edu", :password => "goodpassword"},
     {:username => "softPillow", :email => "saltedButterWasAMistake@walmart.com", :password => "glorrrious"},
@@ -76,3 +76,14 @@ cards = [
 cards.each do |card|
   Deck.create!(card)
 end
+
+deck_string = ''
+cards.each do |card|
+  deck_string = deck_string + card[:suit] + ' '+card[:rank]+','
+end
+
+rooms = [
+    {name: 'testalpha', invitation_token: '2312asdasXFf', deck: deck_string}
+]
+
+Room.create(rooms[0])
