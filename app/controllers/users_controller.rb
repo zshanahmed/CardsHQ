@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :set_current_user, only:[:join_new_room, :join_room]
+  before_filter :set_current_user, only:[:join_new_room, :join_room, :draw]
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
@@ -37,7 +37,9 @@ class UsersController < ApplicationController
   end
 
   def draw
-    deck = Room.current_deck
+    current_room = Room.where(id: @current_user.room_id)
+    byebug
+    deck = current_room.deck
     cards = deck.split(',')
     @current_user.hand = cards[cards.length - 1]
     @current_user.save
