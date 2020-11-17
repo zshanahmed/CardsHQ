@@ -14,4 +14,11 @@ class Room < ActiveRecord::Base
     end
   end
 
+  def save
+
+  end
+  def helper_to_initialize_objects
+
+  end
+
 end

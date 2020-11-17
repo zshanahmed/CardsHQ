@@ -32,4 +32,13 @@ class RoomsController < ApplicationController
     end
   end
 
+  def current_deck
+    @room.deck
+  end
+
+  def remove_card
+    @room.deck = @room.deck.pop
+    @room.save
+  end
+
 end
