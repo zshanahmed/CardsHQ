@@ -1,6 +1,6 @@
-class CreateDecks < ActiveRecord::Migration
+class CreateHands < ActiveRecord::Migration
   def change
-    create_table :decks do |t|
+    create_table :hands do |t|
       t.string :suit
       t.string :rank
 
