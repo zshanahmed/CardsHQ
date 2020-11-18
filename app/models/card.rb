@@ -2,7 +2,7 @@ class Card < ActiveRecord::Base
  has_many :hands
  has_many :user  , through: :hand
 
- enum status: [ :in_draw, :in_sink, :in_hand ]
+ enum status: [ :in_draw, :in_sink, :in_hand ,:in_play]
 
  @SUITS = %w[Spades Clubs Hearts Diamond]
  @RANKS= %w[2 3 4 5 6 7 8 9 10 Jack Queen King Ace]
