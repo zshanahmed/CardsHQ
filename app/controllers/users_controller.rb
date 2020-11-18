@@ -28,13 +28,17 @@ class UsersController < ApplicationController
   end
 
   def join_room
-    room = Room.where(invitation_token: params[:user][:room_id])
-    room_id = room[0].id
-    @current_user.room_id = room_id
-    @current_user.save
-    flash[:notice] = 'You have successfully joined the room'
-    redirect_to room_path room_id
+    room = Room.where(invitation_token: params[:user][:room_id]).first
+    if room.nil? || params[:user][:room_id].empty?
+      flash[:notice] = 'Invitation token invalid!'
+      redirect_to user_join_new_room_path
+    else
+      room_id = room.id
+      @current_user.room_id = room_id
+      @current_user.save
+      flash[:notice] = 'You have successfully joined the room'
+      redirect_to room_path room_id
+    end
   end
 
 end
-
