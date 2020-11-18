@@ -37,4 +37,9 @@ class RoomsController < ApplicationController
     end
   end
 
+  def show_hand
+    byebug
+    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+  end
+
 end

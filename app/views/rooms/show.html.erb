@@ -5,3 +5,37 @@
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'DRAW' , user_draw_path %>
 <%= button_to 'Discard/play' , user_draw_path %>
+
+
+<br>
+<%= byebug %>
+<% if !@hand.blank? %>
+  <table id="hand">
+    <thead>
+    <tr>
+      <th>Suit</th>
+      <th>Rank</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @hand.each do |card| %>
+      <tr>
+        <td>
+          <%= card.suit %>
+        </td>
+        <td>
+          <%= card.rank%>
+        </td>
+        <td>
+          <%= check_box_tag "cards", :id => "card_#{card.card_id}" %>
+        </td>
+      </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+<% else %>
+  <h1>
+    No cards present in your hand
+  </h1>
+<%end %>

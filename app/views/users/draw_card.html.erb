@@ -1,26 +1,4 @@
 <h2>
   <%= "#{@current_user.username}'s card" %>
-  <table id="hand">
-    <thead>
-    <tr>
-      <th>Suit</th>
-      <th>Rank</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @hand.each do |card| %>
-      <tr>
-        <td>
-          <%= card.suit %>
-        </td>
-        <td>
-          <%= card.rank%>
-        </td>
-        <td>
-         <%= check_box_tag "cards", 0, ' ', :id => "card_#{card.card_id}" %>
-        </td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+
 </h2>
