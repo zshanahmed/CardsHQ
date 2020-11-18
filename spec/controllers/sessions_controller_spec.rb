@@ -42,5 +42,9 @@ describe SessionsController do
     post :create, {:username => {:username => 'testuser'}, :password => {:password => 'aasdf'}}
     expect(flash[:notice]).to match(/Invalid user-id or password combination.*/)
   end
+  it 'Should flash a message You have been logged out' do
+    delete :destroy, {:username => {:username => 'testuser'}, :password => {:password => 'aasdf'}}
+    expect(flash[:notice]).to match(/You have been logged out!/)
+  end
 
 end
