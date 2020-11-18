@@ -24,6 +24,12 @@ describe RoomsController do
 
   test1 = {name: 'testroom123'}
   test2 = {name: ''}
+  test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
+
+  before(:each) do
+    test_user = User.create_user!(test_valid)
+    request.session[:session_token] = test_user.session_token
+  end
 
   it 'Should flash a message when room is successfully created' do
     post :create, room: test1

@@ -27,6 +27,7 @@ class RoomsController < ApplicationController
       redirect_to new_room_path
     else
       @room = Room.create!(permitted_parameters)
+      @current_user.update(room_id: @room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
     end

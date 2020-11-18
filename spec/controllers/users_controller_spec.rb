@@ -21,10 +21,10 @@ describe UsersController do
   end
     ########################
   #
-  #https://stackoverflow.com/questions/6040479/rspec-testing-redirect-to-back
-  before(:each) do
-    request.env["HTTP_REFERER"] = "where_i_came_from"
-  end
+  # #https://stackoverflow.com/questions/6040479/rspec-testing-redirect-to-back
+  # before(:each) do
+  #   request.env["HTTP_REFERER"] = "where_i_came_from"
+  # end
 
   after(:all) do
     DatabaseCleaner.clean
