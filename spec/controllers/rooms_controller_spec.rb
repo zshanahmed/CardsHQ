@@ -25,7 +25,7 @@ describe RoomsController do
   test1 = {name: 'testroom123'}
   test2 = {name: ''}
   test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
-
+  room_test = {name: 'alphatest123'}
   before(:each) do
     test_user = User.create_user!(test_valid)
     request.session[:session_token] = test_user.session_token
@@ -47,4 +47,12 @@ describe RoomsController do
     expect(flash[:notice]).to match('Room name already taken')
   end
 
+  it 'Should flash a message when room is destroyed' do
+    test_room = Room.create(room_test)
+    @current_user = User.find_by_session_token(session[:session_token])
+    @current_user.room_id = test_room.id
+    byebug
+    delete :destroy, {name: room_test}
+    expect(flash[:notice]).to match(/Room destroyed successfully/)
+  end
 end

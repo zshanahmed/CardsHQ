@@ -33,4 +33,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @current_room = Room.where(id: @current_user.room_id)
+    Room.destroy(@current_room)
+    flash[:notice] = 'Room destroyed successfully'
+    redirect_to rooms_path
+  end
 end
