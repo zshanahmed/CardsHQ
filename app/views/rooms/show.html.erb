@@ -1,6 +1,7 @@
 <h2>
   <%= "Welcome to the room #{@room.name}" %>
 </h2>
+<%= button_to 'Destroy Room', room_del_path, method: :delete %>
 
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'DRAW' , user_draw_path %>

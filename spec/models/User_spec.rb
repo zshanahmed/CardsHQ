@@ -52,6 +52,6 @@ describe User do
   it 'can set a session token for a valid user' do
     DatabaseCleaner.clean
     token = User.create_user!({username: "test_user", password: "asdfasdf",:email=>"holisticpanda"})
-    expect(token).not_to be_nil
+    expect(token[:session_token]).not_to be_nil
   end
 end
