@@ -27,8 +27,8 @@ class RoomsController < ApplicationController
       flash[:notice] = 'Room name already taken'
       redirect_to new_room_path
     else
-      Card.create_deck_for_room(@room.id)
       @room = Room.create!(permitted_parameters)
+      Card.create_deck_for_room(@room.id)
       @current_user.update(room_id: @room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
