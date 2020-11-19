@@ -23,18 +23,6 @@
     </tr>
   <% end %>
   </tbody>
-<!--  <tbody>-->
-  <%# @room.users.all.each do |user| %>
-<!--    <tr>-->
-<!--      <td>-->
-        <%#= user.username %>
-<!--      </td>-->
-<!--      <td>-->
-        <%#= @hand.size %>
-<!--      </td>-->
-<!--    </tr>-->
-  <%# end %>
-<!--  </tbody>-->
 </table>
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'DRAW' , user_draw_path %>
