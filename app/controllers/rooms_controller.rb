@@ -23,11 +23,11 @@ class RoomsController < ApplicationController
   def show
     @room.users << User.where(:session_token=> session[:session_token]).first
 
-    @numCards = []
+    @num_cards = []
     @room.users.all.each do |user|
-      @numCards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
+      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
     end
-    
+
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
   end
 
