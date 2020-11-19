@@ -6,8 +6,13 @@
 <%= button_to 'DRAW' , user_draw_path %>
 <%= button_to 'Discard/play' , user_draw_path %>
 
-<%= text_field :score , :id => 'score' %>
-<%= button_to 'Update Score', rooms_score_path %>
+<%=form_tag rooms_update_score_path :class => 'form' do %>
+  <%= text_field :score , :id => 'score' %>
+  <%= button_to 'Update Score', rooms_score_path %>
+
+  <%= @current_user.score %>
+<%end %>
+
 
 <br>
 <%= byebug %>
@@ -44,4 +49,4 @@
 
 <%end %>
 
-<%= @current_user.score %>
+
