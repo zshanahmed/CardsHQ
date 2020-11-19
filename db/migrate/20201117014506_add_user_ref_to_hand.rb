@@ -1,0 +1,5 @@
+class AddUserRefToHand < ActiveRecord::Migration
+  def change
+    add_reference :hands, :user, index: true, foreign_key: true
+  end
+end

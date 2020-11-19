@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   resources :rooms
   get 'game/decks'
+  # for play cards
+  match '/rooms/play_card', to: 'rooms#play_card', via: :post
+  # to discard cards
+  match '/rooms/discard_card', to: 'rooms#discard_card', via: :post
 
   resources :users
   match '/login', to: 'sessions#new', via: :get
@@ -15,6 +19,10 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   root 'sessions#new'
+
+  # for cards
+  match '/user/draw' , to: 'users#draw_card', via: :post
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
