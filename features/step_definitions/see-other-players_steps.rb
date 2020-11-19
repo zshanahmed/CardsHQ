@@ -2,7 +2,7 @@
 
 
 Given /^I'm on the other-players page$/ do
-  visit other_player_path
+  visit rooms_path
 end
 
 Then /^I should see "(.*?)" with "(.*?)" cards $/ do |user_name, num_cards|
