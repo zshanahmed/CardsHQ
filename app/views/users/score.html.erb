@@ -1,0 +1,5 @@
+<h1> Enter your score here</h1>
+<%=form_tag score_path, :class => 'form' do%>
+<%=text_field :score,:class => 'form-control', :id=> 'score' %>
+<%= button_to "Update Score", update_score %>
+<%end %>
