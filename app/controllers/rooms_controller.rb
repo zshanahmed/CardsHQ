@@ -41,5 +41,8 @@ class RoomsController < ApplicationController
   def show_hand
 
   end
+  def score
+
+  end
 
 end

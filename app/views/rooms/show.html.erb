@@ -5,8 +5,6 @@
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'DRAW' , user_draw_path %>
 <%= button_to 'Discard/play' , user_draw_path %>
-
-
 <br>
 <%= byebug %>
 <% if !@hand.blank? %>

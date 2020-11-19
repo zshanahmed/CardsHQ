@@ -52,6 +52,7 @@ class UsersController < ApplicationController
     Hand.create(:suit => card.suit, :rank => card.rank, :card_id => @current_user.card_id, :user_id => @current_user.id , :room_id => @current_user.room_id)
     redirect_to room_path @current_user.room_id
   end
+
 end
 
 
