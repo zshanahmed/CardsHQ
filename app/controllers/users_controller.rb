@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   end
 
   def draw_card
+    # select card from the card table room_id is the current users room id.
     cards = Card.where(room_id: @current_user.room_id, status: 0)
     # shuffle and get first
     card = cards.shuffle.first

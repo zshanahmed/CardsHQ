@@ -5,7 +5,7 @@
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'DRAW' , user_draw_path %>
 
-<%= form_tag  :method => :post, :id => 'add_play' do%>
+<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
 <br>
 <% if !@hand.blank? %>
   <table id="hand">
@@ -38,7 +38,5 @@
   </h1>
 <%end %>
 
-  <%= submit_tag 'play selected cards', :id => 'play_button' %>
-  <%= submit_tag 'discard selected cards', :id => 'play_button' %>
-
+  <%= button_to 'Play' , rooms_play_card_path %>
 <% end %>

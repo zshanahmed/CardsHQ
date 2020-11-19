@@ -35,14 +35,16 @@ class RoomsController < ApplicationController
     end
   end
 
-  def add_hand
+  def play_card
     if(params[:played_cards] == nil)
       flash[:notice] = "No cards selected"
       redirect_to room_path
     else
       params[:played_cards].each do |card|
-        Hand.add_card(card)
+        Card.add_in_play(card,@current_user.id ,3)
       end
+      flash[:notice] = "Cards played"
+      redirect_to room_path @current_user.room_id
     end
   end
 
