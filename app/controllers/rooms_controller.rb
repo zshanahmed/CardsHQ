@@ -41,8 +41,8 @@ class RoomsController < ApplicationController
   def show_hand
 
   end
-  def create_score
-    @current_user.score =
+  def update_score
+    @current_user.score = params[:rooms] [:score]
   end
 
 end
