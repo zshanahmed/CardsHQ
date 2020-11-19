@@ -30,7 +30,6 @@ class RoomsController < ApplicationController
     else
       @room = Room.create!(permitted_parameters)
       @current_user.update(room_id: @room.id)
-      byebug
       Card.create_deck_for_room(@room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
@@ -45,7 +44,6 @@ class RoomsController < ApplicationController
   end
 
   def show_hand
-
   end
 
 end

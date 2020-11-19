@@ -42,10 +42,8 @@ class UsersController < ApplicationController
   end
 
   def draw_card
-    byebug
     cards = Card.where(room_id: @current_user.room_id, status: 0)
     # shuffle and get first
-    byebug
     card = cards.shuffle.first
     # change status for card
     card.update(status: 1, user_id: @current_user.id)

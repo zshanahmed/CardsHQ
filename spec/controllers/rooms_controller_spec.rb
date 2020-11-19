@@ -51,7 +51,6 @@ describe RoomsController do
     test_room = Room.create(room_test)
     @current_user = User.find_by_session_token(session[:session_token])
     @current_user.room_id = test_room.id
-    byebug
     delete :destroy, {name: room_test}
     expect(flash[:notice]).to match(/Room destroyed successfully/)
   end
