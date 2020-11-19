@@ -21,13 +21,12 @@ class RoomsController < ApplicationController
   end
 
   def show
-    byebug
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
   end
 
   def create
     @room = Room.new permitted_parameters
-    byebug
     if @room.save
       byebug
       Card.create_deck_for_room(@room.id)
