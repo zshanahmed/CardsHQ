@@ -12,27 +12,29 @@ class RoomsController < ApplicationController
     params.require(:room).permit(:name)
   end
 
-  def index; end
+  def index
+    @rooms = Room.all
+  end
 
-  def new; end
+  def new
+
+  end
 
   def show
+    byebug
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
   end
 
   def create
-    if params[:room][:name].empty?
-      flash[:notice] = 'Room name cannot be empty'
-      redirect_to new_room_path
-    elsif Room.find_by(name: params[:room][:name])
-      flash[:notice] = 'Room name already taken'
-      redirect_to new_room_path
-    else
-      @room = Room.create!(permitted_parameters)
-      @current_user.update(room_id: @room.id)
+    @room = Room.new permitted_parameters
+    byebug
+    if @room.save
+      byebug
       Card.create_deck_for_room(@room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
+    else
+      render :new
     end
   end
 
@@ -43,7 +45,17 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
-  def show_hand
+  def play_card
+    if(params[:played_cards] == nil)
+      flash[:notice] = "No cards selected"
+      redirect_to room_path
+    else
+      params[:played_cards].each do |card|
+        Card.add_in_play(card,@current_user.id ,3)
+      end
+      flash[:notice] = "Cards played"
+      redirect_to room_path @current_user.room_id
+    end
   end
 
 end
