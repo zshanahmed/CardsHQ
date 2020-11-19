@@ -41,8 +41,8 @@ class RoomsController < ApplicationController
   def show_hand
 
   end
-  def score
-
+  def create_score
+    @current_user.score =
   end
 
 end
