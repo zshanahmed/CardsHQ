@@ -21,15 +21,12 @@ class RoomsController < ApplicationController
   end
 
   def show
-    byebug
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
   end
 
   def create
     @room = Room.new permitted_parameters
-    byebug
     if @room.save
-      byebug
       Card.create_deck_for_room(@room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
@@ -38,8 +35,15 @@ class RoomsController < ApplicationController
     end
   end
 
-  def show_hand
-
+  def add_hand
+    if(params[:played_cards] == nil)
+      flash[:notice] = "No cards selected"
+      redirect_to room_path
+    else
+      params[:played_cards].each do |card|
+        Hand.add_card(card)
+      end
+    end
   end
 
 end

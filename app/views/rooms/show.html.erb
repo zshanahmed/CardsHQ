@@ -4,11 +4,9 @@
 
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'DRAW' , user_draw_path %>
-<%= button_to 'Discard/play' , user_draw_path %>
 
-
+<%= form_tag  :method => :post, :id => 'add_play' do%>
 <br>
-<%= byebug %>
 <% if !@hand.blank? %>
   <table id="hand">
     <thead>
@@ -27,7 +25,7 @@
           <%= card.rank%>
         </td>
         <td>
-          <%= check_box_tag "cards", :id => "card_#{card.card_id}" %>
+          <%=check_box_tag "played_cards[#{card.card_id}]", :id => "hand_#{card.card_id}"%>
         </td>
       </tr>
     <% end %>
@@ -39,3 +37,8 @@
     No cards present in your hand
   </h1>
 <%end %>
+
+  <%= submit_tag 'play selected cards', :id => 'play_button' %>
+  <%= submit_tag 'discard selected cards', :id => 'play_button' %>
+
+<% end %>
