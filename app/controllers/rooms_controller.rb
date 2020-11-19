@@ -23,6 +23,7 @@ class RoomsController < ApplicationController
   def show
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
     @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
+    @users_in_room = User.where(room_id: @current_user.room_id)
   end
 
   def create
