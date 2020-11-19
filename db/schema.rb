@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20201117032746) do
   add_index "rooms", ["card_id"], name: "index_rooms_on_card_id"
   add_index "rooms", ["name"], name: "index_rooms_on_name", unique: true
 
-
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
