@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   match '/user/join_new_room', to: 'users#join_new_room', via: :get
   match '/user/join_room', to: 'users#join_room', via: :post
-  match '/rooms/score' , to: 'rooms#update_score' , via: :post
+  match '/rooms/score' , to: 'rooms#update_score' , via: :get
+  match '/rooms/update_score' , to: 'rooms#update_new_score' , via: :post
 
   resources :rooms
   get 'game/decks'

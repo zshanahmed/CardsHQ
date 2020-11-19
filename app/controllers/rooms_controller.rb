@@ -23,6 +23,7 @@ class RoomsController < ApplicationController
   def show
     byebug
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    @score = @current_user.score
   end
 
   def create
@@ -42,7 +43,7 @@ class RoomsController < ApplicationController
 
   end
   def update_score
-    @current_user.score = params[:rooms] [:score]
+
   end
 
 end

@@ -5,6 +5,10 @@
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'DRAW' , user_draw_path %>
 <%= button_to 'Discard/play' , user_draw_path %>
+
+<%= text_field :score , :id => 'score' %>
+<%= button_to 'Update Score', rooms_score_path %>
+
 <br>
 <%= byebug %>
 <% if !@hand.blank? %>
@@ -36,4 +40,8 @@
   <h1>
     No cards present in your hand
   </h1>
+
+
 <%end %>
+
+<%= @current_user.score %>
