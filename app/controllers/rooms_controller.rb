@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
   def new; end
 
   def show
-
+    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
   end
 
   def create
@@ -30,6 +30,8 @@ class RoomsController < ApplicationController
     else
       @room = Room.create!(permitted_parameters)
       @current_user.update(room_id: @room.id)
+      byebug
+      Card.create_deck_for_room(@room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
     end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_filter :set_current_user, only:[:join_new_room, :join_room]
+  before_filter :set_current_user, only:[:join_new_room, :join_room, :draw_card]
 
   def user_params
     params.require(:user).permit(:username, :email, :password)
@@ -42,11 +42,12 @@ class UsersController < ApplicationController
   end
 
   def draw_card
+    byebug
     cards = Card.where(room_id: @current_user.room_id, status: 0)
     # shuffle and get first
+    byebug
     card = cards.shuffle.first
     # change status for card
-    byebug
     card.update(status: 1, user_id: @current_user.id)
     # set card id for user
     @current_user.card_id = card.id
