@@ -34,10 +34,10 @@ gem 'simplecov', require: false, group: :test
 group :development, :test do
   gem 'byebug'
   gem 'capybara'
+  gem 'guard-rspec'
   gem 'launchy'
   gem 'rspec', '~>3.5'
   gem 'rspec-rails'
-  gem 'guard-rspec'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
@@ -54,10 +54,10 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-expectations'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-
+  gem 'factory_girl_rails', '~> 3.2.0'
+  gem 'rspec-expectations'
 end
 
 group :production do

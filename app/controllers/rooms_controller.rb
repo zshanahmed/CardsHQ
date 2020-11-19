@@ -13,11 +13,6 @@ class RoomsController < ApplicationController
   end
 
   def index
-    @rooms = Room.all
-  end
-
-  def new
-
   end
 
   def show
@@ -25,13 +20,18 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new permitted_parameters
-    if @room.save
+    if params[:room][:name].empty?
+      flash[:notice] = 'Room name cannot be empty'
+      redirect_to new_room_path
+    elsif Room.find_by(name: params[:room][:name])
+      flash[:notice] = 'Room name already taken'
+      redirect_to new_room_path
+    else
       Card.create_deck_for_room(@room.id)
+      @room = Room.create!(permitted_parameters)
+      @current_user.update(room_id: @room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
-    else
-      render :new
     end
   end
 
@@ -48,4 +48,10 @@ class RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @current_room = Room.where(id: @current_user.room_id)
+    Room.destroy(@current_room)
+    flash[:notice] = 'Room destroyed successfully'
+    redirect_to rooms_path
+  end
 end
