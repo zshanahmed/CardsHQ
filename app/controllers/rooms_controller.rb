@@ -29,7 +29,6 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new permitted_parameters
     if @room.save
-      byebug
       Card.create_deck_for_room(@room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
