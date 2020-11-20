@@ -26,7 +26,7 @@
           <%= card.rank%>
         </td>
         <td>
-          <%=check_box_tag "played_cards[#{card.card_id}]", :id => "hand_#{card.card_id}"%>
+          <%=check_box_tag "played_cards[#{card.card_id}]",nil,nil, :id => "hand_#{card.card_id}"%>
         </td>
       </tr>
     <% end %>

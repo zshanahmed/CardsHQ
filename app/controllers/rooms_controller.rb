@@ -17,6 +17,7 @@ class RoomsController < ApplicationController
 
   def show
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    flash[:notice] = "#{@current_user.id}'s hand"
   end
 
   def create
@@ -38,7 +39,7 @@ class RoomsController < ApplicationController
   def play_card
     if(params[:played_cards] == nil)
       flash[:notice] = "No cards selected"
-      redirect_to room_path
+      redirect_to room_path @current_user.room_id
     else
       params[:played_cards].each do |card|
         Card.add_in_play(card,@current_user.id ,3)
