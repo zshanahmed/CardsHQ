@@ -1,2 +1,29 @@
 <h2>Discard Cards</h2>
+<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
+  <h3>Player Hand</h3>
+  <table id="hand">
+    <thead>
+    <tr>
+      <th>Suit</th>
+      <th>Rank</th>
+      <th>Select</th>
+    </tr>
+    </thead>
+   <tbody>
+    <% @hand.each do |card| %>
+      <tr>
+        <td>
+          <%= card.suit %>
+        </td>
+        <td>
+          <%= card.rank%>
+        </td>
+        <td>
+         <%=check_box_tag "played_cards[#{card.card_id}]", :id => "hand_#{card.card_id}"%>
+        </td>
+      </tr>
+   <% end %>
+<% end %>
 
+  </tbody>
+</table>
