@@ -12,6 +12,9 @@ end
 
 
 Then /^I should see "(.*?)" with "(.*?)" cards$/ do |username, numcards|
-  page.should have_content(username)
-  page.should have_content(numcards)
+  # page.should have_content(username)
+  # page.should have_content(numcards)
+  # //*[@id="username"]
+  expect(page).to have_xpath('//*[@id="username"]' , text: username)
+  expect(page).to have_xpath('//*[@id="numCards"]' , text: numcards)
 end
