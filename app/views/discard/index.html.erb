@@ -1,5 +1,5 @@
 <h2>Discard Cards</h2>
-<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
+<%= form_tag  discard_discard_card_path, :method => :post do%>
   <h3>Player Hand</h3>
   <table id="hand">
     <thead>
@@ -19,10 +19,11 @@
           <%= card.rank%>
         </td>
         <td>
-         <%=check_box_tag "played_cards[#{card.card_id}]", :id => "hand_#{card.card_id}"%>
+         <%=check_box_tag "discarded[#{card.card_id}]"%>
         </td>
       </tr>
    <% end %>
+  <%=button_to "Discard!", discard_discard_card_path %>
 <% end %>
 
   </tbody>
