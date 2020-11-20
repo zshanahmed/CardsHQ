@@ -5,8 +5,7 @@
 <%= button_to 'Destroy Room', room_del_path, method: :delete %>
 
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
-<%= button_to 'DRAW' , user_draw_path %>
-<%= button_to 'Discard/play' , user_draw_path %>
+<%= button_to 'Draw' , user_draw_path %>
 
 <%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
 <br>
