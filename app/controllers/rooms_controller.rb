@@ -60,5 +60,4 @@ class RoomsController < ApplicationController
       redirect_to room_path @current_user.room_id
     end
   end
-
 end
