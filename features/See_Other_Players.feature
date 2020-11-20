@@ -6,8 +6,18 @@ Feature: See other players
   Background:
   # some players with specified amount of cards should be started
 
-  Given I'm on the other-players page
-#
-#  Scenario: I am on the other-players page and see a player and their amount of cards
-   Then I should see "testPlayer" with "3" cards
+    Given the following users exist:
+      | username      | email                                | password      |
+      | GrumpyBunny   | botiqueBooth@gmail.com               | 123           |
+      | bablingCreek  | creepyLawyer@creepyLawyer.gov        | 1234          |
+
+    Given I'm logged in with GrumpyBunny
+    AND I'm on the show page
+
+
+  Scenario: Player draws 2 cards
+   When "GrumpyBunny" draws "2" cards
+   Then I should see "GrumpyBunny" with "2" cards
+
+
 
