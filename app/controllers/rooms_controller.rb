@@ -20,6 +20,7 @@ class RoomsController < ApplicationController
 
   def show
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    @score = @current_user.score
     @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
     @users_in_room = User.where(room_id: @current_user.room_id)
   end
@@ -46,6 +47,14 @@ class RoomsController < ApplicationController
     Room.destroy(@current_room)
     flash[:notice] = 'Room destroyed successfully'
     redirect_to rooms_path
+  end
+  def update_score
+
+  end
+  def update_new_score
+    byebug
+    @current_user.score = params[:user][:score]
+    @current_user.save
   end
 
   def play_card
