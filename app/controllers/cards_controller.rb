@@ -1,4 +1,0 @@
-class CardsController < ApplicationController
-
-
-end
