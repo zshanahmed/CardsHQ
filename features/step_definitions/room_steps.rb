@@ -3,7 +3,7 @@ Given(/^I have logged in with username and password: (.*?)$/) do |args1|
   visit login_path
   fill_in 'loginUser', with: args[0]
   fill_in 'loginEmail', with: args[1]
-  click_in 'Log in'
+  click_button 'Log in'
 end
 
 Given /^following (.*?) exist:$/ do |room_table|
