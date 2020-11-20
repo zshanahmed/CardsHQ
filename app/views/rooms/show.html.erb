@@ -2,34 +2,36 @@
   <%= "Welcome to the room #{@room.name}" %>
 </h2>
 
+
+<h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
+
+
 <table class="table-bordered" id="users">
   <thead>
     <tr>
       <th>Username</th>
       <th>Number of cards</th>
-      <th>Score</th>
+      <!-- <th>Score</th> Uncomment when score feature becomes available in main branch -->
     </tr>
   </thead>
   <tbody>
   <% @num_cards.each do |user| %>
     <tr>
-      <td>
+      <td id="username">
         <%= user[0] %>
       </td>
-      <td>
+      <td id="numCards">
         <%= user[1] %>
       </td>
-      <td>
-        <%= user[2] %>
-      </td>
+      <!--<td :id="score">
+
+      </td> -->
     </tr>
   <% end %>
   </tbody>
 </table>
 <%= button_to 'Destroy Room', room_del_path, method: :delete %>
-<h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'DRAW' , user_draw_path %>
-<%= # button_to 'Discard/play' , user_draw_path %>
 
 <%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
   <br>
@@ -39,6 +41,7 @@
       <tr>
         <th>Suit</th>
         <th>Rank</th>
+        <th>Select</th>
       </tr>
       </thead>
       <tbody>
