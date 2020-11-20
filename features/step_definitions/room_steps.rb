@@ -18,12 +18,12 @@ When(/^I click the button: '(.*?)'$/) do |text|
   click_on text
 end
 
-And(/^the room with room name as (.*?) already exists$/) do |room_name|
-  @testroom = Room.create!(name: room_name)
+And(/^the room with room name as '(.*?)' already exists$/) do |room_name|
+  @testroom = Room.create(name: room_name)
 end
 
 And(/^I submit room name as: '(.*?)'$/) do |room_name|
-  fill_in 'Room Name', with: room_name
+  fill_in 'RoomName', with: room_name
   click_button 'Create My Room'
 end
 

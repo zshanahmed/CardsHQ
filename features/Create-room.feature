@@ -25,4 +25,4 @@ Feature: Create a room
   Scenario: Attempt to create room with no room name
     When I click the button: 'Create New Room'
     And I submit room name as: ''
-    Then I should see: "Room name can not be empty"
+    Then I should see: "Room name cannot be empty"
