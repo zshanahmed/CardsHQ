@@ -40,6 +40,7 @@ class RoomsController < ApplicationController
 
   def destroy
     @current_room = Room.where(id: @current_user.room_id)
+    Card.where(room_id: @current_user.room_id).delete_all
     Room.destroy(@current_room)
     flash[:notice] = 'Room destroyed successfully'
     redirect_to rooms_path
