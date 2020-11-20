@@ -16,9 +16,7 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
 
-  def new
-
-  end
+  def new ; end
 
   def show
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
@@ -27,17 +25,23 @@ class RoomsController < ApplicationController
   end
 
   def create
-    @room = Room.new permitted_parameters
-    if @room.save
+    if params[:room][:name].empty?
+      flash[:notice] = 'Room name cannot be empty'
+      redirect_to new_room_path
+    elsif Room.find_by(name: params[:room][:name])
+      flash[:notice] = 'Room name already taken'
+      redirect_to new_room_path
+    else
+      @room = Room.create!(permitted_parameters)
       Card.create_deck_for_room(@room.id)
+      @current_user.update(room_id: @room.id)
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
-    else
-      render :new
     end
   end
 
   def destroy
+    byebug
     @current_room = Room.where(id: @current_user.room_id)
     Card.where(room_id: @current_user.room_id).delete_all
     Room.destroy(@current_room)
