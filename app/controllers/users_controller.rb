@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def draw_card
     cards = Card.where(room_id: @current_user.room_id, status: 0)
-    if cards.nil?
+    if !cards.blank?
       # shuffle and get first
       card = cards.shuffle.first
       # change status for card
@@ -52,11 +52,10 @@ class UsersController < ApplicationController
       @current_user.card_id = card.id
       # check for duplicate cards if they exist redirect to a different path
       Hand.create(:suit => card.suit, :rank => card.rank, :card_id => @current_user.card_id, :user_id => @current_user.id , :room_id => @current_user.room_id)
-      redirect_to room_path @current_user.room_id
     else
       flash[:notice] = "No cards available to draw"
-      redirect_to room_path @current_user.room_id
     end
+    redirect_to room_path @current_user.room_id
   end
 
 end

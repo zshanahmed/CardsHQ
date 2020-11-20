@@ -1,9 +1,7 @@
 <h2>
   <%= "Welcome to the room #{@room.name}" %>
 </h2>
-<%#= while 1 do %>
-  <%# curr_num_players = @users_in_room.length  %>
-  <%#= if  %>
+
 <%= button_to 'Destroy Room', room_del_path, method: :delete %>
 
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
