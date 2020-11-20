@@ -41,7 +41,6 @@ class RoomsController < ApplicationController
   end
 
   def destroy
-    byebug
     @current_room = Room.where(id: @current_user.room_id)
     Card.where(room_id: @current_user.room_id).delete_all
     Room.destroy(@current_room)
