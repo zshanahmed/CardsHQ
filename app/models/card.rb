@@ -17,4 +17,14 @@ class Card < ActiveRecord::Base
    end
   end
  end
+
+ ##
+ #  A method that sets the card status to what was passed in
+ #
+ def self.add_in_play(id ,user_id , status)
+  played_card = Card.where(:id => id).first
+  played_card.update(:status => status)
+  Hand.where(:card_id => id, :user_id => user_id).first.destroy
+
+ end
 end

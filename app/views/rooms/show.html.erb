@@ -2,8 +2,6 @@
   <%= "Welcome to the room #{@room.name}" %>
 </h2>
 
-
-
 <table class="table-bordered" id="users">
   <thead>
     <tr>
@@ -28,39 +26,46 @@
   <% end %>
   </tbody>
 </table>
+<%= button_to 'Destroy Room', room_del_path, method: :delete %>
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
-<%= button_to 'DRAW' , user_draw_path%>
-<%= button_to 'Discard/play' , user_draw_path%>
+<%= button_to 'DRAW' , user_draw_path %>
+<%= # button_to 'Discard/play' , user_draw_path %>
 
-
-<br>
-<% if !@hand.blank? %>
-  <table id="hand">
-    <thead>
-    <tr>
-      <th>Suit</th>
-      <th>Rank</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @hand.each do |card| %>
+<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
+  <br>
+  <% if !@hand.blank? %>
+    <table id="hand">
+      <thead>
       <tr>
-        <td>
-          <%= card.suit %>
-        </td>
-        <td>
-          <%= card.rank%>
-        </td>
-        <td>
-          <%= check_box_tag "cards", :id => "card_#{card.card_id}" %>
-        </td>
+        <th>Suit</th>
+        <th>Rank</th>
       </tr>
-    <% end %>
+      </thead>
+      <tbody>
+      <% @hand.each do |card| %>
+        <tr>
+          <td>
+            <%= card.suit %>
+          </td>
+          <td>
+            <%= card.rank%>
+          </td>
+          <td>
+            <%=check_box_tag "played_cards[#{card.card_id}]",nil,nil, :id => "hand_#{card.card_id}"%>
+          </td>
+        </tr>
+      <% end %>
 
-    </tbody>
-  </table>
-<% else %>
-  <h1>
-    No cards present in your hand
-  </h1>
-<%end %>
+      </tbody>
+    </table>
+  <% else %>
+    <h1>
+      No cards present in your hand
+    </h1>
+  <%end %>
+
+  <%= button_to 'Play' , rooms_play_card_path %>
+<% end %>
+
+
+

@@ -1,11 +1,7 @@
 class Room < ActiveRecord::Base
-
   has_many :users
-
-  def index
-    @rooms = Room.all
-  end
   before_create :set_invitation_token
+  def index; end
 
   def set_invitation_token
     self.invitation_token = generate_token
