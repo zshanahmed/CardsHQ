@@ -27,7 +27,30 @@
           1,
           null,
           1,
-          10,
+          9,
+          null,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/discard_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
           null,
           null
         ]
@@ -40,8 +63,8 @@
           1,
           null,
           1,
-          6,
-          6,
+          5,
+          5,
           null,
           null,
           1,
@@ -94,14 +117,6 @@
           null,
           0,
           0,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
           null,
           null,
           null
@@ -238,9 +253,9 @@
           1,
           null,
           1,
-          12,
-          12,
-          12,
+          13,
+          13,
+          13,
           null,
           null,
           null,
@@ -289,7 +304,6 @@
           0,
           0,
           null,
-          null,
           null
         ]
       },
@@ -310,13 +324,13 @@
           1,
           null,
           1,
-          6,
+          7,
           null,
           null,
           1,
-          6,
-          6,
-          6,
+          7,
+          7,
+          7,
           null,
           null,
           null,
@@ -324,6 +338,6 @@
         ]
       }
     },
-    "timestamp": 1605855721
+    "timestamp": 1605865861
   }
 }

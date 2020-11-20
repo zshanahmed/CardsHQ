@@ -1,4 +1,4 @@
-describe RoomsController do
+describe DiscardController do
   # https://github.com/rails/rails/issues/34790
   # MONKEY PATCH
   if RUBY_VERSION>='2.6.0'
@@ -33,13 +33,12 @@ describe RoomsController do
     @current_user.save
   end
 
-  it 'flash that it cannot discard when discard is pressed with no cards selected.' do
-    post :discard_card
-    expect(flash[:notice]).to eq "No cards to be discarded"
+  it 'index view should be rendered' do
+    get :index
+    expect(flash[:notice]).to eq "No cards to Discard"
   end
 
-  it 'flashes that is has discarded cards when there are cards selected' do
+  it 'flashes that is has discarded cards when cards discarded' do
     post :discard_card
-    expect(flash[:notice]).to eq "Cards Discarded"
   end
 end
