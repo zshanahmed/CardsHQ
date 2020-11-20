@@ -11,18 +11,18 @@ Feature: Create a room
     And I am on the dashboard page
 
     Scenario: I want to create a room
-      When I click the button with text: 'Create New Room'
+      When I click the button: 'Create New Room'
       And I submit room name as: 'Test Room 1'
       Then I should go to the room page with text: 'Welcome to the room Test Room 1'
       And I should see: "Room Test Room 1 was created successfully"
 
     Scenario: Attempt to create room with existing room name
-      When I click the button with text: 'Create New Room'
+      When I click the button: 'Create New Room'
       And the room with room name as 'Test Room 1' already exists
       And I submit room name as: 'Test Room 1'
       Then I should see: "Room name already taken"
 
   Scenario: Attempt to create room with no room name
-    When I click the button with text: 'Create New Room'
+    When I click the button: 'Create New Room'
     And I submit room name as: ''
-    Then I should see: "Room name can not be empty"
+    Then I should see: "Room name cannot be empty"

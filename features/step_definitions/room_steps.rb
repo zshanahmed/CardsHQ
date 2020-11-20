@@ -3,7 +3,7 @@ Given(/^I have logged in with username and password: (.*?)$/) do |args1|
   visit login_path
   fill_in 'loginUser', with: args[0]
   fill_in 'loginEmail', with: args[1]
-  click_in 'Log in'
+  click_on 'Log in'
 end
 
 Given /^following (.*?) exist:$/ do |room_table|
@@ -14,16 +14,16 @@ And(/^I am on the dashboard page$/) do
   visit rooms_path
 end
 
-When(/^I click the button with text: '(.*?)'$/) do |text|
-  click_button text
+When(/^I click the button: '(.*?)'$/) do |text|
+  click_on text
 end
 
-And(/^the room with room name as (.*?) already exists$/) do |room_name|
-  @testroom = Room.create!(name: room_name)
+And(/^the room with room name as '(.*?)' already exists$/) do |room_name|
+  @testroom = Room.create(name: room_name)
 end
 
 And(/^I submit room name as: '(.*?)'$/) do |room_name|
-  fill_in 'Room Name', with: room_name
+  fill_in 'RoomName', with: room_name
   click_button 'Create My Room'
 end
 
@@ -33,10 +33,20 @@ end
 
 
 And(/^then I submit the correct invitation code$/) do
-  fill_in 'Invitation Code', with: @testroom.invitation_token
+  fill_in 'RoomID', with: @testroom.invitation_token
+  click_on 'Join Room'
 end
 
 
 And(/^then I submit the incorrect invitation code$/) do
-  fill_in 'Invitation Code', with: '0'
+  fill_in 'RoomID', with: '0'
+  click_on 'Join Room'
 end
+
+Given(/^I have joined the room: '(.*?)'$/) do |args|
+  click_on 'Join Room'
+  fill_in 'RoomID', with: @testroom.invitation_token
+  click_on 'Join Room'
+end
+
+
