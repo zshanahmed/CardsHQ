@@ -23,9 +23,9 @@ class RoomsController < ApplicationController
 
     @num_cards = []
     @room.users.all.each do |user|
-      # uncomment next line and delete line 28 when score becomes available
-      # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
-      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
+      # when score is ready
+      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
+      # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
     end
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
     @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
