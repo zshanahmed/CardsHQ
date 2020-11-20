@@ -14,11 +14,11 @@ Background: :
   And I am on the dashboard page
 
   Scenario: Attempt to successfully join a room
-    When I click the button with text: 'Join A Room'
+    When I click the button: 'Join Room'
     And then I submit the correct invitation code
     Then I should see: "You have successfully joined the room"
 
   Scenario: Failed to join a room
-    When I click the button with text: 'Join A Room'
+    When I click the button: 'Join Room'
     And then I submit the incorrect invitation code
     Then I should see: "Invitation token invalid!"

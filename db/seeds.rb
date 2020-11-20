@@ -17,4 +17,3 @@ users = [
 users.each do |users|
   User.create_user!(users)
 end
-

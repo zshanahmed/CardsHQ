@@ -1,19 +1,24 @@
 <h2>
   <%= "Welcome to the room #{@room.name}" %>
 </h2>
+
 <%= button_to 'Destroy Room', room_del_path, method: :delete %>
 
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
-<%= button_to 'DRAW' , user_draw_path %>
+<%= button_to 'Draw' , user_draw_path %>
 
 <%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
 <br>
+<div class="container">
+  <div class="floatLeft">
 <% if !@hand.blank? %>
+      <h3>Player Hand</h3>
   <table id="hand">
     <thead>
     <tr>
       <th>Suit</th>
       <th>Rank</th>
+      <th>Select</th>
     </tr>
     </thead>
     <tbody>
@@ -33,11 +38,38 @@
 
     </tbody>
   </table>
+      </div>
 <% else %>
   <h1>
     No cards present in your hand
   </h1>
 <%end %>
 
+    <div class="floatRight">
+      <h3>Played Cards</h3>
+  <table id="played_cards">
+    <thead>
+    <tr>
+      <th>Suit</th>
+      <th>Rank</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @played_cards.each do |played| %>
+      <tr>
+        <td>
+          <%= played.suit %>
+        </td>
+        <td>
+          <%= played.rank%>
+        </td>
+      </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+    </div>
+</div>
+  <br>
   <%= button_to 'Play' , rooms_play_card_path %>
 <% end %>
