@@ -60,4 +60,15 @@ class RoomsController < ApplicationController
       redirect_to room_path @current_user.room_id
     end
   end
+
+  def discard_card
+    if params[:played_cards].nil?
+      flash[:notice] = "No cards to be discarded"
+    else
+      cards = params[:played_cards]
+      flash[:notice] = cards
+    end
+    redirect_to room_path @current_user.room_id
+  end
+
 end

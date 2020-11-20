@@ -71,5 +71,8 @@
     </div>
 </div>
   <br>
-  <%= button_to 'Play' , rooms_play_card_path %>
+  <div class="in-line">
+    <%= button_to 'Play' , rooms_play_card_path %>
+    <%= button_to 'Discard', rooms_discard_card_path, id: "discard"%>
+  </div>
 <% end %>

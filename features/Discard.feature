@@ -14,10 +14,10 @@ Feature: Discard/Draw
       | rollingHills  | 300@thisIsSparta.com                 | PersiansSuck  |
     And I'm on the login page
     Given I login to the account with info: "GrumpyBunny,123"
-    Given the room with room name as 'GrumpyRoom' already exists
-    And I click the button with text: 'Join A Room'
-    And then I submit the correct invitation code
-    And I draw the following number of cards: '5'
+    And I am on the dashboard page
+    And I click the button: 'Create New Room'
+    And I submit room name as: 'Test Room 1'
+    And I draw the following number of cards: 5
 
 Scenario: I discard 3 of my cards having 5 originally
   When 'GrumpyBunny' discards '3' cards
