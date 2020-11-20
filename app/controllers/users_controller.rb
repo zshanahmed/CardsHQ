@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def join_room
     room = Room.where(invitation_token: params[:user][:room_id])
-    byebug
+    # byebug
     room_id = room[0].id
     @current_user.room_id = room_id
     @current_user.save
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     # shuffle and get first
     card = cards.shuffle.first
     # change status for card
-    byebug
+    # byebug
     card.update(status: 1, user_id: @current_user.id)
     # set card id for user
     @current_user.card_id = card.id

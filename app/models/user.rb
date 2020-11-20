@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
   belongs_to :room
+  has_many :hands
+  has_many :cards, through: :hand
 
   def self.create_user!(usr = {})
     session_token = SecureRandom.base64(10)
