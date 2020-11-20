@@ -18,12 +18,12 @@ When(/^I click the button: '(.*?)'$/) do |text|
   click_on text
 end
 
-And(/^the room with room name as (.*?) already exists$/) do |room_name|
-  @testroom = Room.create!(name: room_name)
+And(/^the room with room name as '(.*?)' already exists$/) do |room_name|
+  @testroom = Room.create(name: room_name)
 end
 
 And(/^I submit room name as: '(.*?)'$/) do |room_name|
-  fill_in 'Room Name', with: room_name
+  fill_in 'RoomName', with: room_name
   click_button 'Create My Room'
 end
 
@@ -42,3 +42,11 @@ And(/^then I submit the incorrect invitation code$/) do
   fill_in 'RoomID', with: '0'
   click_on 'Join Room'
 end
+
+Given(/^I have joined the room: '(.*?)'$/) do |args|
+  click_on 'Join Room'
+  fill_in 'RoomID', with: @testroom.invitation_token
+  click_on 'Join Room'
+end
+
+
