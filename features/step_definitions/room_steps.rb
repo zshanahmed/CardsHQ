@@ -42,3 +42,11 @@ And(/^then I submit the incorrect invitation code$/) do
   fill_in 'RoomID', with: '0'
   click_on 'Join Room'
 end
+
+Given(/^I have joined the room: '(.*?)'$/) do |args|
+  click_on 'Join Room'
+  fill_in 'RoomID', with: @testroom.invitation_token
+  click_on 'Join Room'
+end
+
+
