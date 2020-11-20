@@ -25,6 +25,5 @@ class Card < ActiveRecord::Base
   played_card = Card.where(:id => id).first
   played_card.update(:status => status)
   Hand.where(:card_id => id, :user_id => user_id).first.destroy
-
  end
 end

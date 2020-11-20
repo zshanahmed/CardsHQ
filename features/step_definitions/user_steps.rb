@@ -39,9 +39,9 @@ end
 
 When /^I enter username,email,password and press submit: "(.*?)"$/ do |arg1|
   args = arg1.split(',')
-  fill_in "username", :with => args[0]
-  fill_in "email", :with => args[1]
-  fill_in "password", :with => args[2]
+  fill_in "username", :with => "user=>#{args[0]}"
+  fill_in "email", :with => "user=>#{args[1]}"
+  fill_in "password", :with => "user=>#{args[2]}"
   click_button("UserCreate")
 end
 
