@@ -45,5 +45,10 @@ class RoomsController < ApplicationController
   def update_score
 
   end
+  def update_new_score
+    byebug
+    @current_user.score = params[:user][:score]
+    @current_user.save
+  end
 
 end
