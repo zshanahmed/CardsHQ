@@ -6,7 +6,9 @@
 
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
 <%= button_to 'Draw' , user_draw_path %>
-
+<br/>
+<br/>
+<%= link_to "Discard", discard_index_path%>
 <%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
 <br>
 <div class="container">
@@ -73,6 +75,5 @@
   <br>
   <div class="in-line">
     <%= button_to 'Play' , rooms_play_card_path %>
-    <%= button_to 'Discard', rooms_discard_card_path, id: "discard"%>
   </div>
 <% end %>
