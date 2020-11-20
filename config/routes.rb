@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   # for play cards
   match '/rooms/play_card', to: 'rooms#play_card', via: :post
   # to discard cards
-  match '/rooms/discard_card', to: 'rooms#discard_card', via: :post
+  match '/discard/discard_card', to: 'discard#discard_card', via: :post
+
+  match '/discard/index', to: 'discard#index', via: :get
 
   resources :users
   match '/login', to: 'sessions#new', via: :get

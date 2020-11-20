@@ -48,5 +48,3 @@ Given(/^I have joined the room: '(.*?)'$/) do |args|
   fill_in 'RoomID', with: @testroom.invitation_token
   click_on 'Join Room'
 end
-
-
