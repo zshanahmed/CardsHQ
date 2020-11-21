@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201117032746) do
+ActiveRecord::Schema.define(version: 20201119014107) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "suit"
@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20201117032746) do
   add_index "rooms", ["card_id"], name: "index_rooms_on_card_id"
   add_index "rooms", ["name"], name: "index_rooms_on_name", unique: true
 
-
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
@@ -67,6 +66,7 @@ ActiveRecord::Schema.define(version: 20201117032746) do
     t.integer  "invitations_count",      default: 0
     t.integer  "room_id"
     t.integer  "card_id"
+    t.string   "score"
   end
 
   add_index "users", ["card_id"], name: "index_users_on_card_id"

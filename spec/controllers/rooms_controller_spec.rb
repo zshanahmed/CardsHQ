@@ -76,5 +76,13 @@ describe RoomsController do
     expect(Card).to receive(:add_in_play).with(["145","1"], @current_user.id, 3)
     post :play_card , {"played_cards"=>{"141"=>"1", "145"=>"1"}}
     expect(flash[:notice]).to eq("Cards played")
+    end
+  it 'Should flash a message when room is destroyed' do
+    test_room = Room.create!(room_test)
+    @current_user = User.find_by_session_token(session[:session_token])
+    @current_user.room_id = test_room.id
+    @current_user.save
+    delete :destroy, {name: room_test}
+    expect(flash[:notice]).to match(/Room destroyed successfully/)
   end
 end

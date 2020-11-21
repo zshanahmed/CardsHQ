@@ -13,11 +13,17 @@ class RoomsController < ApplicationController
   end
 
   def index
+    @rooms = Room.all
   end
+
+  def new ; end
 
   def show
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
     flash[:notice] = "#{@current_user.id}'s hand"
+    @score = @current_user.score
+    @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
+    @users_in_room = User.where(room_id: @current_user.room_id)
   end
 
   def create
@@ -36,6 +42,22 @@ class RoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @current_room = Room.where(id: @current_user.room_id)
+    Card.where(room_id: @current_user.room_id).delete_all
+    Room.destroy(@current_room)
+    flash[:notice] = 'Room destroyed successfully'
+    redirect_to rooms_path
+  end
+  def update_score
+
+  end
+  def update_new_score
+    byebug
+    @current_user.score = params[:user][:score]
+    @current_user.save
+  end
+
   def play_card
     if(params[:played_cards] == nil)
       flash[:notice] = "No cards selected"
@@ -47,12 +69,5 @@ class RoomsController < ApplicationController
       flash[:notice] = "Cards played"
       redirect_to room_path @current_user.room_id
     end
-  end
-
-  def destroy
-    @current_room = Room.where(id: @current_user.room_id)
-    Room.destroy(@current_room)
-    flash[:notice] = 'Room destroyed successfully'
-    redirect_to rooms_path
   end
 end

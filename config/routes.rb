@@ -2,13 +2,17 @@ Rails.application.routes.draw do
 
   match '/user/join_new_room', to: 'users#join_new_room', via: :get
   match '/user/join_room', to: 'users#join_room', via: :post
+  match '/rooms/score' , to: 'rooms#update_score' , via: :get
+  match '/rooms/update_score' , to: 'rooms#update_new_score' , via: :post
 
   resources :rooms
   get 'game/decks'
   # for play cards
   match '/rooms/play_card', to: 'rooms#play_card', via: :post
   # to discard cards
-  match '/rooms/discard_card', to: 'rooms#discard_card', via: :post
+  match '/discard/discard_card', to: 'discard#discard_card', via: :post
+
+  match '/discard/index', to: 'discard#index', via: :get
 
   resources :users
   match '/login', to: 'sessions#new', via: :get
