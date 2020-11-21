@@ -52,6 +52,7 @@ class UsersController < ApplicationController
       @current_user.card_id = card.id
       # check for duplicate cards if they exist redirect to a different path
       Hand.create(:suit => card.suit, :rank => card.rank, :card_id => @current_user.card_id, :user_id => @current_user.id , :room_id => @current_user.room_id)
+      flash[:notice] = 'Cards added to your hand'
     else
       flash[:notice] = "No cards available to draw"
     end
