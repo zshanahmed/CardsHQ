@@ -22,3 +22,13 @@ Then /^'(.*?)' should only have '(.*?)' cards$/ do |username, number|
   number = number.to_i
   expect(Hand.where(user_id: id).length()).to eq(number)
 end
+
+When /^'(.*?)' selects the following number of cards: '(.*?)'$/ do |username,number_cards|
+  id = User.where(username: username).first.id
+  hand = Hand.where(user_id: id)
+  hand.each_with_index do |card,i|
+    if i < (number_cards.to_i)
+      check("played_cards_#{card.id}")
+    end
+  end
+end
