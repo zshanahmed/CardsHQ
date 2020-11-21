@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   # This line was added so that i can test the endpoints for this controller
   # from CORS.
   skip_before_action :verify_authenticity_token
+  before_filter :set_current_user
   def new
   end
 
@@ -45,6 +46,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    @current_user.room_id = nil
+    @current_user.save
     session[:session_token] = nil
     flash[:notice] = "You have been logged out!"
     redirect_to login_path
