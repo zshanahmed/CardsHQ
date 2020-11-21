@@ -58,12 +58,15 @@ class RoomsController < ApplicationController
     flash[:notice] = 'Room destroyed successfully'
     redirect_to rooms_path
   end
-  def update_score
 
+  def update_score
+    redirect_to room_path @current_user.room_id
   end
+
   def update_new_score
     @current_user.score = params[:user][:score]
     @current_user.save
+    redirect_to room_path @current_user.room_id
   end
 
   def play_card
