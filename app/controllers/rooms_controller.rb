@@ -12,9 +12,7 @@ class RoomsController < ApplicationController
     params.require(:room).permit(:name)
   end
 
-  def index
-    @rooms = Room.all
-  end
+  def index; end
 
   def new ; end
 
@@ -59,14 +57,13 @@ class RoomsController < ApplicationController
     redirect_to rooms_path
   end
 
-  def update_score
-    redirect_to room_path @current_user.room_id
-  end
+  def update_score; end
 
   def update_new_score
     @current_user.score = params[:user][:score]
     @current_user.save
     redirect_to room_path @current_user.room_id
+    flash[:notice] = "Score updated!"
   end
 
   def play_card

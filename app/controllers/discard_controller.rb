@@ -11,8 +11,13 @@ class DiscardController < ApplicationController
 
   def discard_card
     cards = params["discarded"]
-    cards.each {|card_id,junk| Card.add_in_play(card_id, @current_user.id, 2)}
-    flash[:notice] = "Cards have been discarded"
-    redirect_to room_path @current_user.room_id
+    if !cards.nil?
+       cards.each {|card_id,junk| Card.add_in_play(card_id, @current_user.id, 2)}
+       flash[:notice] = "Cards have been discarded"
+       redirect_to room_path @current_user.room_id
+    else
+      flash[:notice] = "No cards selected"
+      redirect_to discard_index_path
+    end
   end
 end

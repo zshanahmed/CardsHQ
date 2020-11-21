@@ -44,4 +44,9 @@ describe DiscardController do
     post :discard_card,"discarded"=>{"10"=>"1"}
     expect(flash[:notice]).to eq("Cards have been discarded")
   end
+
+  it 'flashes that nothing is dicarded when no cards are passed' do
+    post :discard_card
+    expect(flash[:notice]).to eq("No cards selected")
+  end
 end
