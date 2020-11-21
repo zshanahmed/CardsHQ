@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   # from CORS.
   skip_before_action :verify_authenticity_token
   def new
-   end
+  end
 
   ##
   # A method to create a session using username and password.
@@ -27,7 +27,6 @@ class SessionsController < ApplicationController
       flash[:notice] = 'Invalid username/password'
       redirect_to login_path
     elsif(params[:password][:password].nil? || params[:password][:password].empty?)
-      puts 'In here'
       flash[:notice] = 'Invalid password'
       redirect_to login_path
     else

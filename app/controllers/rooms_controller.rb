@@ -19,6 +19,14 @@ class RoomsController < ApplicationController
   def new ; end
 
   def show
+    @room.users << User.where(:session_token=> session[:session_token]).first
+
+    @num_cards = []
+    @room.users.all.each do |user|
+      # when score is ready
+      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
+      # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
+    end
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
     @score = @current_user.score
     @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
@@ -36,6 +44,7 @@ class RoomsController < ApplicationController
       @room = Room.create!(permitted_parameters)
       Card.create_deck_for_room(@room.id)
       @current_user.update(room_id: @room.id)
+
       flash[:notice] = "Room #{@room.name} was created successfully"
       redirect_to room_path @room
     end
@@ -69,4 +78,5 @@ class RoomsController < ApplicationController
       redirect_to room_path @current_user.room_id
     end
   end
+
 end
