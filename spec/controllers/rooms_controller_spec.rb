@@ -55,7 +55,8 @@ describe RoomsController do
     @current_user.update(room_id: room.id)
     Hand.create(:card_id => '1267', :user_id => @current_user.id , :room_id => @current_user.room_id)
     get :show , {:id => '1' }
-    expect(flash[:notice]).to eq("#{@current_user.id}'s hand")
+    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    expect(@hand).not_to be_nil
   end
   it 'should not play_card if no cards are selected' do
     @current_user = User.find_by_session_token(session[:session_token])
