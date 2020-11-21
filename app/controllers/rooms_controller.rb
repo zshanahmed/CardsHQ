@@ -12,9 +12,7 @@ class RoomsController < ApplicationController
     params.require(:room).permit(:name)
   end
 
-  def index
-    @rooms = Room.all
-  end
+  def index; end
 
   def new ; end
 
@@ -28,6 +26,7 @@ class RoomsController < ApplicationController
       # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
     end
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
     @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
     @users_in_room = User.where(room_id: @current_user.room_id)
@@ -57,13 +56,14 @@ class RoomsController < ApplicationController
     flash[:notice] = 'Room destroyed successfully'
     redirect_to rooms_path
   end
-  def update_score
 
-  end
+  def update_score; end
+
   def update_new_score
-    byebug
     @current_user.score = params[:user][:score]
     @current_user.save
+    redirect_to room_path @current_user.room_id
+    flash[:notice] = "Score updated!"
   end
 
   def play_card

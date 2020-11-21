@@ -4,20 +4,27 @@
 
 
 <h3><%= "Please share the following room id with your friends/family: #{@room.invitation_token}" %></h3>
+<div class="form-inline">
 <%= button_to 'Draw' , user_draw_path, id: "draw"%>
 <br/>
 <br/>
 <%= link_to "Discard", discard_index_path, id: "discard"%>
-<br>
+<br/>
+<br/>
 <%= button_to 'Destroy Room', room_del_path, method: :delete %>
+<br/>
+<%=form_tag rooms_update_score_path :class => 'form' do %>
+  <%= text_field :user , 'score' , :id => 'score' %>
+  <%= button_to 'Update Score', rooms_score_path %>
+<%end %>
 
 <table class="table-bordered" id="users">
   <thead>
-    <tr>
-      <th>Username</th>
-      <th>Number of cards</th>
-       <th>Score</th>
-    </tr>
+  <tr>
+    <th>Username</th>
+    <th>Number of cards</th>
+    <th>Score</th>
+  </tr>
   </thead>
   <tbody>
   <% @num_cards.each do |user| %>
@@ -35,7 +42,8 @@
   <% end %>
   </tbody>
 </table>
-
+<div class="container">
+  <div class="floatLeft">
 <%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
   <br>
   <% if !@hand.blank? %>
@@ -62,42 +70,44 @@
         </tr>
       <% end %>
 
-    </tbody>
-  </table>
-      </div>
-<% else %>
-  <h1>
-    No cards present in your hand
-  </h1>
-<%end %>
-
-    <div class="floatRight">
-      <h3>Played Cards</h3>
-  <table id="played_cards">
-    <thead>
-    <tr>
-      <th>Suit</th>
-      <th>Rank</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @played_cards.each do |played| %>
-      <tr>
-        <td>
-          <%= played.suit %>
-        </td>
-        <td>
-          <%= played.rank%>
-        </td>
-      </tr>
-    <% end %>
-
-    </tbody>
-  </table>
+      </tbody>
+    </table>
     </div>
-</div>
-  <br>
-  <div class="in-line">
-    <%= button_to 'Play' , rooms_play_card_path %>
-  </div>
+  <% else %>
+    <h1>
+      No cards present in your hand
+    </h1>
+  <%end %>
+      <div>
+        <%= button_to 'Play' , rooms_play_card_path %>
+      </div>
 <% end %>
+
+
+  <div class="floatRight">
+    <h3>Your Played Cards</h3>
+    <table id="played_cards">
+      <thead>
+      <tr>
+        <th>Suit</th>
+        <th>Rank</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @played_cards.each do |played| %>
+        <tr>
+          <td>
+            <%= played.suit %>
+          </td>
+          <td>
+            <%= played.rank%>
+          </td>
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  </div>
+    </div>
+  </div>
+
