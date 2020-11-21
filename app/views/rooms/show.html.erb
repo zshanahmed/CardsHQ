@@ -44,7 +44,7 @@
 </table>
 <div class="container">
   <div class="floatLeft">
-<%= form_tag  rooms_play_card_path do%>
+<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
   <br>
   <% if !@hand.blank? %>
     <table id="hand">
@@ -65,7 +65,7 @@
             <%= card.rank%>
           </td>
           <td>
-            <%=check_box_tag "played_cards[#{card.card_id}]"%>
+            <%=check_box_tag "played_cards[#{card.card_id}]",nil,nil, :id => "hand_#{card.card_id}"%>
           </td>
         </tr>
       <% end %>
@@ -79,7 +79,7 @@
     </h1>
   <%end %>
       <div>
-        <%= submit_tag 'Play' , id: 'play'%>
+        <%= button_to 'Play' , rooms_play_card_path %>
       </div>
 <% end %>
 
