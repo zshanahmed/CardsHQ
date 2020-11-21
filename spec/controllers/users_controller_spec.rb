@@ -86,6 +86,14 @@ describe UsersController do
     post :join_room, user: {room_id: ''}
     expect(flash[:notice]).to match('Invitation token invalid!')
   end
+  # it 'should allow user to draw a card' do
+  #   Card.create_deck_for_room(1)
+  #   test_user = User.create_user!(test_valid)
+  #   request.session[:session_token] = test_user.session_token
+  #   post :draw_card
+  #   @hand = Hand.where(:user_id => @current_user.id, :room_id => 1)
+  #   expect(@hand).not_to be_empty
+  # end
 end
 
 

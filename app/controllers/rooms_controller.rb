@@ -28,6 +28,7 @@ class RoomsController < ApplicationController
       # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
     end
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
     @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
     @users_in_room = User.where(room_id: @current_user.room_id)
@@ -61,7 +62,6 @@ class RoomsController < ApplicationController
 
   end
   def update_new_score
-    byebug
     @current_user.score = params[:user][:score]
     @current_user.save
   end
