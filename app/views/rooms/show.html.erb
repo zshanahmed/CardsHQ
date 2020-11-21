@@ -15,7 +15,7 @@
 <br/>
 <%=form_tag rooms_update_score_path :class => 'form' do %>
   <%= text_field :user , 'score' , :id => 'score' %>
-  <%= button_to 'Update Score', rooms_score_path %>
+  <%= submit_tag 'Update Score', :id => 'updateScore'%>
 <%end %>
 
 <table class="table-bordered" id="users">
