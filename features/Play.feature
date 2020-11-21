@@ -18,6 +18,5 @@ Feature: Play cards
     And I draw the following number of cards: 5
 
 Scenario: I play 3 cards
-  When 'GrumpyBunny' selects the following number of cards: '3'
-  And I click the button: 'Play'
+  When 'GrumpyBunny' selects the following number of cards: '3' and presses play
   Then 'GrumpyBunny' should only have '2' cards

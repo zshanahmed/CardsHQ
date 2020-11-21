@@ -44,7 +44,7 @@
 </table>
 <div class="container">
   <div class="floatLeft">
-<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
+<%= form_tag  rooms_play_card_path do%>
   <br>
   <% if !@hand.blank? %>
     <table id="hand">
@@ -79,7 +79,7 @@
     </h1>
   <%end %>
       <div>
-        <%= button_to 'Play' , rooms_play_card_path %>
+        <%= submit_tag 'Play' , id: 'play'%>
       </div>
 <% end %>
 

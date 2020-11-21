@@ -67,6 +67,7 @@ class RoomsController < ApplicationController
   end
 
   def play_card
+    byebug
     if(params[:played_cards] == nil)
       flash[:notice] = "No cards selected"
       redirect_to room_path @current_user.room_id
