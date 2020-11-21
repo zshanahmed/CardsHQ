@@ -20,6 +20,7 @@ describe SessionsController do
     end
   end
   ########################
+  test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
   before(:all) do
     DatabaseCleaner.clean
     User.create!({username: "test_user", password: "asdfasdf",:email=>"holisticpanda"})
@@ -43,7 +44,13 @@ describe SessionsController do
     expect(flash[:notice]).to match(/Invalid user-id or password combination.*/)
   end
   it 'Should flash a message You have been logged out' do
-    delete :destroy, {:username => {:username => 'testuser'}, :password => {:password => 'aasdf'}}
+    test_user = User.create_user!(test_valid)
+    request.session[:session_token] = test_user.session_token
+    test_room = Room.create!(name: 'testroom')
+    @current_user = User.find_by_session_token(session[:session_token])
+    @current_user.room_id = test_room.id
+    @current_user.save
+    delete :destroy, {:username => {:username => @current_user.username}, :password => {:password => @current_user.password}}
     expect(flash[:notice]).to match(/You have been logged out!/)
   end
 

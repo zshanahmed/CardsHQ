@@ -14,6 +14,3 @@ Feature: See other players
     Scenario: I logged in, am looking at username and number of cards
       Given I'm logged in with "GrumpyBunny" with password "123" and in room "testroom182"
       Then I should see "GrumpyBunny" with "0" cards
-
-
-
