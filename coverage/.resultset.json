@@ -1,25 +1,25 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/helpers/application_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/helpers/cards_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/helpers/cards_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/helpers/rooms_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/helpers/rooms_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/controllers/application_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -27,35 +27,39 @@
           1,
           null,
           1,
-          15,
+          19,
           null,
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/controllers/discard_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/discard_controller.rb": {
         "lines": [
           1,
+          null,
           1,
           1,
-          2,
-          2,
-          2,
-          2,
-          2,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          0,
-          0,
+          2,
+          2,
+          2,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
           null,
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/controllers/rooms_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/rooms_controller.rb": {
         "lines": [
           1,
           null,
@@ -63,8 +67,8 @@
           1,
           null,
           1,
-          11,
-          11,
+          12,
+          12,
           null,
           null,
           1,
@@ -72,8 +76,6 @@
           null,
           null,
           1,
-          0,
-          null,
           null,
           1,
           null,
@@ -117,12 +119,14 @@
           1,
           1,
           null,
-          1,
-          null,
           null,
           1,
-          0,
-          0,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
           null,
           1,
@@ -141,7 +145,7 @@
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/controllers/sessions_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           null,
@@ -197,7 +201,7 @@
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/controllers/users_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/users_controller.rb": {
         "lines": [
           1,
           null,
@@ -264,7 +268,7 @@
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/models/user.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -273,9 +277,9 @@
           1,
           null,
           1,
-          16,
-          16,
-          16,
+          18,
+          18,
+          18,
           null,
           null,
           null,
@@ -294,7 +298,7 @@
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/models/card.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/models/card.rb": {
         "lines": [
           1,
           1,
@@ -309,9 +313,9 @@
           null,
           null,
           1,
-          5,
-          20,
-          260,
+          8,
+          32,
+          416,
           null,
           null,
           null,
@@ -320,15 +324,6 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          null,
-          null
-        ]
-      },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/models/hand.rb": {
-        "lines": [
           1,
           1,
           1,
@@ -336,7 +331,16 @@
           null
         ]
       },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/models/room.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/models/hand.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020_final/app/models/room.rb": {
         "lines": [
           1,
           1,
@@ -344,30 +348,20 @@
           1,
           null,
           1,
-          10,
+          12,
           null,
           null,
           1,
-          10,
-          10,
-          10,
+          12,
+          12,
+          12,
           null,
           null,
           null,
           null
         ]
-      },
-      "/Users/aishwarya/Documents/Selt/Team1_SELT2020/app/controllers/cards_controller.rb": {
-        "lines": [
-          0,
-          null,
-          null,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1605919070
+    "timestamp": 1605922395
   }
 }

@@ -86,4 +86,13 @@ describe RoomsController do
     delete :destroy, {name: room_test}
     expect(flash[:notice]).to match(/Room destroyed successfully/)
   end
+  it 'Should flash a message when a user updates the score' do
+    test_room = Room.create!(room_test)
+    @current_user = User.find_by_session_token(session[:session_token])
+    @current_user.room_id = test_room.id
+    @current_user.save
+    post :update_new_score, "user"=>{"score"=>10}
+    expect(flash[:notice]).to eq("Score updated!")
+  end
+
 end

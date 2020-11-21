@@ -28,9 +28,11 @@ describe DiscardController do
     test_user = User.create_user!(test_valid)
     request.session[:session_token] = test_user.session_token
     test_room = Room.create!(room_test)
+    Card.create_deck_for_room(test_room.id)
     @current_user = User.find_by_session_token(session[:session_token])
     @current_user.room_id = test_room.id
     @current_user.save
+    Hand.create!({:user_id=>@current_user.id, :card_id=>10})
   end
 
   it 'index view should be rendered' do
@@ -39,6 +41,12 @@ describe DiscardController do
   end
 
   it 'flashes that is has discarded cards when cards discarded' do
+    post :discard_card,"discarded"=>{"10"=>"1"}
+    expect(flash[:notice]).to eq("Cards have been discarded")
+  end
+
+  it 'flashes that nothing is dicarded when no cards are passed' do
     post :discard_card
+    expect(flash[:notice]).to eq("No cards selected")
   end
 end

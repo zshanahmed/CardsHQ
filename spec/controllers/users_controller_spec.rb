@@ -94,6 +94,7 @@ describe UsersController do
   #   @hand = Hand.where(:user_id => @current_user.id, :room_id => 1)
   #   expect(@hand).not_to be_empty
   # end
+
 end
 
 
