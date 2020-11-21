@@ -5,14 +5,13 @@
 # files.
 
 require 'cucumber/rails'
-require 'rspec/expectations'
 
 # frozen_string_literal: true
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
-Capybara.default_selector = :css
+# Capybara.default_selector = :xpath
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
