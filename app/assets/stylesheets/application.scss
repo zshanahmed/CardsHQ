@@ -13,26 +13,33 @@
  *= require_tree .
  *= require_self
  */
-.floatLeft { width: 50%; float: left; }
-.floatRight {width: 50%; float: right; }
-.container { overflow: hidden; }
 
-table {
-    margin: 10px;
-    border-collapse: collapse;
-    width: 80%;
-    border-bottom: 2px solid black;
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
-th {
-    border: 2px solid #084048;
-    padding: 0.8em;
-    text-align: center;
-    font-weight: bold;
-    background-color: #076c81;
-}
-td {
-    padding: 0.8em;
-    text-align: center;
-    border: 2px solid #084048;
-}
+
+
+
+//.floatLeft { width: 50%; float: left; }
+//.floatRight {width: 50%; float: right; }
+//.container { overflow: hidden; }
+//
+//table {
+//    margin: 10px;
+//    border-collapse: collapse;
+//    width: 80%;
+//    border-bottom: 2px solid black;
+//}
+//
+//th {
+//    border: 2px solid #084048;
+//    padding: 0.8em;
+//    text-align: center;
+//    font-weight: bold;
+//    background-color: #076c81;
+//}
+//td {
+//    padding: 0.8em;
+//    text-align: center;
+//    border: 2px solid #084048;
+//}
