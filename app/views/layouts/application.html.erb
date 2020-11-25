@@ -11,25 +11,24 @@
   <title>Team1Selt2020</title>
 </head>
 <body>
+<div class="container">
 <% if flash[:notice] %>
   <div class="alert alert-danger">
-    <div class="flashMessage" id="notice">
       <%= flash[:notice] %>
-    </div>
   </div>
 <% elsif flash[:warning] %>
   <div class="alert alert-danger">
-    <div class="flashMessage" id="warning">
       <%= flash[:warning] %>
-    </div>
   </div>
 <% end %>
+  <section class="User-Tag mt-4">
 <% if @current_user %>
-  <p>You are logged in as <%= @current_user.username%></p>
-  <%= button_to "Logout", logout_path, :id => 'logout', method: :delete%>
+  <p class="alert alert-info">You are logged in as <%= @current_user.username%></p>
+  <%= button_to "Logout", logout_path, :id => 'logout', method: :delete, class:'btn btn-danger'%>
 <% end %>
-<%= yield %>
+  </section>
 </div>
+<%= yield %>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
