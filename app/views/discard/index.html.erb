@@ -1,9 +1,19 @@
+<style>
+    #discardMain{
+        box-shadow: 2px 2px 6px gray;
+    }
+
+    #discardMain:hover{
+    background-color: white;
+      color: #dc3545;
+  }
+</style>
+
 
 <div class="container">
-<h2>Discard Cards</h2>
+  <h2>Discard Cards</h2>
 <%= form_tag  discard_discard_card_path, :method => :post do%>
-  <h3>Player Hand</h3>
-  <table id="hand">
+  <table id="hand" class="table table-striped">
     <thead>
     <tr>
       <th>Suit</th>
@@ -24,10 +34,11 @@
          <%=check_box_tag "discarded[#{card.card_id}]"%>
         </td>
       </tr>
+     </tbody>
+     </table>
    <% end %>
-  <%=submit_tag "Discard!", id: "discardMain"%>
+   <div class="row justify-content-lg-center">
+     <%=submit_tag "Discard", id: "discardMain", class:'btn btn-danger'%>
+   </div>
 <% end %>
-
-  </tbody>
-</table>
-</div>
+  </div>
