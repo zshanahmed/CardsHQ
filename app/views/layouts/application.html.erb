@@ -17,9 +17,13 @@
       <%= flash[:notice] %>
   </div>
 <% elsif flash[:warning] %>
-  <div class="alert alert-danger">
+  <div class="alert alert-warning">
       <%= flash[:warning] %>
   </div>
+  <% elsif flash[:success] %>
+    <div class="alert alert-success">
+      <%= flash[:success] %>
+    </div>
 <% end %>
   <section class="User-Tag mt-4">
 <% if @current_user %>

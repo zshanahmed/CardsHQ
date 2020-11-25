@@ -56,15 +56,15 @@
       </div>
       <div class="col-lg-7 px-5 pt-5">
         <h1 class="font-weight-bold py-3 ">Cards HQ</h1>
-        <%= form_tag login_create_path do %>
+        <%= form_tag users_path do %>
           <div class="form-row">
             <div class="col-lg-7">
-               <%= text_field :username, 'username', class: "form-control my-2 p-4", placeholder: "Username", :id => 'signupUser'%>
+               <%= text_field :user, 'username', class: "form-control my-2 p-4", placeholder: "Username", :id => 'signupUser'%>
             </div>
           </div>
           <div class="form-row">
             <div class="col-lg-7">
-              <%= password_field :password, 'password', :id =>'signupPassword', placeholder: "********", class:"form-control my-2 p-4" %>
+              <%= password_field :user, 'password', :id =>'signupPassword', placeholder: "********", class:"form-control my-2 p-4" %>
             </div>
           </div>
           <div class="form-row">
