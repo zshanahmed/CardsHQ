@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       room_id = room.id
       @current_user.room_id = room_id
       @current_user.save
-      flash[:notice] = 'You have successfully joined the room'
+      flash[:success] = 'You have successfully joined the room'
       redirect_to room_path room_id
     end
   end
