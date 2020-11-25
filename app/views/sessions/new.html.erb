@@ -34,6 +34,12 @@
       background-color: white;
       color: black;
   }
+
+  #logo{
+      text-decoration: none;
+      color: black;
+      text-shadow: 2px 2px 4px #c4c4c4;
+  }
 </style>
 </head>
 <body>
@@ -44,7 +50,7 @@
           <%= image_tag("How-to-play-newmarket.jpg", class: "img-fluid", id: "login-img") %>
         </div>
         <div class="col-lg-7 px-5 pt-5">
-          <h1 class="font-weight-bold py-3 ">Cards HQ</h1>
+          <h1 class="font-weight-bold py-3" id="logo">SELT 2020</h1>
           <%= form_tag login_create_path do %>
             <div class="form-row">
               <div class="col-lg-7">
