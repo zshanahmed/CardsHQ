@@ -8,6 +8,8 @@
 </head>
 <body>
 <div class="container">
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
   <% if @current_user %>
     <h1 class="title"><%= link_to "SELT 2020", rooms_path %></h1>
   <% else %>
