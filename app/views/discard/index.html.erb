@@ -11,7 +11,7 @@
 
 
 <div class="container">
-  <h2>Discard Cards</h2>
+  <h2 class="mt-3">Discard Cards</h2>
 <%= form_tag  discard_discard_card_path, :method => :post do%>
   <table id="hand" class="table table-striped">
     <thead>
@@ -35,10 +35,10 @@
         </td>
       </tr>
      </tbody>
-     </table>
    <% end %>
-   <div class="row justify-content-lg-center">
-     <%=submit_tag "Discard", id: "discardMain", class:'btn btn-danger'%>
-   </div>
+   </table>
 <% end %>
+  <div class="row justify-content-lg-center">
+    <%=submit_tag "Discard", id: "discardMain", class:'btn btn-danger'%>
+  </div>
   </div>
