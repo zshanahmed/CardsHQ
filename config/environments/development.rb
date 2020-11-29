@@ -10,6 +10,18 @@ Rails.application.configure do
   config.eager_load = false
   #
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # Email delivery method
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+      user_name:      ENV['SENDMAIL_USERNAME'],
+      password:       ENV['SENDMAIL_PASSWORD'],
+      domain:         ENV['MAIL_HOST'],
+      address:       'smtp.gmail.com',
+      port:          '587',
+      authentication: :plain,
+      enable_starttls_auto: true
+  }
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
