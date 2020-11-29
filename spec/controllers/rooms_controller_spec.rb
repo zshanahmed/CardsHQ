@@ -95,4 +95,6 @@ describe RoomsController do
     expect(flash[:notice]).to eq("Score updated!")
   end
 
+  it 'Should allow the user to reset the game.'
+
 end
