@@ -35,7 +35,7 @@ describe DiscardController do
     Hand.create!({:user_id=>@current_user.id, :card_id=>10})
   end
 
-  it 'index view should be rendered' do
+  it 'index.html.erb view should be rendered' do
     get :index
     expect(flash[:notice]).to eq "No cards to Discard"
   end

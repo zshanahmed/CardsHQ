@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
   match '/user/join_new_room', to: 'users#join_new_room', via: :get
   match '/user/join_room', to: 'users#join_room', via: :post
   match '/rooms/score' , to: 'rooms#update_score' , via: :get
@@ -12,22 +13,23 @@ Rails.application.routes.draw do
   # to discard cards
   match '/discard/discard_card', to: 'discard#discard_card', via: :post
 
-  match '/discard/index', to: 'discard#index', via: :get
+  match '/discard/index.html.erb', to: 'discard#index.html.erb', via: :get
 
   resources :users
-  match '/login', to: 'sessions#new', via: :get
-  match '/login_create', to: 'sessions#create', via: :post
-  match '/logout', to: 'sessions#destroy', via: :delete
+  # match '/login', to: 'sessions#new', via: :get
+  # match '/login_create', to: 'sessions#create', via: :post
+  # match '/logout', to: 'sessions#destroy', via: :delete
 
   match '/room_del', to: 'rooms#destroy', via: :delete
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  root 'sessions#new'
+  #root 'sessions#new'
+  root 'site#index'
   # for cards
   match '/user/draw' , to: 'users#draw_card', via: :post
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  # root 'welcome#index.html.erb'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -77,6 +79,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
+
 
 end
