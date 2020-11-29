@@ -1,25 +1,25 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/helpers/application_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/helpers/cards_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/helpers/cards_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/helpers/rooms_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/helpers/rooms_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/application_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -27,12 +27,12 @@
           1,
           null,
           1,
-          28,
+          29,
           null,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/discard_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/discard_controller.rb": {
         "lines": [
           1,
           null,
@@ -59,7 +59,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/rooms_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/rooms_controller.rb": {
         "lines": [
           1,
           null,
@@ -67,8 +67,8 @@
           1,
           null,
           1,
-          12,
-          12,
+          13,
+          13,
           null,
           null,
           1,
@@ -142,10 +142,15 @@
           null,
           null,
           null,
+          1,
+          1,
+          1,
+          1,
+          null,
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/sessions_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           null,
@@ -204,7 +209,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/controllers/users_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/users_controller.rb": {
         "lines": [
           1,
           null,
@@ -272,7 +277,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/models/user.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -281,9 +286,9 @@
           1,
           null,
           1,
-          21,
-          21,
-          21,
+          22,
+          22,
+          22,
           null,
           null,
           null,
@@ -302,7 +307,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/models/card.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/models/card.rb": {
         "lines": [
           1,
           1,
@@ -335,7 +340,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/models/hand.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/models/hand.rb": {
         "lines": [
           1,
           1,
@@ -344,7 +349,7 @@
           null
         ]
       },
-      "/Users/eliasshaeffer/Team1_SELT2020_final/app/models/room.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/models/room.rb": {
         "lines": [
           1,
           1,
@@ -352,13 +357,13 @@
           1,
           null,
           1,
-          15,
+          23,
           null,
           null,
           1,
-          15,
-          15,
-          15,
+          23,
+          23,
+          23,
           null,
           null,
           null,
@@ -366,6 +371,6 @@
         ]
       }
     },
-    "timestamp": 1605929108
+    "timestamp": 1606620564
   }
 }

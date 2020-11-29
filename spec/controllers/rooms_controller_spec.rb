@@ -22,13 +22,26 @@ describe RoomsController do
     DatabaseCleaner.clean
   end
 
+  test_hand = [{card_id: 1, user_id: 1, room_id: 1},
+               {card_id: 2, user_id: 1, room_id: 1},
+               {card_id: 3, user_id: 1, room_id: 1},
+               {card_id: 4, user_id: 1, room_id: 1}]
+  test_hand2 = [{card_id: 1, user_id: 1, room_id: 2},
+                {card_id: 2, user_id: 1, room_id: 2},
+                {card_id: 3, user_id: 1, room_id: 2},
+                {card_id: 4, user_id: 1, room_id: 2}]
   test1 = {name: 'testroom123'}
   test2 = {name: ''}
   test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
   room_test = {name: 'alphatest123'}
   before(:each) do
+    @user_controller = UsersController.new
     test_user = User.create_user!(test_valid)
     request.session[:session_token] = test_user.session_token
+    test_room = Room.create!(room_test)
+    @current_user = User.find_by_session_token(session[:session_token])
+    @current_user.room_id = test_room.id
+    @current_user.save
   end
 
   it 'Should flash a message when room is successfully created' do
@@ -77,24 +90,26 @@ describe RoomsController do
     expect(Card).to receive(:add_in_play).with(["145","1"], @current_user.id, 3)
     post :play_card , {"played_cards"=>{"141"=>"1", "145"=>"1"}}
     expect(flash[:notice]).to eq("Cards played")
-    end
+  end
+
+
   it 'Should flash a message when room is destroyed' do
-    test_room = Room.create!(room_test)
-    @current_user = User.find_by_session_token(session[:session_token])
-    @current_user.room_id = test_room.id
-    @current_user.save
     delete :destroy, {name: room_test}
     expect(flash[:notice]).to match(/Room destroyed successfully/)
   end
   it 'Should flash a message when a user updates the score' do
-    test_room = Room.create!(room_test)
-    @current_user = User.find_by_session_token(session[:session_token])
-    @current_user.room_id = test_room.id
-    @current_user.save
     post :update_new_score, "user"=>{"score"=>10}
     expect(flash[:notice]).to eq("Score updated!")
   end
 
-  it 'Should allow the user to reset the game.'
+  it 'Should reset the hands of the players in current room, but not in other rooms' do
+    test_hand.each {|a| Hand.create!(a)}
+    testroom2 = Room.create!({name: "silly_room"})
+    test_hand2.each {|b| Hand.create!(b)}
+    post :reset_room
+
+    expect(Hand.where(room_id: 1).blank?).to be true
+    expect(Hand.where(room_id: 2).blank?).to be false
+  end
 
 end
