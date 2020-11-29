@@ -42,6 +42,9 @@ describe RoomsController do
     @current_user = User.find_by_session_token(session[:session_token])
     @current_user.room_id = test_room.id
     @current_user.save
+    test_room2 = Room.create!({name: "silly_room"})
+    Card.create_deck_for_room(1)
+    Card.create_deck_for_room(2)
   end
 
   it 'Should flash a message when room is successfully created' do
@@ -104,7 +107,6 @@ describe RoomsController do
 
   it 'Should reset the hands of the players in current room, but not in other rooms' do
     test_hand.each {|a| Hand.create!(a)}
-    testroom2 = Room.create!({name: "silly_room"})
     test_hand2.each {|b| Hand.create!(b)}
     post :reset_room
 
@@ -112,4 +114,13 @@ describe RoomsController do
     expect(Hand.where(room_id: 2).blank?).to be false
   end
 
+  it 'When reset it should set the status of all the cards in the current room to in deck, but not other rooms' do
+    Card.where(room_id: 1).each {|card| card.update!(status: 1)}
+    Card.where(room_id: 2).each {|card| card.update!(status: 1)}
+
+    post :reset_room
+
+    Card.where(room_id: 1).each {|card| expect(card.status).to eq("in_draw")}
+    Card.where(room_id: 2).each {|card| expect(card.status).to eq("in_sink")}
+  end
 end
