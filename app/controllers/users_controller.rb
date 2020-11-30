@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
       redirect_to new_user_url
     else
-      @user = User.create_user!(user_params)
+      @user = User.create(user_params)
       flash[:notice] = "Account with Username \'#{user_params[:username]}\' has been created"
       redirect_to login_path
     end
