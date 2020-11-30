@@ -64,7 +64,7 @@ describe UsersController do
     testing567.each do |testData|
       post :create, user: testData
       username = testData[:username]
-      expect(flash[:notice]).to match("Account with Username \'#{username}\' has been created")
+      expect(flash[:success]).to match("Account with Username \'#{username}\' has been created")
     end
   end
   it 'Should flash a message if user successfully joins a room' do

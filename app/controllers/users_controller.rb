@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       redirect_to new_user_url
     else
       @user = User.create(user_params)
-      flash[:notice] = "Account with Username \'#{user_params[:username]}\' has been created"
+      flash[:success] = "Account with Username \'#{user_params[:username]}\' has been created"
       redirect_to login_path
     end
   end

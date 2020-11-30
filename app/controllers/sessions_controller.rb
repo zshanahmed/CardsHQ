@@ -2,7 +2,10 @@ class SessionsController < ApplicationController
 
   def create_auth
     @user = User.find_or_create_from_auth_hash(auth_hash)
-    session[:user_id] = @user.id
+    session_token = SecureRandom.base64(10)
+    @user.session_token = session_token
+    @user.save
+    session[:session_token] = @user.session_token
     redirect_to rooms_path
   end
 
@@ -19,7 +22,7 @@ class SessionsController < ApplicationController
       @@tempUser = User.where(:username => username).where(:password=> password).first
       if(!@@tempUser.nil?)
         flash[:success] = 'Login Successful'
-        session[:user_id] = @@tempUser.id
+        session[:session_token] = @@tempUser.session_token
         redirect_to rooms_path
       else
         flash[:notice] = 'Invalid user-id or password combination.'
@@ -31,7 +34,7 @@ class SessionsController < ApplicationController
   def destroy
     if set_current_user
       session.delete(:user_id)
-      flash[:success] = "Sucessfully logged out!"
+      flash[:success] = "You have been logged out!"
     end
     redirect_to root_path
   end
