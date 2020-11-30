@@ -34,7 +34,7 @@
 <% end %>
   <section class="User-Tag mt-4">
       <% if @current_user %>
-        <p class="alert alert-info">You are logged in as <%= @current_user.name%></p>
+        <p class="alert alert-info">You are logged in as <%= @current_user.username%></p>
       <div class="row">
         <div class="col-lg-4">
         <%= button_to "Logout", logout_path, :id => 'logout', method: :delete, class:'btn btn-danger'%>

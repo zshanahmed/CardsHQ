@@ -1,9 +1,39 @@
 class SessionsController < ApplicationController
 
-  def create
+  def create_auth
     @user = User.find_or_create_from_auth_hash(auth_hash)
     session[:user_id] = @user.id
     redirect_to rooms_path
+  end
+
+  def create
+    if(params[:username][:username].nil? ||params[:username][:username].empty?)
+      flash[:notice] = 'Invalid username/password'
+      redirect_to login_path
+    elsif(params[:password][:password].nil? || params[:password][:password].empty?)
+      flash[:notice] = 'Invalid password'
+      redirect_to login_path
+    else
+      username = params[:username][:username]
+      password = params[:password][:password]
+      @@tempUser = User.where(:username => username).where(:password=> password).first
+      if(!@@tempUser.nil?)
+        flash[:success] = 'Login Successful'
+        session[:user_id] = @@tempUser.id
+        redirect_to rooms_path
+      else
+        flash[:notice] = 'Invalid user-id or password combination.'
+        redirect_to login_path
+      end
+    end
+  end
+
+  def destroy
+    if set_current_user
+      session.delete(:user_id)
+      flash[:success] = "Sucessfully logged out!"
+    end
+    redirect_to root_path
   end
 
   protected
@@ -11,13 +41,4 @@ class SessionsController < ApplicationController
   def auth_hash
     request.env['omniauth.auth']
   end
-
-  def destroy
-    if current_user
-      session.delete(:user_id)
-      flash[:success] = "Sucessfully logged out!"
-    end
-    redirect_to root_path
-  end
-
 end

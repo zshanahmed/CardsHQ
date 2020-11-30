@@ -19,15 +19,14 @@ Rails.application.routes.draw do
   resources :users
   match '/login', to: 'sessions#new', via: :get
   match '/login_create', to: 'sessions#create', via: :post
-  # match '/logout', to: 'sessions#destroy', via: :delete
-  delete '/logout', to: 'sessions#destroy'
+  match '/logout', to: 'sessions#destroy', via: :delete
 
   match '/room_del', to: 'rooms#destroy', via: :delete
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   root 'sessions#new'
   # root to: "pages#index"
-  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/:provider/callback', to: 'sessions#create_auth'
   # for cards
   match '/user/draw' , to: 'users#draw_card', via: :post
 
