@@ -53,3 +53,13 @@ When /^I fill in the score with: '(.*?)' and submit$/ do |score|
   fill_in 'score', with: score
   click_button 'updateScore'
 end
+
+#
+# Reset steps
+And /^I press reset$/ do
+  click_button 'reset'
+end
+
+And /^'(.*?)' cards should be in deck$/ do |cards|
+  expect(Card.where(room_id: 1, status: 0).length).to eq(cards.to_i)
+end
