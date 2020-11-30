@@ -1,3 +1,4 @@
+<div class="container">
 <h1>
   Creating Room
 </h1>
@@ -8,5 +9,7 @@
     <%=text_field :room, 'name', :class => 'form-control',:id => "RoomName" %>
   </div>
   <br>
-  <%= submit_tag "Create My Room" %>
+  <%= submit_tag "Create My Room", class: 'btn btn-success' %>
 <% end %>
+
+</div>

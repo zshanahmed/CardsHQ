@@ -72,7 +72,7 @@ describe UsersController do
     request.session[:session_token] = test_user.session_token
     room_test = Room.create(name: 'alphabravo123')
     post :join_room, user: {room_id: room_test.invitation_token}
-    expect(flash[:notice]).to match('You have successfully joined the room')
+    expect(flash[:success]).to match('You have successfully joined the room')
   end
   it 'Should flash a message if user fails to join a room because of incorrect invitation code' do
     test_user = User.create_user!(test_valid)
