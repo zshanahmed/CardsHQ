@@ -43,13 +43,13 @@
 </style>
 </head>
 <body>
-  <section class="Form my-4 mx-5">
+  <section class="Form my-2 mx-5">
     <div class="container">
       <div class="row no-gutters">
         <div class="col-lg-5">
           <%= image_tag("How-to-play-newmarket.jpg", class: "img-fluid", id: "login-img") %>
         </div>
-        <div class="col-lg-7 px-5 pt-5">
+        <div class="col-lg-7 px-5 pt-4">
           <h1 class="font-weight-bold py-3" id="logo">SELT 2020</h1>
           <%= form_tag login_create_path do %>
             <div class="form-row">
@@ -68,7 +68,8 @@
               </div>
             </div>
           <% end %>
-          <a href="/auth/twitter">Sign in With Twitter</a>
+          <a href="/auth/twitter">Sign in With Twitter</a><br/>
+          <a href="/auth/facebook">Sign in With Facebook</a>
           <p> Don't have an account? <%=link_to "Register here", new_user_path %>
           </p>
         </div>
