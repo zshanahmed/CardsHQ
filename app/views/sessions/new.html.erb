@@ -1,23 +1,78 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Login</title>
-  <%= stylesheet_link_tag "stylesheets/login" %>
+<style>
+  *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  body{
+      background-color: #e5e4e4;
+  }
+  .row{
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 12px 12px 22px gray;
+  }
+  img{
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+  }
+  .btn1 {
+      border:none;
+      outline: none;
+      height: 50px;
+      width: 100%;
+      border-radius: 4px;
+      color: white;
+      background-color: black;
+      font-weight: bold;
+      box-shadow: 2px 2px 10px gray;
+  }
+
+  .btn1:hover {
+      border: 2px solid black;
+      background-color: white;
+      color: black;
+  }
+
+  #logo{
+      text-decoration: none;
+      color: black;
+      text-shadow: 2px 2px 4px #c4c4c4;
+  }
+</style>
 </head>
 <body>
-<%= form_tag login_create_path do %>
-  <p>
-    <%= label_tag :username, "Username" %>
-    <%= text_field :username, 'username',:id => 'loginUser'%>
-  </p>
-  <p>
-    <%= label_tag :password %>
-    <%= password_field :password, 'password', :id =>'loginEmail' %>
-  </p>
-  <p>
-    <%= submit_tag "Log in", :id=>'login_submit' %>
-  </p>
-<% end %>
-<%=link_to "Sign up", new_user_path%>
+  <section class="Form my-4 mx-5">
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-lg-5">
+          <%= image_tag("How-to-play-newmarket.jpg", class: "img-fluid", id: "login-img") %>
+        </div>
+        <div class="col-lg-7 px-5 pt-5">
+          <h1 class="font-weight-bold py-3" id="logo">SELT 2020</h1>
+          <%= form_tag login_create_path do %>
+            <div class="form-row">
+              <div class="col-lg-7">
+                 <%= text_field :username, 'username', class: "form-control my-2 p-4", placeholder: "Username", :id => 'loginUser'%>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <%= password_field :password, 'password', :id =>'loginEmail', placeholder: "********", class:"form-control my-2 p-4" %>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <%= submit_tag "Log in", :id=>'login_submit', class: "btn1 mt-3 mb-5" %>
+              </div>
+            </div>
+          <% end %>
+          <p> Don't have an account? <%=link_to "Register here", new_user_path %>
+          </p>
+        </div>
+        </div>
+      </div>
+  </section>
 </body>
 </html>

@@ -49,7 +49,7 @@ describe RoomsController do
 
   it 'Should flash a message when room is successfully created' do
     post :create, room: test1
-    expect(flash[:notice]).to match("Room #{test1[:name]} was created successfully")
+    expect(flash[:success]).to match("Room #{test1[:name]} was created successfully")
   end
 
   it 'Should flash a message when no name is provided for room' do

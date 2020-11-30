@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
       password = params[:password][:password]
       @@tempUser = User.where(:username => username).where(:password=> password).first
       if(!@@tempUser.nil?)
-        flash[:notice] = 'Login Successful'
+        flash[:success] = 'Login Successful'
         session[:session_token] = @@tempUser.session_token
         redirect_to rooms_path
       else
