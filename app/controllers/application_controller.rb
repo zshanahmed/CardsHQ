@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
   def set_current_user
-    @current_user ||= session[:session_token ] && User.find_by_session_token(session[:session_token])
+    #@current_user ||= session[:session_token ] && User.find_by_session_token(session[:session_token])
+    @current_user ||= warden.authenticate(scope: :user)
   end
 end
