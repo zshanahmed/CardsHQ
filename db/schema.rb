@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201119014107) do
+ActiveRecord::Schema.define(version: 20201201030939) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "suit"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(version: 20201119014107) do
     t.string   "score"
     t.string   "provider"
     t.string   "uid"
-    t.text     "image"
     t.string   "encrypted_password"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -90,12 +89,18 @@ ActiveRecord::Schema.define(version: 20201119014107) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "email"
+    t.string   "name"
+    t.string   "token"
+    t.string   "secret"
+    t.string   "profile_image"
   end
 
   add_index "users", ["card_id"], name: "index_users_on_card_id"
-  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true
-  add_index "users", ["invitations_count"], name: "index_users_on_invitations_count"
-  add_index "users", ["invited_by_id"], name: "index_users_on_invited_by_id"
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["room_id"], name: "index_users_on_room_id"
+  add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  add_index "users", ["username"], name: "index_users_on_username", unique: true
 
 end
