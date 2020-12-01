@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
+  devise_scope :user do
+    authenticated :user do
+      root to: 'books#index'
+    end
+    unauthenticated :user do
+      root to: 'devise/registrations#new', as: :unauthenticated_root
+    end
+  end
+
   match '/user/join_new_room', to: 'users#join_new_room', via: :get
   match '/user/join_room', to: 'users#join_room', via: :post
   match '/rooms/score' , to: 'rooms#update_score' , via: :get
@@ -24,7 +33,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   #root 'sessions#new'
-  root 'site#index'
+  #root 'site#index'
   # for cards
   match '/user/draw' , to: 'users#draw_card', via: :post
 
