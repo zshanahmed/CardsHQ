@@ -29,9 +29,11 @@ When /^'(.*?)' selects the following number of cards: '(.*?) and presses play$/ 
   temp = []
   hand.each_with_index do |card,i|
     if i < (number_cards.to_i)
-      check("played_cards_#{card.card_id}")
-      temp.append(page.has_content?("played_cards_#{card.card_id}"))
+      temp.append(page.has_content?("played_cards[#{card.card_id}]"))
+      check("played_cards[#{card.card_id}]")
+      temp.append(page.has_content?("played_cards[#{card.card_id}]"))
     end
   end
-  click_button 'play'
+  byebug
+  click_on 'Play'
 end

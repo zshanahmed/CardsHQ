@@ -12,4 +12,6 @@ class ApplicationController < ActionController::Base
     #@current_user ||= session[:session_token ] && User.find_by_session_token(session[:session_token])
     @current_user ||= warden.authenticate(scope: :user)
   end
+
+  helper_method :set_current_user
 end

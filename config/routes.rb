@@ -22,23 +22,22 @@ Rails.application.routes.draw do
   # to discard cards
   match '/discard/discard_card', to: 'discard#discard_card', via: :post
 
-  match '/discard/index.html.erb', to: 'discard#index.html.erb', via: :get
+  match '/discard/index', to: 'discard#index', via: :get
 
   resources :users
-  # match '/login', to: 'sessions#new', via: :get
-  # match '/login_create', to: 'sessions#create', via: :post
-  # match '/logout', to: 'sessions#destroy', via: :delete
+  match '/login', to: 'sessions#new', via: :get
+  match '/login_create', to: 'sessions#create', via: :post
+  match '/logout', to: 'sessions#destroy', via: :delete
 
   match '/room_del', to: 'rooms#destroy', via: :delete
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  #root 'sessions#new'
-  #root 'site#index'
+
   # for cards
   match '/user/draw' , to: 'users#draw_card', via: :post
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index.html.erb'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -88,6 +87,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-
 end

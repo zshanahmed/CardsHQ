@@ -22,8 +22,8 @@ class UsersController < ApplicationController
       flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
       redirect_to new_user_url
     else
-      @user = User.create_user!(user_params)
-      flash[:notice] = "Account with Username \'#{user_params[:username]}\' has been created"
+      @user = User.create(user_params)
+      flash[:success] = "Account with Username \'#{user_params[:username]}\' has been created"
       redirect_to login_path
     end
   end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       room_id = room.id
       @current_user.room_id = room_id
       @current_user.save
-      flash[:notice] = 'You have successfully joined the room'
+      flash[:success] = 'You have successfully joined the room'
       redirect_to room_path room_id
     end
   end

@@ -36,7 +36,7 @@ describe SessionsController do
   it 'Should flash a message login successful if username and password are correct' do
     fake_results = [double('User')]
     post :create, {:username => {:username => 'test_user'}, :password => {:password => 'asdfasdf'}}
-    expect(flash[:notice]).to match(/Login Successful*/)
+    expect(flash[:success]).to match(/Login Successful*/)
   end
   it 'Should flash a message Invalid user-id or password combination if username and password are not nil' do
     fake_results = [double('User')]
@@ -51,7 +51,7 @@ describe SessionsController do
     @current_user.room_id = test_room.id
     @current_user.save
     delete :destroy, {:username => {:username => @current_user.username}, :password => {:password => @current_user.password}}
-    expect(flash[:notice]).to match(/You have been logged out!/)
+    expect(flash[:success]).to match(/You have been logged out!/)
   end
 
 end
