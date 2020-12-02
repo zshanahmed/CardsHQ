@@ -67,6 +67,8 @@
       <%= button_to 'Draw' , user_draw_path, id: "draw", class:'btn btn-primary'%>
   </div>
 <div class="container">
+  <div class="row">
+    <div class="col-lg-6">
   <div class="floatLeft">
 <%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
   <br>
@@ -107,10 +109,11 @@
         </div>
       </div>
 <% end %>
+    </div>
 
-
+<div class="col-lg-6">
   <div class="floatRight">
-    <h3>Your Played Cards</h3>
+    <h3 class="mt-4">Your Played Cards</h3>
     <table id="played_cards" class="table table-striped">
       <thead>
       <tr>
@@ -128,5 +131,6 @@
       </tbody>
     </table>
   </div>
+    </div>
     </div>
   </div>
