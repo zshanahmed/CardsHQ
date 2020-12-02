@@ -75,21 +75,13 @@
     <table id="hand" class="table table-striped">
       <thead>
       <tr>
-        <th>Suit</th>
-        <th>Rank</th>
-        <th>test</th>
+        <th>Card</th>
         <th>Select</th>
       </tr>
       </thead>
       <tbody>
       <% @hand.each do |card| %>
         <tr>
-          <td>
-            <%= card.suit %>
-          </td>
-          <td>
-            <%= card.rank%>
-          </td>
           <td>
             <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
           </td>
