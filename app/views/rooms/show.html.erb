@@ -16,7 +16,6 @@
       color: #dc3545;
   }
 </style>
-c<%= image_tag(src='../../assets/images/cardsPicture/2C.png') %>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -92,7 +91,7 @@ c<%= image_tag(src='../../assets/images/cardsPicture/2C.png') %>
             <%= card.rank%>
           </td>
           <td>
-            <%= image_tag(src='../../assets/images/cardsPicture/2C.png') %>
+            <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
           </td>
           <td>
             <%=check_box_tag "played_cards[#{card.card_id}]",nil,nil, :id => "hand_#{card.card_id}"%>
