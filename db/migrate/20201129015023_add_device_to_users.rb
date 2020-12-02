@@ -26,7 +26,6 @@ class AddDeviceToUsers < ActiveRecord::Migration
     add_column  :users, :unlock_token, :string
     add_column  :users, :locked_at, :datetime
 
-    add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true
     add_index :users, :confirmation_token,   unique: true
     add_index :users, :unlock_token,         unique: true
