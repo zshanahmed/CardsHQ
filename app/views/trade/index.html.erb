@@ -13,6 +13,10 @@
 <div class="container">
   <h2 class="mt-3">Trade Cards</h2>
   <%= form_tag trade_path , :method => :post do%>
+    <div class="input-group mb-3 mt-3">
+     <%= text_field :user , 'tradeuser' , :id => 'tradeuser',placeholder: "Username to trade cards with", class:'form-control' %>
+     <%= submit_tag 'Trade Cards', :id => 'tradebutton', class:'btn btn-primary' %>
+    </div>
     <table id="hand" class="table table-striped">
       <thead>
       <tr>
