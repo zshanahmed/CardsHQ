@@ -1,1 +1,44 @@
-<h2>Trade Cards</h2>
+<style>
+    #discardMain{
+        box-shadow: 2px 2px 6px gray;
+    }
+
+    #discardMain:hover{
+        background-color: white;
+        color: #dc3545;
+    }
+</style>
+
+
+<div class="container">
+  <h2 class="mt-3">Trade Cards</h2>
+  <%= form_tag trade_path , :method => :post do%>
+    <table id="hand" class="table table-striped">
+      <thead>
+      <tr>
+        <th>Card</th>
+        <th>Select</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @hand.each do |card| %>
+        <tr>
+          <td>
+            <% if card.rank == 'Ace' && card.suit == 'Diamond' %>
+              <%= image_tag(src='AD1.png', width: '80', height: '122')%>
+            <% else %>
+              <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
+            <% end %>
+          </td>
+          <td>
+            <%=check_box_tag "traded[#{card.card_id}]"%>
+          </td>
+        </tr>
+        </tbody>
+      <% end %>
+      </table>
+    <div class="row justify-content-lg-center">
+      <%=submit_tag "Trade", id: "tradeMain", class:'btn btn-danger'%>
+    </div>
+  <% end %>
+</div>

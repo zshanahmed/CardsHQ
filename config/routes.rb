@@ -27,7 +27,9 @@ Rails.application.routes.draw do
 
   # for cards
   match '/user/draw' , to: 'users#draw_card', via: :post
-  match '/user/trade' , to: 'users#trade_card', via: :post
+
+
+  match '/trade' , to: 'trade#trade_card', via: :post
 
   match '/trade/index' , to: 'trade#index', via: :get
 
