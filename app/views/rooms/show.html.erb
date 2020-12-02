@@ -114,22 +114,17 @@
     <table id="played_cards" class="table table-striped">
       <thead>
       <tr>
-        <th>Suit</th>
-        <th>Rank</th>
+        <th>Card</th>
       </tr>
       </thead>
       <tbody>
       <% @played_cards.each do |played| %>
         <tr>
           <td>
-            <%= played.suit %>
-          </td>
-          <td>
-            <%= played.rank%>
+            <%= image_tag(src=played.rank[0] + played.suit[0] + ".png", width: '80', height: '122') %>
           </td>
         </tr>
       <% end %>
-
       </tbody>
     </table>
   </div>
