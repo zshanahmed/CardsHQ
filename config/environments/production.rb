@@ -48,7 +48,7 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
-  config.action_mailer.default_url_options = { host: 'https://selt-sp3.herokuapp.com/'}
+  config.action_mailer.default_url_options = { host: 'selt-sp3.herokuapp.com'}
   # Email delivery method
   config.action_mailer.delivery_method = :smtp
 
