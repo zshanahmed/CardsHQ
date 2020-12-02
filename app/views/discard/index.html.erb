@@ -16,8 +16,7 @@
   <table id="hand" class="table table-striped">
     <thead>
     <tr>
-      <th>Suit</th>
-      <th>Rank</th>
+      <th>Card</th>
       <th>Select</th>
     </tr>
     </thead>
@@ -25,10 +24,7 @@
     <% @hand.each do |card| %>
       <tr>
         <td>
-          <%= card.suit %>
-        </td>
-        <td>
-          <%= card.rank%>
+          <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
         </td>
         <td>
          <%=check_box_tag "discarded[#{card.card_id}]"%>
