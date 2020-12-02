@@ -24,7 +24,11 @@
     <% @hand.each do |card| %>
       <tr>
         <td>
-          <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
+          <% if card.rank == 'Ace' && card.suit == 'Diamond' %>
+            <%= image_tag(src='AD1.png', width: '80', height: '122')%>
+          <% else %>
+            <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
+          <% end %>
         </td>
         <td>
          <%=check_box_tag "discarded[#{card.card_id}]"%>
