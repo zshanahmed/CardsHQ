@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   match '/user/draw' , to: 'users#draw_card', via: :post
   match '/user/trade' , to: 'users#trade_card', via: :post
 
+  match '/trade/index' , to: 'trade#index', via: :get
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
