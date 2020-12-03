@@ -285,6 +285,7 @@ GEM
       rspec-support (~> 3.9)
     rspec-support (3.10.0)
     ruby2_keywords (0.0.2)
+    ruby_http_client (3.5.1)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -301,6 +302,8 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sendgrid-ruby (6.3.7)
+      ruby_http_client (~> 3.4)
     shellany (0.0.1)
     simplecov (0.20.0)
       docile (~> 1.1)
@@ -368,6 +371,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  sendgrid-ruby
   simplecov
   spring
   sqlite3 (~> 1.3.6)
