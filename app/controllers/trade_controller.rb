@@ -9,7 +9,16 @@ class TradeController < ApplicationController
   end
 
   def trade_card
-    redirect_to room_path @current_user.room_id
-  end
+    cards = params["traded"]
+    user = params["user"]["tradeuser"]
 
+
+    if cards.nil? || user == ""
+      flash[:notice] = "No cards selected or username not entered"
+      redirect_to trade_index_path
+    else
+      flash[:notice] = "Cards traded"
+      redirect_to room_path @current_user.room_id
+    end
+  end
 end

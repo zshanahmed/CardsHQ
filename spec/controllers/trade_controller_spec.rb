@@ -39,4 +39,9 @@ describe TradeController do
     get :index
     expect(flash[:notice]).to eq "No cards to Trade"
   end
+  it 'should notify users when necessary fields are not selected and they attempt to trade cards' do
+    post :trade_card, 'user'=>{'tradeuser'=>''}
+    expect(flash[:notice]).to eq "No cards selected or username not entered"
+
+  end
 end
