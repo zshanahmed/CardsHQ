@@ -51,15 +51,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'selt-sp3.herokuapp.com'}
   # Email delivery method
   config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
       :user_name => ENV['SENDGRID_USERNAME'],
-      :password => ENV['SENDGRID_PASSWORD'],
+      :password => ENV['SENDGRID_API_KEY'],
       :domain => 'selt-sp3.herokuapp.com',
       :address => 'smtp.sendgrid.net',
-      :port => 587,
+      :port => 25,
       :authentication => :plain,
       :enable_starttls_auto => true
   }
