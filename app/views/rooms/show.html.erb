@@ -115,22 +115,28 @@
 
 
   <div class="floatRight">
-    <h3>Your Played Cards</h3>
+    <h3>Played Cards</h3>
     <table id="played_cards" class="table table-striped">
       <thead>
       <tr>
+        <th>Player</th>
         <th>Suit</th>
         <th>Rank</th>
       </tr>
       </thead>
       <tbody>
-      <% @played_cards.each do |played| %>
+      <% @player_info.each do |played| %>
         <tr>
+
           <td>
-            <%= played.suit %>
+            <%= played[0] %>
+          </td>
+
+          <td>
+            <%= played[1] %>
           </td>
           <td>
-            <%= played.rank%>
+            <%= played[2]%>
           </td>
         </tr>
       <% end %>
