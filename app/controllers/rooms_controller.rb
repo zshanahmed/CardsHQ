@@ -21,14 +21,19 @@ class RoomsController < ApplicationController
 
     @num_cards = []
     @room.users.all.each do |user|
-      # when score is ready
       @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
-      # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
     end
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
     #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
-    @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
+
+    played_cards = Card.where(room_id: @current_user.room_id, status: 3).order("updated_at DESC")
+    @player_info = []
+    played_cards.each do |a|
+      username = User.where(id: a.user_id).first.username
+      @player_info.append([username, a.suit, a.rank]) #0 is suit, 1 is rank, 3 is username
+    end
+
     @users_in_room = User.where(room_id: @current_user.room_id)
   end
 
