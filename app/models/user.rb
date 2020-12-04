@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :trackable, :validatable,
           :confirmable, :lockable, :timeoutable,
-          :omniauthable, omniauth_providers: [:facebook, :github, :google_oauth2, :twitter]
+          :omniauthable, omniauth_providers: [:facebook, :twitter]
 
   def self.create_from_provider_data(provider_data)
   where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do | user |
