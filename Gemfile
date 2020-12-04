@@ -47,7 +47,8 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec', '~>3.5'
   gem 'rspec-rails'
-  gem 'dotenv', '~> 2.2.1'
+
+  gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
