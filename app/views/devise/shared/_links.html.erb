@@ -39,7 +39,7 @@
 <%- if devise_mapping.omniauthable? %>
   <div class="pb-2">
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to fa_icon(provider, text: "Sign in with #{OmniAuth::Utils.camelize(provider)}"), omniauth_authorize_path(resource_name, provider), class:'btn btn-primary mt-2 mr-3', id:"btn-#{provider}"%>
+      <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), class:'btn btn-primary mt-2 mr-3', id:"btn-#{provider}"%>
     <% end %>
 <% end %>
 </div>
