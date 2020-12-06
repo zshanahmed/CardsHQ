@@ -13,7 +13,7 @@ class Card < ActiveRecord::Base
  def self.create_deck_for_room(room_id)
   @SUITS.each do |s|
    @RANKS.each do |r|
-    Card.create(suit: s, rank:r, room_id: room_id, status: 0)
+    Card.create(suit: s, rank:r, room_id: room_id, status: 0, deckNumber: 1)
    end
   end
  end

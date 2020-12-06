@@ -104,7 +104,7 @@ describe RoomsController do
     post :update_new_score, "user"=>{"score"=>10}
     expect(flash[:notice]).to eq("Score updated!")
   end
-
+  it 'Should render the Room view if addDeck me'
   it 'Should reset the hands of the players in current room, but not in other rooms' do
     test_hand.each {|a| Hand.create!(a)}
     test_hand2.each {|b| Hand.create!(b)}
