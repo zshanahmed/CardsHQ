@@ -1,25 +1,25 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/helpers/application_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/helpers/cards_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/helpers/cards_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/helpers/rooms_helper.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/helpers/rooms_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/controllers/application_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null,
@@ -27,12 +27,12 @@
           1,
           null,
           1,
-          28,
+          30,
           null,
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/controllers/discard_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/discard_controller.rb": {
         "lines": [
           1,
           null,
@@ -59,7 +59,7 @@
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/controllers/rooms_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/rooms_controller.rb": {
         "lines": [
           1,
           null,
@@ -67,8 +67,8 @@
           1,
           null,
           1,
-          12,
-          12,
+          14,
+          14,
           null,
           null,
           1,
@@ -142,10 +142,15 @@
           null,
           null,
           null,
+          1,
+          2,
+          106,
+          2,
+          null,
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/controllers/sessions_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           null,
@@ -204,7 +209,7 @@
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/controllers/users_controller.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/controllers/users_controller.rb": {
         "lines": [
           1,
           null,
@@ -272,7 +277,7 @@
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/models/user.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/models/user.rb": {
         "lines": [
           1,
           null,
@@ -281,9 +286,9 @@
           1,
           null,
           1,
-          21,
-          21,
-          21,
+          23,
+          23,
+          23,
           null,
           null,
           null,
@@ -302,7 +307,7 @@
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/models/card.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/models/card.rb": {
         "lines": [
           1,
           1,
@@ -317,9 +322,9 @@
           null,
           null,
           1,
-          9,
-          36,
-          468,
+          29,
+          116,
+          1508,
           null,
           null,
           null,
@@ -328,6 +333,23 @@
           null,
           null,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          2,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/eliasshaeffer/Team1_SELT2020/app/models/hand.rb": {
+        "lines": [
           1,
           1,
           1,
@@ -335,16 +357,7 @@
           null
         ]
       },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/models/hand.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/zeeshanahmed/Desktop/Study/Fall2020/SELT/Project/Team1_SELT2020/app/models/room.rb": {
+      "/Users/eliasshaeffer/Team1_SELT2020/app/models/room.rb": {
         "lines": [
           1,
           1,
@@ -352,13 +365,13 @@
           1,
           null,
           1,
-          15,
+          33,
           null,
           null,
           1,
-          15,
-          15,
-          15,
+          33,
+          33,
+          33,
           null,
           null,
           null,
@@ -366,6 +379,6 @@
         ]
       }
     },
-    "timestamp": 1606329056
+    "timestamp": 1607042344
   }
 }
