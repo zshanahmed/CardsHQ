@@ -81,7 +81,12 @@ class RoomsController < ApplicationController
 
   def reset_room
     Hand.where(room_id: @current_user.room_id).delete_all
-    Card.where(room_id: @current_user.room_id).each {|a| a.update!(status: 0)}
+    Card.where(room_id: @current_user.room_id).each do |a|
+      a.update!(status: 0)
+      unless a.room_id == '1'
+        a.delete
+      end
+    end
     redirect_to room_path @current_user.room_id
   end
 

@@ -124,6 +124,13 @@ describe RoomsController do
     Card.where(room_id: 2).each {|card| expect(card.status).to eq("in_sink")}
   end
 
+  it 'Should remove all decks with deckNumber > 1 when reset is called' do
+    (0..3).each {post :add_deck}
+    expect(Card.where(deckNumber: 2).blank?).to be false
+    post :reset_room
+    expect(Card.where(deckNumber: 2).blank?).to be true
+  end
+
   it 'Should always redirect to room_path when the add_deck button is pressed' do
     post :add_deck
     expect(response).to redirect_to room_path @current_user.room_id
