@@ -123,4 +123,20 @@ describe RoomsController do
     Card.where(room_id: 1).each {|card| expect(card.status).to eq("in_draw")}
     Card.where(room_id: 2).each {|card| expect(card.status).to eq("in_sink")}
   end
+
+  it 'Should always redirect to room_path when the add_deck button is pressed' do
+    post :add_deck
+    expect(response).to redirect_to room_path @current_user.room_id
+  end
+
+  it 'Should add a deck and this deck should have deckNumber one greater than the greatest deck number' do
+    post :add_deck
+    cards = Card.where(room_id: @current_user.room_id)
+    expect(cards.where(deckNumber: 2).length).to eq 52
+  end
+
+  it 'Should not allow user to create more than 4 decks' do
+    (0..4).each {post :add_deck}
+    expect(flash[:notice]).to eq "You are not allowed to have more than 4 decks."
+  end
 end

@@ -84,4 +84,15 @@ class RoomsController < ApplicationController
     Card.where(room_id: @current_user.room_id).each {|a| a.update!(status: 0)}
     redirect_to room_path @current_user.room_id
   end
+
+  def add_deck
+    number_cards = Card.where(room_id: @current_user.room_id).length
+    deck_number = (number_cards / 52) + 1 #deck number to be assigned to new deck
+    if deck_number < 5
+      Card.create_deck_for_room(@current_user.room_id, deck_number) # creates new deck with calculated deck number
+    else
+      flash[:notice] = "You are not allowed to have more than 4 decks."
+    end
+    redirect_to room_path @current_user.room_id
+  end
 end
