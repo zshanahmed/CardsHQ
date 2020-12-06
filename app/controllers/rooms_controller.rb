@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
 
-  before_action :load_entities
+  before_action :load_entities, :authenticate_user!
   before_filter :set_current_user
 
   def load_entities

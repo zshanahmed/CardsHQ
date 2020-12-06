@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_filter :set_current_user, only:[:join_new_room, :join_room, :draw_card]
-
+  before_action :authenticate_user!, only: [:draw_card]
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end

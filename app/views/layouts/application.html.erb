@@ -31,6 +31,10 @@
     <div class="alert alert-success">
       <%= flash[:success] %>
     </div>
+  <% elsif flash[:error] %>
+    <div class="alert alert-danger">
+      <%= flash[:error] %>
+    </div>
   <% end %>
   <section class="User-Tag mt-4">
       <% if @current_user %>

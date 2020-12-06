@@ -45,7 +45,7 @@
 </div>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %>
+  <%= link_to "Sign up", new_registration_path(resource_name), class:'btn btn-primary mt-2 mr-3' %>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
