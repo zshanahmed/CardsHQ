@@ -27,7 +27,7 @@ class RoomsController < ApplicationController
     #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
 
-    played_cards = Card.where(room_id: @current_user.room_id, status: 3).order("updated_at DESC")
+    played_cards = Card.where(room_id: @current_user.room_id, status: 3).order("updated_at DESC").first(6)
     @player_info = []
     played_cards.each do |a|
       username = User.where(id: a.user_id).first.username
