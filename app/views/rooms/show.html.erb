@@ -16,7 +16,19 @@
       color: #dc3545;
   }
 </style>
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script>
+    // If your Heroku application is within the EU region,
+    // uncomment the followling lines
+    // Pusher.host = 'ws-eu.pusher.com';
+    // Pusher.sockjs_host = 'sockjs-eu.pusher.com';
 
+    var pusher = new Pusher('<%= Pusher.key %>'); // uses your APP KEY
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('greet', function(data) {
+        alert(data.greeting);
+    });
+</script>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
