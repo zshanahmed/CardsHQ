@@ -48,6 +48,28 @@ Rails.application.configure do
   # when problems arise.
   config.log_level = :debug
 
+  config.action_mailer.default_url_options = { host: 'selt-sp3-test.herokuapp.com'}
+  # Email delivery method
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  # config.action_mailer.smtp_settings = {
+  #     user_name:      ENV['SENDMAIL_USERNAME'],
+  #     password:       ENV['SENDMAIL_PASSWORD'],
+  #     domain:        'selt-sp3-test.herokuapp.com',
+  #     address:       'smtp.gmail.com',
+  #     port:          '587',
+  #     authentication: :plain,
+  #     enable_starttls_auto: true
+  # }
+  config.action_mailer.smtp_settings = {
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    domain: 'selt-sp3-test.herokuapp.com',
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 

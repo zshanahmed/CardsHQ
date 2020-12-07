@@ -1,28 +1,14 @@
 class SessionsController < ApplicationController
-  ###
-  # This line was added so that i can test the endpoints for this controller
-  # from CORS.
-  skip_before_action :verify_authenticity_token
-  before_filter :set_current_user
-  def new
+
+  def create_auth
+    @user = User.find_or_create_from_auth_hash(auth_hash)
+    session_token = SecureRandom.base64(10)
+    @user.session_token = session_token
+    @user.save
+    session[:session_token] = @user.session_token
+    redirect_to rooms_path
   end
 
-  ##
-  # A method to create a session using username and password.
-  # POST Request at /login_create
-  # Body: application/json
-  # Response:Html
-  # {
-  #
-  # "username":{
-  # "username":"type_here"
-  #           },
-  # "password":{
-  # "password":"type_here"
-  #           }
-  #
-  # }
-  # return status 200 ok if everything is successful.
   def create
     if(params[:username][:username].nil? ||params[:username][:username].empty?)
       flash[:notice] = 'Invalid username/password'
@@ -46,10 +32,16 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    @current_user.room_id = nil
-    @current_user.save
-    session[:session_token] = nil
-    flash[:notice] = "You have been logged out!"
-    redirect_to login_path
+    if set_current_user
+      session.delete(:user_id)
+      flash[:success] = "You have been logged out!"
+    end
+    redirect_to root_path
+  end
+
+  protected
+
+  def auth_hash
+    request.env['omniauth.auth']
   end
 end

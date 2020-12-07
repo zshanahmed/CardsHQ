@@ -51,7 +51,7 @@ describe SessionsController do
     @current_user.room_id = test_room.id
     @current_user.save
     delete :destroy, {:username => {:username => @current_user.username}, :password => {:password => @current_user.password}}
-    expect(flash[:notice]).to match(/You have been logged out!/)
+    expect(flash[:success]).to match(/You have been logged out!/)
   end
 
 end
