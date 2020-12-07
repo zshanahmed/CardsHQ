@@ -17,6 +17,24 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.btn{
+  box-shadow: 2px 2px 6px gray;
+}
+
+.btn-danger:hover{
+  background-color: white;
+  color: #dc3545;
+}
+
+.btn-primary:hover{
+  background-color: white;
+  color: #007bff;
+}
+
+.btn-dark:hover{
+  background-color: white;
+  color: #343a40;
+}
 
 
 //.floatLeft { width: 50%; float: left; }

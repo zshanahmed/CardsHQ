@@ -1,3 +1,24 @@
+<style>
+    .btn{
+        box-shadow: 2px 2px 6px gray;
+    }
+
+    .btn-danger:hover{
+        background-color: white;
+        color: #dc3545;
+    }
+
+    .btn-primary:hover{
+        background-color: white;
+        color: #007bff;
+    }
+
+    .btn-dark:hover{
+        background-color: white;
+        color: #343a40;
+    }
+</style>
+
 <section class="Dashboard mt-4">
 <div class="container">
 <h2>Dashboard</h2>
@@ -5,6 +26,6 @@
 <%= link_to "Create New Room", new_room_path, id: 'newRoom', class:'btn btn-primary'%>
 <br>
 <br>
-<%= link_to "Join Room", user_join_new_room_path, id: 'btn-room', class:'btn btn-secondary' %>
+<%= link_to "Join Room", user_join_new_room_path, id: 'btn-room', class:'btn btn-dark' %>
 </div>
 </section>
