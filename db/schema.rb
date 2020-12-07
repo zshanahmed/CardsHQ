@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201201030939) do
+ActiveRecord::Schema.define(version: 20201206214104) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "suit"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20201201030939) do
     t.integer  "user_id"
     t.integer  "room_id"
     t.integer  "status"
+    t.string   "deckNumber"
   end
 
   add_index "cards", ["room_id"], name: "index_cards_on_room_id"
