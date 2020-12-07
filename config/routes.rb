@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth', registrations: 'registrations' }
   devise_scope :user do
     authenticated :user do
       root to: 'rooms#index'
