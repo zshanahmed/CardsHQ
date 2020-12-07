@@ -79,9 +79,9 @@ class RoomsController < ApplicationController
       params[:played_cards].each do |card|
         Card.add_in_play(card,@current_user.id ,3)
       end
-      # Pusher['test_channel'].trigger('greet', {
-      #     :greeting => "Hello there!"
-      # })
+      Pusher['test_channel'].trigger('greet', {
+          :greeting => "Hello there!"
+      })
       flash[:notice] = "Cards played"
       redirect_to room_path @current_user.room_id
     end
