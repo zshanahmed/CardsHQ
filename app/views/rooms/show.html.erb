@@ -23,11 +23,6 @@
     // Pusher.host = 'ws-eu.pusher.com';
     // Pusher.sockjs_host = 'sockjs-eu.pusher.com';
 
-    var pusher = new Pusher('<%= Pusher.key %>'); // uses your APP KEY
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('greet', function(data) {
-        alert(data.greeting);
-    });
 </script>
 <div class="container">
   <div class="row">
@@ -38,6 +33,7 @@
   </div>
   <div class="row justify-content-lg-center">
     <%= button_to 'Destroy Room', room_del_path, method: :delete, class:'btn btn-danger p-2 m-2', id:'btn-dest' %>
+    <%= button_to 'Reset Room', rooms_reset_path, class:'btn btn-danger p-2 m-2', id:'reset'%>
   </div>
 <%=form_tag rooms_update_score_path :class => 'form' do %>
     <div class="row p-3">
@@ -79,6 +75,8 @@
       <%= button_to 'Draw' , user_draw_path, id: "draw", class:'btn btn-primary'%>
   </div>
 <div class="container">
+  <div class="row">
+    <div class="col-lg-6">
   <div class="floatLeft">
 <%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
   <br>
@@ -87,8 +85,7 @@
     <table id="hand" class="table table-striped">
       <thead>
       <tr>
-        <th>Suit</th>
-        <th>Rank</th>
+        <th>Card</th>
         <th>Select</th>
       </tr>
       </thead>
@@ -96,24 +93,23 @@
       <% @hand.each do |card| %>
         <tr>
           <td>
-            <%= card.suit %>
-          </td>
-          <td>
-            <%= card.rank%>
+            <% if card.rank == 'Ace' && card.suit == 'Diamond' %>
+              <%= image_tag(src='AD1.png', width: '80', height: '122')%>
+            <% else %>
+              <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
+            <% end %>
           </td>
           <td>
             <%=check_box_tag "played_cards[#{card.card_id}]",nil,nil, :id => "hand_#{card.card_id}"%>
           </td>
         </tr>
       <% end %>
-
       </tbody>
     </table>
     </div>
   <% else %>
     <h1 class="row justify-content-lg-center pb-3">
       No cards present in your hand
-      fffff
     </h1>
   <%end %>
       <div class="row justify-content-lg-center">
@@ -125,20 +121,22 @@
         </div>
       </div>
 <% end %>
+    </div>
+  </div>
+</div>
 
-
+<div class="col-lg-6">
   <div class="floatRight">
     <h3>Played Cards</h3>
     <table id="played_cards" class="table table-striped">
       <thead>
       <tr>
         <th>Player</th>
-        <th>Suit</th>
-        <th>Rank</th>
+        <th>Card</th>
       </tr>
       </thead>
       <tbody>
-      <% @player_info.each do |played| %>
+      <% @player_info.each do |played| %> <!-- 0 is name 1 is suit 2 is rank-->
         <tr>
 
           <td>
@@ -146,16 +144,16 @@
           </td>
 
           <td>
-            <%= played[1] %>
+            <% if played[1] == 'Ace' && played[2] == 'Diamond' %>
+              <%= image_tag(src='AD1.png', width: '80', height: '122')%>
+            <% else %>
+              <%= image_tag(src=played[2][0] + played[1][0] + ".png", width: '80', height: '122') %>
+            <% end %>
           </td>
-          <td>
-            <%= played[2]%>
-          </td>
-        </tr>
       <% end %>
 
       </tbody>
     </table>
   </div>
-    </div>
-  </div>
+</div>
+</div>

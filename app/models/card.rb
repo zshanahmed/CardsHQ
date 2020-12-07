@@ -26,4 +26,12 @@ class Card < ActiveRecord::Base
   played_card.update(:status => status)
   Hand.where(:card_id => id, :user_id => user_id).first.destroy
  end
+
+ def self.get_filename(suit,rank)
+  if rank == 'Ace' && suit == 'Diamond'
+   return 'AD1.png'
+  else
+   return rank[0] + suit[0] + '.png'
+  end
+  end
 end
