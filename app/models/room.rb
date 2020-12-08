@@ -1,6 +1,7 @@
 class Room < ActiveRecord::Base
   has_many :users
   before_create :set_invitation_token
+  after_commit :notify_pusher, on: [:create, :update]
   def index; end
 
   def set_invitation_token
