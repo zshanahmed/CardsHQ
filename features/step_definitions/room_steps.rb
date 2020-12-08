@@ -63,3 +63,9 @@ end
 And /^'(.*?)' cards should be in deck$/ do |cards|
   expect(Card.where(room_id: 1, status: 0).length).to eq(cards.to_i)
 end
+
+
+When(/^I trade the following cards:(.*?)$/) do
+
+
+end
