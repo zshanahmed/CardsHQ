@@ -32,7 +32,6 @@ describe TradeController do
     @current_user = User.find_by_session_token(session[:session_token])
     @current_user.room_id = test_room.id
     @current_user.save
-    Hand.create!({:user_id=>@current_user.id, :card_id=>10})
     test_valid2 = test_valid
     test_valid2[:username] = 'coolguy123'
     test_user2 = User.create_user!(test_valid2)
@@ -51,5 +50,12 @@ describe TradeController do
   it 'should notify user when the username entered is not correct or does not exist' do
     post :trade_card, 'traded'=>{'1'=>'1','2'=>'1'}, 'user'=>{'tradeuser'=>'coolguy1234'}
     expect(flash[:notice]).to eq "Username does not exist"
+  end
+  it 'should trade cards when correct username and cards are selected' do
+    Hand.create!(user_id: 1, room_id: 1, card_id: 1)
+    Hand.create!(user_id: 1, room_id: 1, card_id: 2)
+    post :trade_card, 'traded'=>{'1'=>'1','2'=>'1'}, 'user'=>{'tradeuser'=>'coolguy123'}
+    hands = Hand.all
+    hands.each { |a| expect(a.user_id).to eq User.where(username: 'coolguy123').first.id }
   end
 end
