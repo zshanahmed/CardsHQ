@@ -17,10 +17,16 @@ class TradeController < ApplicationController
       flash[:notice] = "No cards selected or username not entered"
       redirect_to trade_index_path
     else
-      User.where(user_id: @current_user.user_id).each{|a| a.sub}
-      flash[:notice] = "Cards traded"
-      redirect_to room_path @current_user.room_id
+      cards = cards.keys
+      user_id_trade = User.where(username: user).ids
+      if user_id_trade.blank?
+        flash[:notice] = "Username does not exist"
+        redirect_to trade_index_path
+      else
+        hands = Hand.where(room_id: @current_user.room_id)
+        flash[:notice] = "Cards traded"
+        redirect_to room_path @current_user.room_id
+      end
     end
   end
-
 end
