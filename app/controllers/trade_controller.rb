@@ -12,7 +12,6 @@ class TradeController < ApplicationController
     cards = params["traded"]
     user = params["user"]["tradeuser"]
 
-
     if cards.nil? || user == ""
       flash[:notice] = "No cards selected or username not entered"
       redirect_to trade_index_path

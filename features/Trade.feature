@@ -18,6 +18,6 @@ Feature: Trade cards
     And I draw the following number of cards: 5
 
     Scenario: I trade cards
-      When 'GrumpyBunny' presses trade and selects the following cards: '3'
-      And enters 'WarmBlanket' as the username to trade cards with
+      When GrumpyBunny trades 3 cards with WarmBlanket
       Then 'GrumpyBunny' should only have '2' cards
+      And 'WarmBlanket' should only have '3' cards
