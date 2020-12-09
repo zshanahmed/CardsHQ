@@ -84,6 +84,16 @@ class RoomsController < ApplicationController
     end
   end
 
+  def update_table
+    played_cards = Card.where(room_id: @current_user.room_id, status: 3).order("updated_at DESC").first(6)
+    @cards = []
+    played_cards.each do |a|
+      username = User.where(id: a.user_id).first.username
+      @cards.append([username, a.suit, a.rank]) #0 is username, 1 is suit, 3 is rank
+    end
+    @cards
+  end
+
   def reset_room
     Hand.where(room_id: @current_user.room_id).delete_all
     Card.where(room_id: @current_user.room_id).each {|a| a.update!(status: 0)}
