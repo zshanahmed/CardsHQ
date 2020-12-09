@@ -16,6 +16,6 @@ class Room < ActiveRecord::Base
   end
 
   def notify_pusher
-    Pusher.trigger('#btn-play', 'new', self.as_json)
+    Pusher.trigger('room', 'new', self.as_json)
   end
 end
