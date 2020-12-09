@@ -73,7 +73,7 @@
   <div class="row">
     <div class="col-lg-6">
   <div class="floatLeft">
-<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
+<%= form_tag  rooms_play_card_path do%>
   <br>
   <% if !@hand.blank? %>
         <h3>Player Hand</h3>
@@ -109,7 +109,7 @@
   <%end %>
       <div class="row justify-content-lg-center">
         <div class="col col-md-auto">
-        <%= button_to 'Play' , rooms_play_card_path, class: 'btn btn-primary', id:'btn-play' %>
+        <%= submit_tag 'Play', class: 'btn btn-primary', id:'Play_Button' %>
         </div>
         <div class="col col-md-auto">
           <%= link_to "Discard", discard_index_path, id: "discard", class:'btn btn-dark'%>
