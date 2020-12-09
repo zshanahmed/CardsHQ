@@ -18,8 +18,8 @@ updateTable = (data) ->
     $('#btn-play').on 'ajax:success', (data) ->
       pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>')
       cluster: '<%= ENV["PUSHER_CLUSTER"] %>'
-      encrypted: true)
-      channel = pusher.subscribe('employee')
+      encrypted: true
+      channel = pusher.subscribe('room')
       channel.bind 'new', (data) ->
         updateTable data
       return
