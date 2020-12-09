@@ -4,7 +4,7 @@
 
 
 updateTable = (data) ->
-  $('#played_cards tbody').append """
+  $('#played_cards tbody').prepend """
     <tr>
       <td>#{data[0]}</td>
       <td>#{data[1]}</td>
