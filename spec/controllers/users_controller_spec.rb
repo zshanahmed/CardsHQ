@@ -48,25 +48,7 @@ describe UsersController do
 
   invalid = "Invalid entry in one of the text-boxes"
 
-  it 'Should flash a message "Invalid entry in one of the text-boxes" if username, password, or email is blank' do
-    testing123.each do |testData|
-      post :create, user: testData
-      expect(flash[:notice]).to match(invalid)
-    end
-  end
-  it 'Should flash a message saying the username is taken when the username exists in the database.' do
-    post :create, user: testing345[0]
-    post :create, user: testing345[1]
-    username = testing345[0][:username]
-    expect(flash[:notice]).to match("Username, \'#{username}\' has already been taken")
-  end
-  it 'Should flash a message saying the account was created if they are valid entries' do
-    testing567.each do |testData|
-      post :create, user: testData
-      username = testData[:username]
-      expect(flash[:success]).to match("Account with Username \'#{username}\' has been created")
-    end
-  end
+
   it 'Should flash a message if user successfully joins a room' do
     test_user = User.create_user!(test_valid)
     request.session[:session_token] = test_user.session_token
@@ -81,8 +63,8 @@ describe UsersController do
     expect(flash[:notice]).to match('Invitation token invalid!')
   end
   it 'Should flash a message if user fails to join a room because of no invitation code' do
-    test_user = User.create_user!(test_valid)
-    request.session[:session_token] = test_user.session_token
+    test_user = User.create!(test_valid)
+    byebug
     post :join_room, user: {room_id: ''}
     expect(flash[:notice]).to match('Invitation token invalid!')
   end

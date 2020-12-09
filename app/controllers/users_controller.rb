@@ -7,26 +7,23 @@ class UsersController < ApplicationController
   end
 
   def show
-
-  end
-  def index
   end
 
   def new; end
 
-  def create
-    if !User.valid_entry?(user_params)
-      flash[:notice] = "Invalid entry in one of the text-boxes"
-      redirect_to new_user_path
-    elsif not User.find_by(username: user_params[:username]).blank?
-      flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
-      redirect_to new_user_url
-    else
-      @user = User.create(user_params)
-      flash[:success] = "Account with Username \'#{user_params[:username]}\' has been created"
-      redirect_to login_path
-    end
-  end
+  # def create
+  #   if !User.valid_entry?(user_params)
+  #     flash[:notice] = "Invalid entry in one of the text-boxes"
+  #     redirect_to new_user_path
+  #   elsif not User.find_by(username: user_params[:username]).blank?
+  #     flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
+  #     redirect_to new_user_url
+  #   else
+  #     @user = User.create(user_params)
+  #     flash[:success] = "Account with Username \'#{user_params[:username]}\' has been created"
+  #     redirect_to login_path
+  #   end
+  # end
 
   def join_new_room
   end

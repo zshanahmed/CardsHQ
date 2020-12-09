@@ -17,8 +17,6 @@ class RoomsController < ApplicationController
   def new ; end
 
   def show
-    @room.users << User.where(:session_token=> session[:session_token]).first
-
     @num_cards = []
     @room.users.all.each do |user|
       # when score is ready
