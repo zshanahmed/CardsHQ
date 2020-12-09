@@ -10,10 +10,10 @@ class Card < ActiveRecord::Base
  ##
  # A method that creates a deck for each room
  #
- def self.create_deck_for_room(room_id)
+ def self.create_deck_for_room(room_id, deck_number = 1)
   @SUITS.each do |s|
    @RANKS.each do |r|
-    Card.create(suit: s, rank:r, room_id: room_id, status: 0)
+    Card.create(suit: s, rank:r, room_id: room_id, status: 0, deckNumber: deck_number)
    end
   end
  end
@@ -26,4 +26,12 @@ class Card < ActiveRecord::Base
   played_card.update(:status => status)
   Hand.where(:card_id => id, :user_id => user_id).first.destroy
  end
+
+ def self.get_filename(suit,rank)
+  if rank == 'Ace' && suit == 'Diamond'
+   return 'AD1.png'
+  else
+   return rank[0] + suit[0] + '.png'
+  end
+  end
 end
