@@ -16,14 +16,8 @@
       color: #dc3545;
   }
 </style>
-<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-<script>
-    // If your Heroku application is within the EU region,
-    // uncomment the followling lines
-    // Pusher.host = 'ws-eu.pusher.com';
-    // Pusher.sockjs_host = 'sockjs-eu.pusher.com';
-
-</script>
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
