@@ -19,7 +19,7 @@ class TradeController < ApplicationController
     else
       cards = cards.keys
       cards.map! { |a| a.to_i }
-      user_id_trade = User.where(username: user).first
+      user_id_trade = User.where(username: user, room_id: @current_user.room_id).first
       if user_id_trade.blank?
         flash[:notice] = "Username does not exist"
         redirect_to trade_index_path
