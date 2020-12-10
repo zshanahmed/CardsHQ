@@ -1,4 +1,8 @@
+require 'spec_helper'
+require 'rails_helper'
+
 describe TradeController do
+  login_user
   # https://github.com/rails/rails/issues/34790
   # MONKEY PATCH
   if RUBY_VERSION>='2.6.0'
@@ -16,26 +20,23 @@ describe TradeController do
     end
   end
 
-  after(:all) do
-    DatabaseCleaner.clean
-  end
+  # after(:all) do
+  #   DatabaseCleaner.clean
+  # end
 
   test1 = {name: 'testroom123'}
   test2 = {name: ''}
-  test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
+  test_valid = {username: 'helloalphatest', password: 'namesbond1234', email: 'hello@alpha.com'}
   room_test = {name: 'alphatest123'}
   before(:each) do
-    test_user = User.create_user!(test_valid)
-    request.session[:session_token] = test_user.session_token
-    test_room = Room.create!(room_test)
-    Card.create_deck_for_room(test_room.id)
-    @current_user = User.find_by_session_token(session[:session_token])
-    @current_user.room_id = test_room.id
+    test_room2 = Room.create!({name: "silly_room"})
+    @current_user = subject.set_current_user
+    @current_user.room_id = test_room2.id
     @current_user.save
-    test_valid2 = test_valid
-    test_valid2[:username] = 'coolguy123'
-    test_user2 = User.create_user!(test_valid2)
-    test_user2.room_id = test_room.id
+    @current_room = Room.where(id: @current_user.room_id)
+    Card.create_deck_for_room(test_room2.id)
+    test_user2 = User.create!(test_valid)
+    test_user2.room_id = test_room2.id
     test_user2.save
   end
 
@@ -54,8 +55,8 @@ describe TradeController do
   it 'should trade cards when correct username and cards are selected' do
     Hand.create!(user_id: 1, room_id: 1, card_id: 1)
     Hand.create!(user_id: 1, room_id: 1, card_id: 2)
-    post :trade_card, 'traded'=>{'1'=>'1','2'=>'1'}, 'user'=>{'tradeuser'=>'coolguy123'}
+    post :trade_card, 'traded'=>{'1'=>'1','2'=>'1'}, 'user'=>{'tradeuser'=>'helloalphatest'}
     hands = Hand.all
-    hands.each { |a| expect(a.user_id).to eq User.where(username: 'coolguy123').first.id }
+    hands.each { |a| expect(a.user_id).to eq User.where(username: 'helloalphatest').first.id }
   end
 end
