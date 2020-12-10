@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require_tree .
 
+
+pusher = new Pusher('c1c5cb076e25349e91f6', {
+    cluster: 'mt1',
+    encrypted: true
+});
+var channel = pusher.subscribe('new');
+channel.bind('new-action', function(data){
+    alert(data);
+    console.log("maybe");
+});
