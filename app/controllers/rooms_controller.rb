@@ -33,7 +33,7 @@ class RoomsController < ApplicationController
       username = User.where(id: a.user_id).first.username
       @player_info.append([username, a.suit, a.rank]) #0 is username, 1 is suit, 3 is rank
     end
-
+    Pusher.trigger('room', 'new')
     @users_in_room = User.where(room_id: @current_user.room_id)
   end
 
@@ -78,6 +78,10 @@ class RoomsController < ApplicationController
     else
       params[:played_cards].each do |card|
         Card.add_in_play(card,@current_user.id ,3)
+        Pusher.trigger('new', 'new-action', {
+            user_id: User.where(id: @current_user.id).select(:username).first(),
+            card: card,
+        })
       end
       flash[:notice] = "Cards played"
       redirect_to room_path @current_user.room_id
