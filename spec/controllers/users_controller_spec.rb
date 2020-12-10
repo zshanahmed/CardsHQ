@@ -64,7 +64,6 @@ describe UsersController do
   end
   it 'Should flash a message if user fails to join a room because of no invitation code' do
     test_user = User.create!(test_valid)
-    byebug
     post :join_room, user: {room_id: ''}
     expect(flash[:notice]).to match('Invitation token invalid!')
   end
