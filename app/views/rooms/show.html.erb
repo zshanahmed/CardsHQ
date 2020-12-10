@@ -16,7 +16,20 @@
       color: #dc3545;
   }
 </style>
-<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+<head>
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+</head>
+<script>
+    pusher = new Pusher('c1c5cb076e25349e91f6', {
+        cluster: 'mt1',
+        encrypted: true
+    });
+    var channel = pusher.subscribe('new');
+    channel.bind('new-action', function(data){
+        alert(data);
+        console.log("maybe");
+    });
+</script>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -107,7 +120,7 @@
   <%end %>
       <div class="row justify-content-lg-center">
         <div class="col col-md-auto">
-        <%= button_to 'Play' , rooms_play_card_path, class: 'btn btn-primary', id:'btn-play' %>
+        <%= button_to 'Play' , rooms_play_card_path, class: 'btn btn-primary', id:'btn-play', remote: true %>
         </div>
         <div class="col col-md-auto">
           <%= link_to "Discard", discard_index_path, id: "discard", class:'btn btn-dark'%>
@@ -151,12 +164,12 @@
 </div>
 </div>
 <script>
-    pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>')
-    cluster: '<%= ENV["PUSHER_CLUSTER"] %>'
-    encrypted: true
-    channel = pusher.subscribe('room')
-    channel.bind('new', function(data){
-        console.log("hello");
-    });
-
+  // var channel = pusher.subscribe('new');
+  // channel.bind('new-action', function(data){
+  //     let username = data.user;
+  //     let card = data.card;
+  //
+  //     console.log("he2");
+  //     $("played_cards #tbody").prepend("<tr><td><td>username</td><td>card</td>");
+  // });
 </script>
