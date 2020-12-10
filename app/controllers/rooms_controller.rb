@@ -75,6 +75,7 @@ class RoomsController < ApplicationController
       flash[:notice] = "Cards played"
       redirect_to room_path @current_user.room_id
     end
+
   end
 
   def reset_room
