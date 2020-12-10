@@ -17,7 +17,6 @@
   }
 </style>
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -72,7 +71,7 @@
   <div class="row">
     <div class="col-lg-6">
   <div class="floatLeft">
-<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
+<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path', remote: true, format: :json do%>
   <br>
   <% if !@hand.blank? %>
         <h3>Player Hand</h3>
@@ -138,7 +137,7 @@
           </td>
 
           <td>
-            <% if played[1] == 'Ace' && played[2] == 'Diamond' %>
+            <% if played[1] == 'Diamond' && played[2] == 'Ace' %>
               <%= image_tag(src='AD1.png', width: '80', height: '122')%>
             <% else %>
               <%= image_tag(src=played[2][0] + played[1][0] + ".png", width: '80', height: '122') %>
@@ -151,3 +150,13 @@
   </div>
 </div>
 </div>
+<script>
+    pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>')
+    cluster: '<%= ENV["PUSHER_CLUSTER"] %>'
+    encrypted: true
+    channel = pusher.subscribe('room')
+    channel.bind('new', function(data){
+        console.log("hello");
+    });
+
+</script>
