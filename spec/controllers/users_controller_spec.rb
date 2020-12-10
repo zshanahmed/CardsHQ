@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rails_helper'
 
 describe UsersController do
-
+  login_user
   #https://github.com/rails/rails/issues/34790
   #######MONKEY PATCH#########
   if RUBY_VERSION>='2.6.0'
@@ -25,6 +25,12 @@ describe UsersController do
   # before(:each) do
   #   request.env["HTTP_REFERER"] = "where_i_came_from"
   # end
+
+  before(:each) do
+    @test_room = Room.create!({name: "silly_room"})
+    @current_user = subject.set_current_user
+    @current_user.save
+  end
 
   after(:all) do
     DatabaseCleaner.clean
@@ -50,38 +56,27 @@ describe UsersController do
 
 
   it 'Should flash a message if user successfully joins a room' do
-    test_user = User.create_user!(test_valid)
-    request.session[:session_token] = test_user.session_token
-    room_test = Room.create(name: 'alphabravo123')
-    post :join_room, user: {room_id: room_test.invitation_token}
+    post :join_room, user: {room_id: @test_room.invitation_token}
     expect(flash[:success]).to match('You have successfully joined the room')
   end
   it 'Should flash a message if user fails to join a room because of incorrect invitation code' do
-    test_user = User.create_user!(test_valid)
-    request.session[:session_token] = test_user.session_token
     post :join_room, user: {room_id: '0'}
     expect(flash[:notice]).to match('Invitation token invalid!')
   end
   it 'Should flash a message if user fails to join a room because of no invitation code' do
-    test_user = User.create!(test_valid)
     post :join_room, user: {room_id: ''}
     expect(flash[:notice]).to match('Invitation token invalid!')
   end
   it 'should allow user to draw a card' do
-    room_test = Room.create(name: 'testroom123')
-    Card.create_deck_for_room(room_test.id)
+    Card.create_deck_for_room(@test_room.id)
     #create a user
-    test_user = User.create_user!(test_valid)
-    request.session[:session_token] = test_user.session_token
-    post :join_room, user: {room_id: room_test.invitation_token}
+    @current_user.room_id = @test_room.id
+    post :join_room, user: {room_id: @test_room.invitation_token}
     post :draw_card
     expect(flash[:notice]).to match('Cards added to your hand')
   end
   it 'should flash a message when there is no card available to draw' do
-    room_test = Room.create(name: 'testroom123')
-    test_user = User.create_user!(test_valid)
-    request.session[:session_token] = test_user.session_token
-    post :join_room, user: {room_id: room_test.invitation_token}
+    post :join_room, user: {room_id: @test_room.invitation_token}
     post :draw_card
     expect(flash[:notice]).to match('No cards available to draw')
   end
