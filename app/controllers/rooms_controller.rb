@@ -17,13 +17,13 @@ class RoomsController < ApplicationController
   def new ; end
 
   def show
-    @room.users << User.where(:session_token=> session[:session_token]).first
+    @room.users << User.where(session_token: session[:session_token]).first
 
     @num_cards = []
     @room.users.all.each do |user|
-      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
+      @num_cards.append([user.username, Hand.where(user_id: user.id, room_id: user.room_id).length, user.score])
     end
-    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
     #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
 
@@ -36,7 +36,7 @@ class RoomsController < ApplicationController
     # Pusher.trigger('room', 'new')
     #
     Pusher.trigger('new', 'new-action', {
-        data => @player_info
+                     data: @player_info
                    })
     @users_in_room = User.where(room_id: @current_user.room_id)
   end
