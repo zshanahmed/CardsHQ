@@ -1,7 +1,6 @@
 class Room < ActiveRecord::Base
   has_many :users
   before_create :set_invitation_token
-  after_commit :notify_pusher, on: [:create, :update]
   def index; end
 
   def set_invitation_token
@@ -15,7 +14,4 @@ class Room < ActiveRecord::Base
     end
   end
 
-  def notify_pusher
-    Pusher.trigger('room', 'new', self.as_json)
-  end
 end
