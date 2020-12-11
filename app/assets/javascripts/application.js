@@ -24,13 +24,18 @@ pusher = new Pusher('c1c5cb076e25349e91f6', {
 var channel = pusher.subscribe('new');
 channel.bind('new-action', function(data){
     out_string = data.username + " " + data.action + ":\n";
+    html_string = "";
     for(i = 0; i < data.info.length; i++)
     {
         out_string = out_string + data.info[i][0] + " of " + data.info[i][1] + "\n";
+        html_string = "<tr><td>" +data.username+"</td><td>"+data.info[i][0]+" of "+data.info[i][1]+"</td></tr>";
+        $("#played_cards tbody").prepend(html_string);
+
     }
     alert(out_string);
 
-    $("#played_cards tbody").prepend("<td>"+data.username+"</td><td>"+data.info[0][0]+" of "+data.info[0][1]+"</td>");
+
+    //$("#played_cards tbody").prepend(html_string);
 
 });
 
