@@ -23,10 +23,12 @@ pusher = new Pusher('c1c5cb076e25349e91f6', {
 });
 var channel = pusher.subscribe('new');
 channel.bind('new-action', function(data){
-    alert(data.info);
+    out_string = data.username + " " + data.action + ":\n";
+    for(i = 0; i < data.info.length; i++)
+    {
+        out_string = out_string + data.info[i][0] + " of " + data.info[i][1] + "\n";
+    }
+    alert(out_string);
 
-    // data.each()
-    // $('#played_cards tbody').HTML("<>")
 });
-console.log("in");
 
