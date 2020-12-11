@@ -1,10 +1,21 @@
+require 'pry'
+include Warden::Test::Helpers
+Warden.test_mode!
+
+def login_help (email, password)
+  @user = User.create!(:email=>email, :password=>password, confirmed_at: Time.now)
+  @room = Room.create(name: 'testroom')
+end
+
 Given(/^I have logged in with email and password: (.*?)$/) do |args1|
   args = args1.split(',')
-
   visit new_user_session_path
+  login_help(args[0], args[1])
 
-  user = User.create!(:email=>args[0], :password=>args[1])
-  click_button "Log in"
+  # @user.confirm!
+  login_as(@user, :scope => :user)
+  visit rooms_path
+
 end
 
 Given /^following (.*?) exist:$/ do |room_table|
@@ -20,7 +31,7 @@ When(/^I click the button: '(.*?)'$/) do |text|
 end
 
 And(/^the room with room name as '(.*?)' already exists$/) do |room_name|
-  @testroom = Room.create(name: room_name)
+  @testroom = Room.create!(name: room_name)
 end
 
 And(/^I submit room name as: '(.*?)'$/) do |room_name|
@@ -84,4 +95,15 @@ end
 
 Then /^fails to login$"/ do
   expect()
+end
+
+
+Then(/^I should see the message: "(.*?)"$/) do |arg|
+  byebug
+  login_as(@user, :scope => :user, :run_callbacks => false)
+  # @current_user = controller.current_user
+  click_on 'btn-room'
+  fill_in 'RoomID', :with => @room.invitation_token
+  click_button 'btn-join'
+  page.should have_selector ".alert", text: arg
 end

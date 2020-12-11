@@ -1,6 +1,10 @@
+require 'pry'
+include Warden::Test::Helpers
 
 Given /^the following users exist:$/ do |user_table|
   user_table.hashes.each {|usr| User.create!(usr)}
+  user = user_table.hashes[0]
+  login_as(user, :scope => :user)
 end
 
 ###LOGIN
@@ -34,7 +38,7 @@ end
 ###Signup
 
 Given /^I'm on the sign-up page$/ do
-  visit new_user_path
+  visit new_user_registration_path
 end
 
 When /^I enter username,email,password and press submit: "(.*?)"$/ do |arg1|

@@ -17,7 +17,7 @@ Feature: a way to sign up for an account for the card game
     And I'm on the sign-up page
 
 Scenario: Creating account with badly formatted Info:
-  When I enter username,email,password and press submit: "gramp;!flop,botiqueBooth@gmail,c"
+  When I enter email,password and press submit: "gramp;!flop,botiqueBooth@gmail,c"
   Then I should see: "Invalid entry in one of the text-boxes"
 
 Scenario: Creating a new user account when the username and email are already taken

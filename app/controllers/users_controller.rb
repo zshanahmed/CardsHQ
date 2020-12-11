@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def join_room
+    byebug
     room = Room.where(invitation_token: params[:user][:room_id]).first
     if room.nil? || params[:user][:room_id].empty?
       flash[:notice] = 'Invitation token invalid!'
