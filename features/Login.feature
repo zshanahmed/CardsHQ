@@ -7,10 +7,10 @@ Feature:  Login for users
 
     Given the following users exist:
       | username      | email                                | password      |
-      | GrumpyBunny   | botiqueBooth@gmail.com               | 123           |
-      | bablingCreek  | creepyLawyer@creepyLawyer.gov        | 1234          |
-      | WarmBlanket   | Beethoven@vienna.edu                 | ;)            |
-      | softPillow    | saltedButterWasAMistake@walmart.com  | glorrrious    |
+      | GrumpyBunny   | botiqueBooth@gmail.com               | 12345689           |
+      | bablingCreek  | creepyLawyer@creepyLawyer.gov        | 1234568945689          |
+      | WarmBlanket   | Beethoven@vienna.edu                 | @@##$$%%^^&&**            |
+      | softPillow    | saltedButterWasAMistake@walmart.com  | abpoiafnasklf    |
       | rollingHills  | 300@thisIsSparta.com                 | PersiansSuck  |
 
     Given I'm on the login page
@@ -18,7 +18,7 @@ Feature:  Login for users
 
   Scenario: attempt to login with correct data
     When I enter username as "GrumpyBunny"
-    And password as "123"
+    And password as "12345689"
     And I press submit
     Then I should see: "Login Successful"
 

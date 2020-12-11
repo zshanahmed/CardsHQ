@@ -6,12 +6,12 @@ Feature: Destroy a room
   Background: I am on the dashboard page
     Given the following users exist:
       | username      | email                                | password      |
-      | GrumpyBunny   | botiqueBooth@gmail.com               | 123           |
-    Given I have logged in with username and password: GrumpyBunny,123
-    Given the room with room name as 'roomtest123' already exists
+      | GrumpyBunny   | botiqueBooth@gmail.com               | 12345689           |
+    Given I have logged in with username and password: GrumpyBunny,12345689
+    Given the room with room name as 'roomtest12345689' already exists
     And I am on the dashboard page
 
     Scenario:
-      Given I have joined the room: 'roomtest123'
+      Given I have joined the room: 'roomtest12345689'
       When I click the button: 'Destroy Room'
       Then I should see: "Room destroyed successfully"

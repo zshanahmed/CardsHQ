@@ -8,10 +8,10 @@ Feature: a way to sign up for an account for the card game
 
     Given the following users exist:
     | username      | email                                | password      |
-    | GrumpyBunny   | botiqueBooth@gmail.com               | 123           |
-    | bablingCreek  | creepyLawyer@creepyLawyer.gov        | 1234          |
-    | WarmBlanket   | Beethoven@vienna.edu                 | ;)            |
-    | softPillow    | saltedButterWasAMistake@walmart.com  | glorrrious    |
+    | GrumpyBunny   | botiqueBooth@gmail.com               | 12345689           |
+    | bablingCreek  | creepyLawyer@creepyLawyer.gov        | 1234568945689          |
+    | WarmBlanket   | Beethoven@vienna.edu                 | @@##$$%%^^&&**            |
+    | softPillow    | saltedButterWasAMistake@walmart.com  | abpoiafnasklf    |
     | rollingHills  | 300@thisIsSparta.com                 | PersiansSuck  |
 
     And I'm on the sign-up page
@@ -21,9 +21,9 @@ Scenario: Creating account with badly formatted Info:
   Then I should see: "Invalid entry in one of the text-boxes"
 
 Scenario: Creating a new user account when the username and email are already taken
-  When I enter username,email,password and press submit: "GrumpyBunny,botiqueBooth@gmail,123"
+  When I enter username,email,password and press submit: "GrumpyBunny,botiqueBooth@gmail,12345689"
   Then I should see: "Username, 'GrumpyBunny' has already been taken"
 
 Scenario: Creating a new user account with fresh info
-  When I enter username,email,password and press submit: "Glumps,glumps@gmail.com,123"
+  When I enter username,email,password and press submit: "Glumps,glumps@gmail.com,12345689"
   Then I should see: "Account with Username 'Glumps' has been created"

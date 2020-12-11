@@ -7,16 +7,16 @@ Feature: a way for players to log out of their accounts after they had logged in
 
     Given the following users exist:
       | username      | email                                | password      |
-      | GrumpyBunny   | botiqueBooth@gmail.com               | 123           |
-      | bablingCreek  | creepyLawyer@creepyLawyer.gov        | 1234          |
-      | WarmBlanket   | Beethoven@vienna.edu                 | ;)            |
-      | softPillow    | saltedButterWasAMistake@walmart.com  | glorrrious    |
+      | GrumpyBunny   | botiqueBooth@gmail.com               | 12345689           |
+      | bablingCreek  | creepyLawyer@creepyLawyer.gov        | 1234568945689          |
+      | WarmBlanket   | Beethoven@vienna.edu                 | @@##$$%%^^&&**            |
+      | softPillow    | saltedButterWasAMistake@walmart.com  | abpoiafnasklf    |
       | rollingHills  | 300@thisIsSparta.com                 | PersiansSuck  |
 
     And I'm on the login page
 
 Scenario: I log out of my account
-  When I login to the account with info: "GrumpyBunny,123"
+  When I login to the account with info: "GrumpyBunny,12345689"
   And press logout button
   Then I should see: "You have been logged out!"
   And Im taken to the login page

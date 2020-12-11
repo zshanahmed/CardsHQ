@@ -6,8 +6,8 @@ Feature: Create a room
   Background: I am on the dashboard page
     Given the following users exist:
       | username      | email                                | password      |
-      | GrumpyBunny   | botiqueBooth@gmail.com               | 123           |
-    Given I have logged in with username and password: GrumpyBunny,123
+      | GrumpyBunny   | botiqueBooth@gmail.com               | 12345689           |
+    Given I have logged in with username and password: GrumpyBunny,12345689
     And I am on the dashboard page
 
   Scenario: I want to create a room

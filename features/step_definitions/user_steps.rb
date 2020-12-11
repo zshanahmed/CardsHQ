@@ -1,6 +1,6 @@
 
 Given /^the following users exist:$/ do |user_table|
-  user_table.hashes.each {|usr| User.create_user!(usr)}
+  user_table.hashes.each {|usr| User.create!(usr)}
 end
 
 ###LOGIN

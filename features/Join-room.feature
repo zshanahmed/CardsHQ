@@ -6,11 +6,11 @@ Feature: Join a room
   Background: :
     Given the following users exist:
       | username      | email                                | password      |
-      | GrumpyBunny   | botiqueBooth@gmail.com               | 123           |
+      | GrumpyBunny   | botiqueBooth@gmail.com               | 12345689           |
 
-    Given the room with room name as 'roomtest123' already exists
+    Given the room with room name as 'roomtest12345689' already exists
 
-    Given I have logged in with username and password: GrumpyBunny,123
+    Given I have logged in with username and password: GrumpyBunny,12345689
     And I am on the dashboard page
 
   Scenario: Attempt to successfully join a room
