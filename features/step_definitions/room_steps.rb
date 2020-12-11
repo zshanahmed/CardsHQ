@@ -1,9 +1,10 @@
-Given(/^I have logged in with username and password: (.*?)$/) do |args1|
+Given(/^I have logged in with email and password: (.*?)$/) do |args1|
   args = args1.split(',')
-  visit login_path
-  fill_in 'loginUser', with: args[0]
-  fill_in 'loginEmail', with: args[1]
-  click_on 'Log in'
+
+  visit new_user_session_path
+
+  user = User.create!(:email=>args[0], :password=>args[1])
+  click_button "Log in"
 end
 
 Given /^following (.*?) exist:$/ do |room_table|
@@ -44,9 +45,9 @@ And(/^then I submit the incorrect invitation code$/) do
 end
 
 Given(/^I have joined the room: '(.*?)'$/) do |args|
-  click_on 'Join Room'
+  click_button 'Join Room'
   fill_in 'RoomID', with: @testroom.invitation_token
-  click_on 'Join Room'
+  click_button 'Join Room'
 end
 
 When /^I fill in the score with: '(.*?)' and submit$/ do |score|
@@ -79,4 +80,8 @@ When(/^(.*?) trades (.*?) cards with (.*?)$/) do |user_trade, num_trade, trade_c
   end
   fill_in 'tradeuser', with: trade_card
   click_on 'tradebutton'
+end
+
+Then /^fails to login$"/ do
+  expect()
 end

@@ -13,6 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 require 'simplecov'
 SimpleCov.profiles.define 'no_spec_coverage' do
   load_profile 'rails'
