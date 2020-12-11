@@ -30,5 +30,7 @@ channel.bind('new-action', function(data){
     }
     alert(out_string);
 
+    $("#played_cards tbody").prepend("<td>"+data.username+"</td><td>"+data.info[0][0]+" of "+data.info[0][1]+"</td>");
+
 });
 
