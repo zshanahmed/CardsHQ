@@ -81,13 +81,16 @@ class RoomsController < ApplicationController
       flash[:notice] = "No cards selected"
       redirect_to room_path @current_user.room_id
     else
-      pusher_string = ""
+      # pusher_string = ""
+      store_arr = []
       params[:played_cards].each do |card|
         Card.add_in_play(card,@current_user.id ,3)
-        pusher_string = pusher_string + Card.where(id: card).first.rank + " of " + Card.where(id:card).first.suit + "\n"
+        store_arr.append([Card.where(id: card).first.rank, Card.where(id:card).first.suit])
       end
       Pusher.trigger('new', 'new-action', {
-          info: @current_user.username + " played: " + pusher_string
+          username: @current_user.username,
+          action: "played",
+          info: store_arr
       })
       redirect_to room_path @current_user.room_id
     end
