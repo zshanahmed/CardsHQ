@@ -84,10 +84,10 @@ class RoomsController < ApplicationController
       pusher_string = ""
       params[:played_cards].each do |card|
         Card.add_in_play(card,@current_user.id ,3)
-        pusher_string = pusher_string + ", " + Card.where(id: card).first.rank + " of " + Card.where(id:card).first.suit
+        pusher_string = pusher_string + Card.where(id: card).first.rank + " of " + Card.where(id:card).first.suit + "\n"
       end
       Pusher.trigger('new', 'new-action', {
-          info: @current_user.username + " played " + pusher_string
+          info: @current_user.username + " played: " + pusher_string
       })
       redirect_to room_path @current_user.room_id
     end
