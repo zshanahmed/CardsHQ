@@ -20,7 +20,7 @@ describe Users::OmniauthController do
 
   before do
     request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter]
-    # request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
+    request.env["devise.mapping"] = Devise.mappings[:user] # If using Devise
   end
 
   describe "#create" do
@@ -65,4 +65,4 @@ describe Users::OmniauthController do
 
   end
 
-  end
+end

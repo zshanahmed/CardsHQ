@@ -32,7 +32,6 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
-  config.include FactoryGirl::Syntax::Methods
 
   config.infer_base_class_for_anonymous_controllers = false
 
@@ -64,35 +63,6 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-  OmniAuth.config.test_mode = true
-  omniauth_hash = { 'provider' => 'twitter',
-                    'uid' => '12345',
-                    'info' => {
-                        'name' => 'test',
-                        'email' => 'test@test.com',
-                        'nickname' => 'testnick'
-                    },
-                    'extra' => {'raw_info' =>
-                                    { 'location' => 'Coralvilleo'
-                                    }
-                    }
-  }
-
-  omniauth_hash_fb = { 'provider' => 'facebook',
-                       'uid' => '12345',
-                       'info' => {
-                        'name' => 'test',
-                        'email' => 'test@testsomething.com',
-                        'nickname' => 'testnicksomething'
-                    },
-                       'extra' => {'raw_info' =>
-                                    { 'location' => 'Chicago'
-                                    }
-                    }
-  }
-
-  OmniAuth.config.add_mock(:twitter, omniauth_hash)
-  OmniAuth.config.add_mock(:facebook, omniauth_hash_fb)
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
