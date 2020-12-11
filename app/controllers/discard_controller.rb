@@ -12,17 +12,15 @@ class DiscardController < ApplicationController
   def discard_card
     cards = params["discarded"]
     if !cards.nil?
-      # Pusher.trigger('new', 'new-action', {
-      #     # info: @player_info[0]
-      #     info: @current_user.username + " discarded "+ Card.where(id: cards.first[0]).first.rank + " of " + Card.where(id: cards.first[0]).first.suit # @current_user.username.to_s + " discarded "
-      # })
-      pusher_string = ""
+      store_arr = []
       cards.each do |card_id,junk| 
         Card.add_in_play(card_id, @current_user.id, 2)
-        pusher_string = pusher_string + Card.where(id: card_id).first.rank + " of " + Card.where(id:card_id).first.suit + "\n"
+        store_arr.append([Card.where(id: card_id).first.rank, Card.where(id:card_id).first.suit])
       end
       Pusher.trigger('new', 'new-action', {
-          info: @current_user.username + " discarded: "+  pusher_string
+          username: @current_user.username,
+          action: "discarded",
+          info: store_arr
       })
       flash[:notice] = "Cards have been discarded"
 
