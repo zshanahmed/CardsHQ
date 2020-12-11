@@ -28,8 +28,18 @@ channel.bind('new-action', function(data){
     for(i = 0; i < data.info.length; i++)
     {
         out_string = out_string + data.info[i][0] + " of " + data.info[i][1] + "\n";
-        html_string = "<tr><td>" +data.username+"</td><td>"+data.info[i][0]+" of "+data.info[i][1]+"</td></tr>";
-        $("#played_cards tbody").prepend(html_string);
+        html_string = "<tr><td>" +data.username+"</td>";
+        img_tag = "";
+        if(data.info[i][1] == 'Diamond' && data.info[i][0] == 'Ace')
+        {
+            img_tag = "<td><img width='80' height='122' src='AD1.png' alt='Ad1'></td></tr>";
+        }
+        else
+        {
+            img_tag = "<td><img width='80' height='122' src=" +data.info[i][1][0] + data.info[i][0][0] + ".png, alt='card'></td></tr>";
+        }
+
+        $("#played_cards tbody").prepend(html_string + img_tag);
 
     }
     alert(out_string);
@@ -38,4 +48,6 @@ channel.bind('new-action', function(data){
     //$("#played_cards tbody").prepend(html_string);
 
 });
+
+
 
