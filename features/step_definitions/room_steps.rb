@@ -2,20 +2,13 @@ require 'pry'
 include Warden::Test::Helpers
 Warden.test_mode!
 
-def login_help (email, password)
-  @user = User.create!(:email=>email, :password=>password, confirmed_at: Time.now)
-  @room = Room.create(name: 'testroom')
-end
-
 Given(/^I have logged in with email and password: (.*?)$/) do |args1|
   args = args1.split(',')
-  visit new_user_session_path
-  login_help(args[0], args[1])
-
-  # @user.confirm!
+  @user = FactoryGirl.create(:user)
+  @room = Room.create(name: 'testroom')
+  @user.confirm
   login_as(@user, :scope => :user)
   visit rooms_path
-
 end
 
 Given /^following (.*?) exist:$/ do |room_table|
@@ -100,9 +93,8 @@ end
 
 Then(/^I should see the message: "(.*?)"$/) do |arg|
   byebug
-  login_as(@user, :scope => :user, :run_callbacks => false)
-  # @current_user = controller.current_user
   click_on 'btn-room'
+  Warden.test_reset!
   fill_in 'RoomID', :with => @room.invitation_token
   click_button 'btn-join'
   page.should have_selector ".alert", text: arg
