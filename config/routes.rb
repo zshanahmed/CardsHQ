@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   match '/rooms/update_score' , to: 'rooms#update_new_score' , via: :post
   match '/rooms/reset', to: 'rooms#reset_room', via: :post
 
+
   resources :rooms
   get 'game/decks'
   # for play cards
