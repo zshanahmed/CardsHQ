@@ -1,6 +1,6 @@
 
 
-Given /^I'm logged in with "(.*?)" with password "(.*?)" and in room "(.*?)"$/ do |username, password,roomname|
+Given /^I'm logged in with "(.*?)" with password "(.*?)" and in room "(.*?)"$/ do |username, password, roomname|
   visit login_path
   fill_in 'loginUser', with: username
   fill_in 'loginEmail', with: password
@@ -12,9 +12,6 @@ end
 
 
 Then /^I should see "(.*?)" with "(.*?)" cards$/ do |username, numcards|
-  # page.should have_content(username)
-  # page.should have_content(numcards)
-  # //*[@id="username"]
-  expect(page).to have_xpath('//*[@id="username"]' , text: username)
-  expect(page).to have_xpath('//*[@id="numCards"]' , text: numcards)
+  expect(page).to have_xpath('//*[@id="username"]', text: username)
+  expect(page).to have_xpath('//*[@id="numCards"]', text: numcards)
 end
