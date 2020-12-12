@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20201119014107) do
 
   create_table "cards", force: :cascade do |t|
+    t.string "deckNumber"
     t.string   "suit"
     t.string   "rank"
     t.datetime "created_at", null: false

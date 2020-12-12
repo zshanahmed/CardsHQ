@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   match '/user/join_new_room', to: 'users#join_new_room', via: :get
   match '/user/join_room', to: 'users#join_room', via: :post
   match '/rooms/score' , to: 'rooms#update_score' , via: :get
