@@ -143,6 +143,11 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.4.0)
+      actionpack (>= 3.0.20)
+      i18n (>= 0.7)
+      multi_json
+      request_store (>= 1.0)
     guard (2.16.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -283,6 +288,8 @@ GEM
       ffi (~> 1.0)
     rdoc (4.3.0)
     regexp_parser (1.8.2)
+    request_store (1.5.0)
+      rack (>= 1.4)
     responders (2.4.1)
       actionpack (>= 4.2.0, < 6.0)
       railties (>= 4.2.0, < 6.0)
@@ -382,6 +389,7 @@ DEPENDENCIES
   factory_girl_rails (~> 3.2.0)
   figaro
   font-awesome-rails (~> 4.7, >= 4.7.0.5)
+  gon
   guard-rspec
   jasmine-jquery-rails
   jasmine-rails

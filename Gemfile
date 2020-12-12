@@ -42,6 +42,8 @@ gem 'activerecord-session_store', '~> 1.0'
 gem 'pusher'
 gem 'figaro'
 
+# passes rails data to js
+gem 'gon'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'simplecov', require: false, group: :test
