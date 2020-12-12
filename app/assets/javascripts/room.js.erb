@@ -18,7 +18,7 @@ channel.bind('new-action', function(data){
             } else {
 
                  // img_tag = "<td><img width='80' height='122' src=" + data.info[i][1][0] + data.info[i][0][0] + ".png, alt=" + data.info[i][1] + data.info[i][0]>+"</td></tr>";
-                img_tag = "<td>"+ data.info[i][0] + " of " +data.info[i][1]+"</td></tr>";
+                 img_tag = "<td>"+ data.info[i][0] + " of " +data.info[i][1]+"</td></tr>";
             }
             $("#played_cards tbody").prepend(html_string + img_tag);
         }
