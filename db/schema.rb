@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20201206214104) do
     t.integer  "user_id"
     t.integer  "room_id"
     t.integer  "status"
+    t.string "deckNumber"
   end
 
   add_index "cards", ["room_id"], name: "index_cards_on_room_id"
