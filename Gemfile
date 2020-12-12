@@ -44,7 +44,8 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec', '~>3.5'
   gem 'rspec-rails'
-
+  gem 'jasmine-rails'
+  gem 'jasmine-jquery-rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
 
