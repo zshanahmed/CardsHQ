@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
 
   def show
     @room.users << User.where(session_token: session[:session_token]).first
-
+    gon.room_id = @current_user.room_id.to_s
     @num_cards = []
     @room.users.all.each do |user|
       # when score is ready
@@ -82,7 +82,9 @@ class RoomsController < ApplicationController
         Card.add_in_play(card,@current_user.id ,3)
         store_arr.append([Card.where(id: card).first.rank, Card.where(id:card).first.suit])
       end
-      Pusher.trigger('new', 'new-action', {
+
+
+      Pusher.trigger(@current_user.room_id.to_s, 'new-action', {
                        username: @current_user.username,
                        action: 'played',
                        info: store_arr
