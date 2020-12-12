@@ -40,13 +40,4 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   #
 
-  require 'pusher'
-
-  Pusher.app_id = ENV["PUSHER_APP_ID"]
-  Pusher.key = ENV["PUSHER_KEY"]
-  Pusher.secret = ENV["PUSHER_SECRET"]
-  Pusher.cluster = ENV["PUSHER_CLUSTER"]
-  Pusher.logger = Rails.logger
-  Pusher.encrypted = true
-
 end
