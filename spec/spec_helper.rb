@@ -25,7 +25,9 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 SimpleCov.profiles.define 'no_spec_coverage' do
   load_profile 'rails'
-  add_filter 'spec' # Don't include spec folder
+  add_filter 'spec'
+  add_filter 'spp/controllers/registrations_controller.rb'# Don't include spec folder
+  add_filter 'spp/controllers/site_controller.rb'
 end
 SimpleCov.start 'no_spec_coverage'
 RSpec.configure do |config|
