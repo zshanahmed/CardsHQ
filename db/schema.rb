@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201130015937) do
+ActiveRecord::Schema.define(version: 20201206214104) do
 
   create_table "cards", force: :cascade do |t|
     t.string   "suit"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20201130015937) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+  add_index "cards", ["deckNumber"], name: "index_cards_on_deckNumber"
 
   create_table "users", force: :cascade do |t|
     t.string  "username"
