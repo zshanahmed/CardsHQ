@@ -1,5 +1,5 @@
 class DiscardController < ApplicationController
-
+  before_action :authenticate_user!
   before_filter :set_current_user
   def index
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)

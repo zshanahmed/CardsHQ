@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'pages/index'
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth', registrations: 'registrations' }
+  devise_scope :user do
+    authenticated :user do
+      root to: 'rooms#index'
+    end
+    unauthenticated :user do
+      root to: 'devise/registrations#new', as: :unauthenticated_root
+    end
+  end
 
   match '/user/join_new_room', to: 'users#join_new_room', via: :get
   match '/user/join_room', to: 'users#join_room', via: :post
@@ -26,16 +34,17 @@ Rails.application.routes.draw do
   match '/room_del', to: 'rooms#destroy', via: :delete
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  root 'sessions#new'
-  # root to: "pages#index"
-  get '/auth/:provider/callback', to: 'sessions#create_auth'
+
   # for cards
   match '/user/draw' , to: 'users#draw_card', via: :post
 
+  match '/privacy_policy', to: 'site#get_privacy', via: :get
+  match '/data_deletion', to: 'site#data_deletion', via: :get
 
   match '/trade' , to: 'trade#trade_card', via: :post
 
   match '/trade/index' , to: 'trade#index', via: :get
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

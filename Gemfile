@@ -4,6 +4,9 @@ ruby '2.6.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11.3'
 
+gem 'devise'
+
+gem 'rack-cors'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,10 +29,11 @@ gem 'bootstrap-sass'
 
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
-
+#sendgrid for email
+gem 'sendgrid-ruby'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'activerecord-session_store', '~> 1.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -43,11 +47,9 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec', '~>3.5'
   gem 'rspec-rails'
-  gem 'dotenv-rails'
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
-
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -56,6 +58,7 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+  gem 'dotenv', '~> 2.2.1'
 
 end
 

@@ -9,7 +9,7 @@ class Room < ActiveRecord::Base
 
   def generate_token
     loop do
-      token = SecureRandom.hex(3)
+      token = SecureRandom.hex(4)
       break token unless Room.where(invitation_token: token).exists?
     end
   end

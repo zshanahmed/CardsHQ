@@ -1,19 +1,21 @@
 <style>
-  #draw, #discard, #btn-dest, #btn-play, #updateScore{
+  .btn{
       box-shadow: 2px 2px 6px gray;
   }
 
-  #btn-play:hover, #draw:hover, #updateScore:hover {
+  .btn-danger:hover{
+      background-color: white;
+      color: #dc3545;
+  }
+
+  .btn-primary:hover{
       background-color: white;
       color: #007bff;
   }
-  #discard:hover{
+
+  .btn-dark:hover{
       background-color: white;
       color: #343a40;
-  }
-  #btn-dest:hover{
-      background-color: white;
-      color: #dc3545;
   }
 </style>
 <div class="container">
@@ -66,9 +68,7 @@
   </div>
   <div class="row justify-content-lg-center">
       <%= button_to 'Draw' , user_draw_path, id: "draw", class:'btn btn-primary'%>
-  </div>
-  <div class="row justify-content-lg-center">
-    <%= link_to 'Trade' , trade_index_path, id: "trade", class:'btn btn-primary'%>
+      <%= link_to 'Trade' , trade_index_path, id: "trade", class:'btn btn-primary ml-3'%>
   </div>
 <div class="container">
   <div class="row">
