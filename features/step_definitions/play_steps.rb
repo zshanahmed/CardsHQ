@@ -31,5 +31,16 @@ When /^'(.*?)' selects the following number of cards: '(.*?)' and presses play$/
       check("played_cards[#{card.card_id}]")
     end
   end
-  click 'Play'
+  click_on 'Play'
+end
+
+When /^I add (.*?) decks$/ do |num|
+  num = num.to_i - 1
+  num = 0..num
+  num.each {click_button "addDeck"}
+end
+
+Then /^Cards should have (.*?) cards$/ do |cards|
+  card_num = Card.all.count
+  expect(cards.to_i).to eq card_num
 end

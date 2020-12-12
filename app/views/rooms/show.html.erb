@@ -28,6 +28,7 @@
   <div class="row justify-content-lg-center">
     <%= button_to 'Destroy Room', room_del_path, method: :delete, class:'btn btn-danger p-2 m-2', id:'btn-dest' %>
     <%= button_to 'Reset Room', rooms_reset_path, class:'btn btn-danger p-2 m-2', id:'reset'%>
+    <%= button_to 'Add Deck', rooms_addDeck_path, class:'btn btn-primary p-2 m-2', id:'addDeck' %>
   </div>
 <%=form_tag rooms_update_score_path :class => 'form' do %>
     <div class="row p-3">
@@ -142,7 +143,7 @@
       </tbody>
     </table>
   </div>
-</div>
+  </div>
   </div>
 </div>
 </div>

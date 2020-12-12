@@ -80,7 +80,7 @@ class RoomsController < ApplicationController
     Hand.where(room_id: @current_user.room_id).delete_all
     Card.where(room_id: @current_user.room_id).each do |a|
       a.update!(status: 0)
-      unless a.room_id == '1'
+      unless a.deckNumber == '1'
         a.delete
       end
     end
