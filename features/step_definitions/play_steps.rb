@@ -20,18 +20,15 @@ end
 Then /^'(.*?)' should only have '(.*?)' cards$/ do |username, number|
   id = User.where(username: username)
   number = number.to_i
-  expect(Hand.all.count()).to eq(number)
+  expect(Hand.where(user_id: id).count()).to eq(number)
 end
 
-When /^'(.*?)' selects the following number of cards: '(.*?) and presses play$/ do |username,number_cards|
+When /^'(.*?)' selects the following number of cards: '(.*?)' and presses play$/ do |username,number_cards|
   id = User.where(username: username).first.id
   hand = Hand.where(user_id: id)
-  temp = []
   hand.each_with_index do |card,i|
     if i < (number_cards.to_i)
-      temp.append(page.has_content?("played_cards[#{card.card_id}]"))
       check("played_cards[#{card.card_id}]")
-      temp.append(page.has_content?("played_cards[#{card.card_id}]"))
     end
   end
   click_on 'Play'

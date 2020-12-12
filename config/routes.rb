@@ -31,6 +31,12 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create_auth'
   # for cards
   match '/user/draw' , to: 'users#draw_card', via: :post
+
+
+  match '/trade' , to: 'trade#trade_card', via: :post
+
+  match '/trade/index' , to: 'trade#index', via: :get
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
