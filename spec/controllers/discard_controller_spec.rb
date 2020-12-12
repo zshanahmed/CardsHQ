@@ -23,10 +23,6 @@ describe DiscardController do
     DatabaseCleaner.clean
   end
 
-  test1 = {name: 'testroom123'}
-  test2 = {name: ''}
-  test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
-  room_test = {name: 'alphatest123'}
   before(:each) do
     test_room = Room.create!({name: "silly_room"})
     @current_user = subject.set_current_user

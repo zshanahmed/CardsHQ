@@ -19,10 +19,6 @@ describe RoomsController do
     end
   end
 
-  # after(:all) do
-  #   DatabaseCleaner.clean
-  # end
-
   test_hand = [{card_id: 1, user_id: 1, room_id: 1},
                {card_id: 2, user_id: 1, room_id: 1},
                {card_id: 3, user_id: 1, room_id: 1},
@@ -33,7 +29,6 @@ describe RoomsController do
                 {card_id: 4, user_id: 1, room_id: 2}]
   test1 = {name: 'testroom123'}
   test2 = {name: ''}
-  test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
   room_test = {name: 'alphatest123'}
 
   it "should have a current_user" do

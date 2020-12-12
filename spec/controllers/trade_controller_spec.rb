@@ -20,14 +20,7 @@ describe TradeController do
     end
   end
 
-  # after(:all) do
-  #   DatabaseCleaner.clean
-  # end
-
-  test1 = {name: 'testroom123'}
-  test2 = {name: ''}
   test_valid = {username: 'helloalphatest', password: 'namesbond1234', email: 'hello@alpha.com'}
-  room_test = {name: 'alphatest123'}
   before(:each) do
     test_room2 = Room.create!({name: "silly_room"})
     @current_user = subject.set_current_user
