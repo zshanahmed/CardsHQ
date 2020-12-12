@@ -34,6 +34,5 @@ When /^'(.*?)' selects the following number of cards: '(.*?) and presses play$/ 
       temp.append(page.has_content?("played_cards[#{card.card_id}]"))
     end
   end
-  byebug
   click_on 'Play'
 end
