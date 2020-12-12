@@ -20,21 +20,22 @@ describe User do
     end
   end
 
-  # it 'should create from provider data' do
-  #
-  #   omniauth_hash_fb = { 'provider' => 'facebook',
-  #                        'uid' => '12345',
-  #                        'info' => {
-  #                            'name' => 'test',
-  #                            'email' => 'test@testsomething.com'
-  #                        },
-  #                        'extra' => {'raw_info' =>
-  #                                        { 'location' => 'Chicago'
-  #                                        }
-  #                        }
-  #   }
-  #   user = User.create_from_provider_data(omniauth_hash_fb)
-  #   expect(user.username).not_to be(nil)
-  #   expect(user.email).not_to be(nil)
-  # end
+  it 'should create from provider data' do
+
+    omniauth_hash_fb = { 'provider' => 'facebook',
+                         'uid' => '12345',
+                         'info' => {
+                             'name' => 'test',
+                             'email' => 'test@testsomething.com'
+                         },
+                         'extra' => {'raw_info' =>
+                                         { 'location' => 'Chicago'
+                                         }
+                         }
+    }
+    # request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:facebook]
+    user = User.create_from_provider_data(OmniAuth.config.mock_auth[:facebook])
+    expect(user.username).not_to be(nil)
+    expect(user.email).not_to be(nil)
+  end
 end
