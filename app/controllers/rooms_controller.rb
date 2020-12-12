@@ -17,18 +17,22 @@ class RoomsController < ApplicationController
   def new ; end
 
   def show
-    @room.users << User.where(:session_token=> session[:session_token]).first
+    @room.users << User.where(session_token: session[:session_token]).first
 
     @num_cards = []
     @room.users.all.each do |user|
-      # when score is ready
-      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
-      # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
+      @num_cards.append([user.username, Hand.where(user_id: user.id, room_id: user.room_id).length, user.score])
     end
-    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
     #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
-    @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
+
+    played_cards = Card.where(room_id: @current_user.room_id, status: 3).order('updated_at DESC').first(6)
+    @player_info = []
+    played_cards.each do |a|
+      username = User.where(id: a.user_id).first.username
+      @player_info.append([username, a.suit, a.rank]) #0 is username, 1 is suit, 3 is rank
+    end
     @users_in_room = User.where(room_id: @current_user.room_id)
   end
 
@@ -63,21 +67,28 @@ class RoomsController < ApplicationController
     @current_user.score = params[:user][:score]
     @current_user.save
     redirect_to room_path @current_user.room_id
-    flash[:notice] = "Score updated!"
+    flash[:notice] = 'Score updated!'
   end
 
   def play_card
     if(params[:played_cards] == nil)
-      flash[:notice] = "No cards selected"
+      flash[:notice] = 'No cards selected'
       redirect_to room_path @current_user.room_id
     else
+      store_arr = []
       params[:played_cards].each do |card|
         Card.add_in_play(card,@current_user.id ,3)
+        store_arr.append([Card.where(id: card).first.rank, Card.where(id:card).first.suit])
       end
-      flash[:notice] = "Cards played"
+      Pusher.trigger('new', 'new-action', {
+                       username: @current_user.username,
+                       action: 'played',
+                       info: store_arr
+                     })
       redirect_to room_path @current_user.room_id
     end
   end
+
 
   def reset_room
     Hand.where(room_id: @current_user.room_id).delete_all

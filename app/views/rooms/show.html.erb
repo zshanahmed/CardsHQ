@@ -16,6 +16,9 @@
       color: #dc3545;
   }
 </style>
+<head>
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+</head>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -70,7 +73,7 @@
   <div class="row">
     <div class="col-lg-6">
   <div class="floatLeft">
-<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
+<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path', remote: true, format: :json do%>
   <br>
   <% if !@hand.blank? %>
         <h3>Player Hand</h3>
@@ -106,7 +109,7 @@
   <%end %>
       <div class="row justify-content-lg-center">
         <div class="col col-md-auto">
-        <%= button_to 'Play' , rooms_play_card_path, class: 'btn btn-primary', id:'btn-play' %>
+        <%= button_to 'Play' , rooms_play_card_path, class: 'btn btn-primary', id:'btn-play', remote: true %>
         </div>
         <div class="col col-md-auto">
           <%= link_to "Discard", discard_index_path, id: "discard", class:'btn btn-dark'%>
@@ -114,30 +117,38 @@
       </div>
 <% end %>
     </div>
+  </div>
+</div>
 
 <div class="col-lg-6">
   <div class="floatRight">
-    <h3 class="mt-4">Your Played Cards</h3>
+    <h3>Played Cards</h3>
     <table id="played_cards" class="table table-striped">
       <thead>
       <tr>
+        <th>Player</th>
         <th>Card</th>
       </tr>
       </thead>
       <tbody>
-      <% @played_cards.each do |card| %>
+      <% @player_info.each do |played| %> <!-- 0 is name 1 is suit 2 is rank-->
         <tr>
+
           <td>
-            <% if card.rank == 'Ace' && card.suit == 'Diamond' %>
+            <%= played[0] %>
+          </td>
+
+          <td>
+            <% if played[1] == 'Diamond' && played[2] == 'Ace' %>
               <%= image_tag(src='AD1.png', width: '80', height: '122')%>
             <% else %>
-              <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
+              <%= image_tag(src=played[2][0] + played[1][0] + ".png", width: '80', height: '122') %>
             <% end %>
           </td>
-        </tr>
       <% end %>
+
       </tbody>
     </table>
   </div>
 </div>
-  </div>
+</div>

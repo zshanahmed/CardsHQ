@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   match '/rooms/reset', to: 'rooms#reset_room', via: :post
   match '/rooms/addDeck', to: 'rooms#add_deck', via: :post
 
+
   resources :rooms
   get 'game/decks'
   # for play cards

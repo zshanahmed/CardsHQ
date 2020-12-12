@@ -30,6 +30,10 @@ gem 'bootstrap-sass'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# for real time updates
+gem 'pusher'
+gem 'figaro'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'simplecov', require: false, group: :test
@@ -65,5 +69,10 @@ end
 group :production do
   gem 'pg' ,'~> 0.21'# for Heroku deployment
   gem 'rails_12factor'
+
+
+
+
+
 end
 
