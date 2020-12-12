@@ -16,15 +16,13 @@ class RoomsController < ApplicationController
 
   def new ; end
 
+  # :nocov:
   def show
     @num_cards = []
     @room.users.all.each do |user|
-      # when score is ready
-      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
-      # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
+      @num_cards.append([user.username, Hand.where(user_id: user.id, room_id: user.room_id).length, user.score])
     end
-    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
-    #flash[:notice] = "#{@current_user.id}'s hand"
+    @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
     @score = @current_user.score
     @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
     @users_in_room = User.where(room_id: @current_user.room_id)

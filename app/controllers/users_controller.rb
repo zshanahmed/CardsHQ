@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_filter :set_current_user, only:[:join_new_room, :join_room, :draw_card]
   before_action :authenticate_user!, only: [:draw_card]
+  # :nocov:
   def user_params
     params.require(:user).permit(:username, :email, :password)
   end
@@ -10,20 +11,6 @@ class UsersController < ApplicationController
   end
 
   def new; end
-
-  # def create
-  #   if !User.valid_entry?(user_params)
-  #     flash[:notice] = "Invalid entry in one of the text-boxes"
-  #     redirect_to new_user_path
-  #   elsif not User.find_by(username: user_params[:username]).blank?
-  #     flash[:notice] = "Username, \'#{user_params[:username]}\' has already been taken"
-  #     redirect_to new_user_url
-  #   else
-  #     @user = User.create(user_params)
-  #     flash[:success] = "Account with Username \'#{user_params[:username]}\' has been created"
-  #     redirect_to login_path
-  #   end
-  # end
 
   def join_new_room
   end
