@@ -29,6 +29,7 @@ SimpleCov.profiles.define 'no_spec_coverage' do
   add_filter 'app/controllers/registrations_controller.rb'
   add_filter 'app/controllers/site_controller.rb'
   add_filter 'app/helpers/'
+  # add_filter 'app/models/user.rb'
 end
 SimpleCov.start 'no_spec_coverage'
 RSpec.configure do |config|

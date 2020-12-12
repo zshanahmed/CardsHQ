@@ -71,9 +71,9 @@ describe RoomsController do
     room = Room.where(name: "hand").first
     @current_user.room_id = room.id
     @current_user.update(room_id: room.id)
-    Hand.create(:card_id => '1267', :user_id => @current_user.id , :room_id => @current_user.room_id)
-    get :show , {:id => '1' }
-    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
+    Hand.create(card_id: '1267', user_id: @current_user.id , room_id: @current_user.room_id)
+    get :show , {id: '1' }
+    @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
     expect(@hand).not_to be_nil
   end
 

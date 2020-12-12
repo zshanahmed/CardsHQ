@@ -44,6 +44,7 @@ describe Users::OmniauthController do
         post :facebook, provider: :facebook
         expect(flash[:error]).to eq 'There was a problem signing you in through Facebook. Please register or try signing in later.'
       end
+
       it 'should throw an error when user fails to login with twitter' do
         request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:twitter_fail]
         post :twitter, provider: :twitter
