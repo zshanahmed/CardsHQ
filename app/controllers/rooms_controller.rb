@@ -27,18 +27,12 @@ class RoomsController < ApplicationController
     #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
 
-    played_cards = Card.where(room_id: @current_user.room_id, status: 3).order("updated_at DESC").first(6)
+    played_cards = Card.where(room_id: @current_user.room_id, status: 3).order('updated_at DESC').first(6)
     @player_info = []
     played_cards.each do |a|
       username = User.where(id: a.user_id).first.username
       @player_info.append([username, a.suit, a.rank]) #0 is username, 1 is suit, 3 is rank
     end
-    # Pusher.trigger('room', 'new')
-
-    # Pusher.trigger('new', 'new-action', {
-    #     # info: @player_info[0]
-    #     info: @player_info[0]
-    #                })
     @users_in_room = User.where(room_id: @current_user.room_id)
   end
 
@@ -73,25 +67,24 @@ class RoomsController < ApplicationController
     @current_user.score = params[:user][:score]
     @current_user.save
     redirect_to room_path @current_user.room_id
-    flash[:notice] = "Score updated!"
+    flash[:notice] = 'Score updated!'
   end
 
   def play_card
     if(params[:played_cards] == nil)
-      flash[:notice] = "No cards selected"
+      flash[:notice] = 'No cards selected'
       redirect_to room_path @current_user.room_id
     else
-      # pusher_string = ""
       store_arr = []
       params[:played_cards].each do |card|
         Card.add_in_play(card,@current_user.id ,3)
         store_arr.append([Card.where(id: card).first.rank, Card.where(id:card).first.suit])
       end
       Pusher.trigger('new', 'new-action', {
-          username: @current_user.username,
-          action: "played",
-          info: store_arr
-      })
+                       username: @current_user.username,
+                       action: 'played',
+                       info: store_arr
+                     })
       redirect_to room_path @current_user.room_id
     end
   end
