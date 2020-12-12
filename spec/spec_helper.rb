@@ -102,7 +102,7 @@ RSpec.configure do |config|
                                        }
                        }
   }
-  omniauth_hash_fail_2 = { 'provider' => 'twitter',
+  omniauth_hash_fail_2 = { 'provider' => 'facebook',
                            'uid' => '12345',
                            'info' => {
 
@@ -112,10 +112,12 @@ RSpec.configure do |config|
                                          }
                          }
   }
+  omniauth_hash_fail_complete = { 'provider' => 'twitter'}
   OmniAuth.config.add_mock(:twitter, omniauth_hash)
   OmniAuth.config.add_mock(:facebook, omniauth_hash_fb)
   OmniAuth.config.add_mock(:facebook_fail, omniauth_hash_fail)
   OmniAuth.config.add_mock(:twitter_fail, omniauth_hash_fail_2)
+  OmniAuth.config.add_mock(:facebook_fail_complete, omniauth_hash_fail_complete)
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
