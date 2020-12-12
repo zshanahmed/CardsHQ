@@ -1,4 +1,7 @@
+require 'rails_helper'
+
 describe DiscardController do
+  login_user
   # https://github.com/rails/rails/issues/34790
   # MONKEY PATCH
   if RUBY_VERSION>='2.6.0'
@@ -25,17 +28,16 @@ describe DiscardController do
   test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
   room_test = {name: 'alphatest123'}
   before(:each) do
-    test_user = User.create_user!(test_valid)
-    request.session[:session_token] = test_user.session_token
-    test_room = Room.create!(room_test)
-    Card.create_deck_for_room(test_room.id)
-    @current_user = User.find_by_session_token(session[:session_token])
+    test_room = Room.create!({name: "silly_room"})
+    @current_user = subject.set_current_user
     @current_user.room_id = test_room.id
     @current_user.save
+    @current_room = Room.where(id: @current_user.room_id)
+    Card.create_deck_for_room(test_room.id)
     Hand.create!({:user_id=>@current_user.id, :card_id=>10})
   end
 
-  it 'index view should be rendered' do
+  it 'index.html.erb view should be rendered' do
     get :index
     expect(flash[:notice]).to eq "No cards to Discard"
   end

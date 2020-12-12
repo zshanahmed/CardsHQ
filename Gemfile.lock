@@ -30,6 +30,12 @@ GEM
       activemodel (= 4.2.11.3)
       activesupport (= 4.2.11.3)
       arel (~> 6.0)
+    activerecord-session_store (1.1.3)
+      actionpack (>= 4.0)
+      activerecord (>= 4.0)
+      multi_json (~> 1.11, >= 1.11.2)
+      rack (>= 1.5.2, < 3)
+      railties (>= 4.0)
     activesupport (4.2.11.3)
       i18n (~> 0.7)
       minitest (~> 5.1)
@@ -38,8 +44,9 @@ GEM
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     arel (6.0.4)
-    autoprefixer-rails (10.0.2.0)
+    autoprefixer-rails (10.1.0.0)
       execjs
+    bcrypt (3.1.16)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (3.4.1)
@@ -47,7 +54,7 @@ GEM
       sassc (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.3)
-    capybara (3.33.0)
+    capybara (3.34.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -104,21 +111,43 @@ GEM
       cucumber-messages (~> 12.2, >= 12.2.0)
     database_cleaner (1.8.5)
     debug_inspector (0.0.3)
+    devise (4.7.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
     diff-lcs (1.3)
     docile (1.3.2)
+    dotenv (2.2.2)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_bot (5.2.0)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.2.0)
+      factory_bot (~> 5.2.0)
+      railties (>= 4.2.0)
     factory_girl (3.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (3.2.0)
       factory_girl (~> 3.2.0)
       railties (>= 3.0.0)
+    faraday (1.1.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords
     ffi (1.13.1)
     figaro (1.2.0)
       thor (>= 0.14.0, < 2)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gon (6.4.0)
+      actionpack (>= 3.0.20)
+      i18n (>= 0.7)
+      multi_json
+      request_store (>= 1.0)
     guard (2.16.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -133,9 +162,17 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hashie (4.1.0)
     httpclient (2.8.3)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
+    jasmine-core (3.6.0)
+    jasmine-jquery-rails (2.0.3)
+    jasmine-rails (0.15.0)
+      jasmine-core (>= 1.3, < 4.0)
+      phantomjs (>= 1.9)
+      railties (>= 3.2.0)
+      sprockets-rails
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.4.0)
@@ -143,12 +180,13 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
+    jwt (2.2.2)
     launchy (2.5.0)
       addressable (~> 2.7)
-    listen (3.3.0)
+    listen (3.3.3)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
-    loofah (2.7.0)
+    loofah (2.8.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.2.8)
@@ -164,13 +202,38 @@ GEM
     minitest (5.14.2)
     multi_json (1.15.0)
     multi_test (0.1.2)
+    multi_xml (0.6.0)
+    multipart-post (2.1.1)
     nenv (0.3.0)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.3)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    oauth (0.5.4)
+    oauth2 (1.4.4)
+      faraday (>= 0.8, < 2.0)
+      jwt (>= 1.0, < 3.0)
+      multi_json (~> 1.3)
+      multi_xml (~> 0.5)
+      rack (>= 1.2, < 3)
+    omniauth (1.9.1)
+      hashie (>= 3.4.6)
+      rack (>= 1.6.2, < 3)
+    omniauth-facebook (8.0.0)
+      omniauth-oauth2 (~> 1.2)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.7.0)
+      oauth2 (~> 1.4)
+      omniauth (~> 1.9)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
+    orm_adapter (0.5.0)
     pg (0.21.0)
+    phantomjs (2.1.1.0)
     protobuf-cucumber (3.10.8)
       activesupport (>= 3.2)
       middleware
@@ -186,6 +249,8 @@ GEM
       pusher-signature (~> 0.1.8)
     pusher-signature (0.1.8)
     rack (1.6.13)
+    rack-cors (1.0.6)
+      rack (>= 1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.11.3)
@@ -223,6 +288,11 @@ GEM
       ffi (~> 1.0)
     rdoc (4.3.0)
     regexp_parser (1.8.2)
+    request_store (1.5.0)
+      rack (>= 1.4)
+    responders (2.4.1)
+      actionpack (>= 4.2.0, < 6.0)
+      railties (>= 4.2.0, < 6.0)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -244,6 +314,8 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.10.0)
+    ruby2_keywords (0.0.2)
+    ruby_http_client (3.5.1)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -260,11 +332,15 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    sendgrid-ruby (6.3.7)
+      ruby_http_client (~> 3.4)
     shellany (0.0.1)
-    simplecov (0.19.1)
+    simplecov (0.20.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.2)
     spring (2.1.1)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
@@ -286,6 +362,8 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -298,20 +376,31 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-session_store (~> 1.0)
   bootstrap-sass
   byebug
   capybara
   coffee-rails (~> 4.1.0)
   cucumber-rails
   database_cleaner
+  devise
+  dotenv (~> 2.2.1)
+  factory_bot_rails
   factory_girl_rails (~> 3.2.0)
   figaro
+  font-awesome-rails (~> 4.7, >= 4.7.0.5)
+  gon
   guard-rspec
+  jasmine-jquery-rails
+  jasmine-rails
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  omniauth-facebook
+  omniauth-twitter
   pg (~> 0.21)
   pusher
+  rack-cors
   rails (= 4.2.11.3)
   rails_12factor
   rspec (~> 3.5)
@@ -319,6 +408,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  sendgrid-ruby
   simplecov
   spring
   sqlite3 (~> 1.3.6)

@@ -18,12 +18,14 @@ class RoomsController < ApplicationController
 
   def show
     @room.users << User.where(session_token: session[:session_token]).first
-
+    gon.room_id = @current_user.room_id.to_s
     @num_cards = []
     @room.users.all.each do |user|
-      @num_cards.append([user.username, Hand.where(user_id: user.id, room_id: user.room_id).length, user.score])
+      # when score is ready
+      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
+      # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
     end
-    @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
+    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
     #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
 
@@ -72,7 +74,7 @@ class RoomsController < ApplicationController
 
   def play_card
     if(params[:played_cards] == nil)
-      flash[:notice] = 'No cards selected'
+      flash[:notice] = "No cards selected"
       redirect_to room_path @current_user.room_id
     else
       store_arr = []
@@ -80,7 +82,9 @@ class RoomsController < ApplicationController
         Card.add_in_play(card,@current_user.id ,3)
         store_arr.append([Card.where(id: card).first.rank, Card.where(id:card).first.suit])
       end
-      Pusher.trigger('new', 'new-action', {
+
+
+      Pusher.trigger(@current_user.room_id.to_s, 'new-action', {
                        username: @current_user.username,
                        action: 'played',
                        info: store_arr
@@ -88,7 +92,6 @@ class RoomsController < ApplicationController
       redirect_to room_path @current_user.room_id
     end
   end
-
 
   def reset_room
     Hand.where(room_id: @current_user.room_id).delete_all

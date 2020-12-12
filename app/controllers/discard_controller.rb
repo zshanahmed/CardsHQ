@@ -1,5 +1,5 @@
 class DiscardController < ApplicationController
-
+  before_action :authenticate_user!
   before_filter :set_current_user
   def index
     @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
@@ -17,7 +17,7 @@ class DiscardController < ApplicationController
         Card.add_in_play(card_id, @current_user.id, 2)
         store_arr.append([Card.where(id: card_id).first.rank, Card.where(id:card_id).first.suit])
       end
-      Pusher.trigger('new', 'new-action', {
+      Pusher.trigger(@current_user.room_id.to_s, 'new-action', {
           username: @current_user.username,
           action: "discarded",
           info: store_arr
