@@ -7,7 +7,6 @@ class Users::OmniauthController < ApplicationController
       if is_navigational_format?
         flash[:success] = 'You have successfully signed in!'
       end
-      # set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
     else
       flash[:error] = 'There was a problem signing you in through Facebook. Please register or try signing in later.'
       redirect_to new_user_registration_url
@@ -22,7 +21,6 @@ class Users::OmniauthController < ApplicationController
       if is_navigational_format?
         flash[:success] = 'You have successfully signed in!'
       end
-      #set_flash_message(:notice, :success, kind: 'Twitter') if is_navigational_format?
     else
       flash[:error] = 'There was a problem signing you in through Twitter. Please register or try signing in later.'
       redirect_to new_user_registration_url

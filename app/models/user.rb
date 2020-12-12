@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     user.email = provider_data.info.email
     user.username = if provider_data.provider == "twitter"
                       provider_data.info.nickname
-                    else
+                    elsif user.email
                       user.email.split('@')[0]
                     end
     user.password = Devise.friendly_token[0, 20]

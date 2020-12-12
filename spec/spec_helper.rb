@@ -68,31 +68,54 @@ RSpec.configure do |config|
   omniauth_hash = { 'provider' => 'twitter',
                     'uid' => '12345',
                     'info' => {
-                        'name' => 'test',
-                        'email' => 'test@test.com',
-                        'nickname' => 'testnick'
+                      'name' => 'test',
+                      'email' => 'test@test.com',
+                      'nickname' => 'testnick'
                     },
-                    'extra' => {'raw_info' =>
-                                    { 'location' => 'Coralvilleo'
-                                    }
+                    'extra' => {
+                      'raw_info' =>
+                                  { 
+                                    'location' => 'Coralvilleo'
+                                  }
                     }
   }
 
   omniauth_hash_fb = { 'provider' => 'facebook',
                        'uid' => '12345',
                        'info' => {
-                        'name' => 'test',
-                        'email' => 'test@testsomething.com',
-                        'nickname' => 'testnicksomething'
-                    },
+                         'name' => 'test',
+                         'email' => 'test@testsomething.com'
+                       },
                        'extra' => {'raw_info' =>
                                     { 'location' => 'Chicago'
                                     }
                     }
   }
 
+  omniauth_hash_fail = { 'provider' => 'facebook',
+                         'uid' => '12345',
+                         'info' => {
+
+                       },
+                         'extra' => {'raw_info' =>
+                                       { 'location' => 'Chicago'
+                                       }
+                       }
+  }
+  omniauth_hash_fail_2 = { 'provider' => 'twitter',
+                           'uid' => '12345',
+                           'info' => {
+
+                         },
+                           'extra' => {'raw_info' =>
+                                         { 'location' => 'Chicago'
+                                         }
+                         }
+  }
   OmniAuth.config.add_mock(:twitter, omniauth_hash)
   OmniAuth.config.add_mock(:facebook, omniauth_hash_fb)
+  OmniAuth.config.add_mock(:facebook_fail, omniauth_hash_fail)
+  OmniAuth.config.add_mock(:twitter_fail, omniauth_hash_fail_2)
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
