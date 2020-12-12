@@ -1,0 +1,92 @@
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        background-color: #e5e4e4;
+    }
+    .row{
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 12px 12px 22px gray;
+    }
+    img{
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .btn1 {
+        border:none;
+        outline: none;
+        height: 50px;
+        width: 70%;
+        border-radius: 4px;
+        color: white;
+        background-color: black;
+        font-weight: bold;
+        box-shadow: 2px 2px 10px gray;
+    }
+
+    .btn1:hover {
+        border: 2px solid black;
+        background-color: white;
+        color: black;
+    }
+
+    #logo{
+        text-decoration: none;
+        color: black;
+        text-shadow: 2px 2px 4px #c4c4c4;
+    }
+</style>
+
+<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+<section class="Form my-4 mx-5">
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-lg-5">
+        <%= image_tag("card-bg.jpg", class: "img-fluid", id: "login-img") %>
+      </div>
+      <div class="col-lg-7 px-5 pt-3">
+        <h1 class="font-weight-bold py-3" id="logo">SELT 2020</h1>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="form-row">
+            <div class="col-lg-7">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control my-2 p-3", :id => 'loginEmail' %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-lg-7">
+            <%= f.label :password, class:'mt-2' %>
+            <% if @minimum_password_length %>
+              <em class="text-muted">(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "new-password", :id =>'loginEmail', placeholder: "********", class:"form-control p-3" %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-lg-7">
+            <%= f.label :password_confirmation, class:'mt-2' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", :id =>'loginEmailConf', placeholder: "********", class:"form-control p-3" %>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-lg-7">
+            <%= f.submit "Sign up", class: "btn1 mt-3" %>
+            </div>
+          </div>
+        <% end %>
+            <%= render "devise/shared/links" %>
+        </div>
+    </div>
+  </div>
+  </div>
+</section>

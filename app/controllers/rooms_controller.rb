@@ -21,9 +21,11 @@ class RoomsController < ApplicationController
 
     @num_cards = []
     @room.users.all.each do |user|
-      @num_cards.append([user.username, Hand.where(user_id: user.id, room_id: user.room_id).length, user.score])
+      # when score is ready
+      @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length, user.score])
+      # @num_cards.append([user.username, Hand.where(:user_id => user.id, :room_id => user.room_id).length])
     end
-    @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
+    @hand = Hand.where(:user_id => @current_user.id, :room_id => @current_user.room_id)
     #flash[:notice] = "#{@current_user.id}'s hand"
     @score = @current_user.score
 
@@ -72,7 +74,7 @@ class RoomsController < ApplicationController
 
   def play_card
     if(params[:played_cards] == nil)
-      flash[:notice] = 'No cards selected'
+      flash[:notice] = "No cards selected"
       redirect_to room_path @current_user.room_id
     else
       store_arr = []
@@ -89,10 +91,25 @@ class RoomsController < ApplicationController
     end
   end
 
-
   def reset_room
     Hand.where(room_id: @current_user.room_id).delete_all
-    Card.where(room_id: @current_user.room_id).each {|a| a.update!(status: 0)}
+    Card.where(room_id: @current_user.room_id).each do |a|
+      a.update!(status: 0)
+      unless a.room_id == '1'
+        a.delete
+      end
+    end
+    redirect_to room_path @current_user.room_id
+  end
+
+  def add_deck
+    number_cards = Card.where(room_id: @current_user.room_id).length
+    deck_number = (number_cards / 52) + 1 #deck number to be assigned to new deck
+    if deck_number < 5
+      Card.create_deck_for_room(@current_user.room_id, deck_number) # creates new deck with calculated deck number
+    else
+      flash[:notice] = "You are not allowed to have more than 4 decks."
+    end
     redirect_to room_path @current_user.room_id
   end
 end

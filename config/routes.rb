@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth', registrations: 'registrations' }
+  devise_scope :user do
+    authenticated :user do
+      root to: 'rooms#index'
+    end
+    unauthenticated :user do
+      root to: 'devise/registrations#new', as: :unauthenticated_root
+    end
+  end
+
   match '/user/join_new_room', to: 'users#join_new_room', via: :get
   match '/user/join_room', to: 'users#join_room', via: :post
   match '/rooms/score' , to: 'rooms#update_score' , via: :get
   match '/rooms/update_score' , to: 'rooms#update_new_score' , via: :post
   match '/rooms/reset', to: 'rooms#reset_room', via: :post
-
+  match '/rooms/addDeck', to: 'rooms#add_deck', via: :post
 
   resources :rooms
   get 'game/decks'
@@ -29,6 +39,14 @@ Rails.application.routes.draw do
 
   # for cards
   match '/user/draw' , to: 'users#draw_card', via: :post
+
+  match '/privacy_policy', to: 'site#get_privacy', via: :get
+  match '/data_deletion', to: 'site#data_deletion', via: :get
+
+  match '/trade' , to: 'trade#trade_card', via: :post
+
+  match '/trade/index' , to: 'trade#index', via: :get
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

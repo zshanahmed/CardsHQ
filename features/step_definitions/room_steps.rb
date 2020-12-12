@@ -63,3 +63,20 @@ end
 And /^'(.*?)' cards should be in deck$/ do |cards|
   expect(Card.where(room_id: 1, status: 0).length).to eq(cards.to_i)
 end
+
+
+When(/^(.*?) trades (.*?) cards with (.*?)$/) do |user_trade, num_trade, trade_card|
+  click_link "trade"
+  user = User.where(username: user_trade).first
+  id = user.id
+  user_trade = User.where(username: trade_card).first
+  user_trade.update!(room_id: user.room_id)
+  hand = Hand.where(user_id: id)
+  hand.each_with_index do |card,i|
+    if i < (num_trade.to_i)
+      check("traded_#{card.card_id}")
+    end
+  end
+  fill_in 'tradeuser', with: trade_card
+  click_on 'tradebutton'
+end

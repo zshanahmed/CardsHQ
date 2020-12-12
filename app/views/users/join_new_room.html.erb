@@ -1,12 +1,27 @@
+<style>
+    .btn{
+        box-shadow: 2px 2px 6px gray;
+    }
+
+    .btn-danger:hover{
+        background-color: white;
+        color: #dc3545;
+    }
+
+    .btn-success:hover{
+        background-color: white;
+        color: #28a745;
+    }
+</style>
 <div class="container">
-<h1> Join Room here</h1>
+<h1> Join Room</h1>
 <%=form_tag user_join_room_path, :class => 'form' do%>
   <%=label :user, :room_id, 'Invitation Code', :class => 'col-form-label', :id =>"RoomID"%>
   <div class = 'form-inline'>
     <%=text_field :user, 'room_id', :class => 'form-control',:id => "RoomID" %>
   </div>
   <br>
-  <%= submit_tag "Join Room" %>
+  <%= submit_tag "Join Room", class:'btn btn-success' %>
 
 <% end %>
 </div>
