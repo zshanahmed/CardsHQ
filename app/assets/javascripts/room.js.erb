@@ -3,7 +3,6 @@ pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>', {
     encrypted: true
 });
 var channel = pusher.subscribe(gon.room_id);
-console.log(gon.room_id);
 channel.bind('new-action', function(data){
     out_string = data.username + " " + data.action + ":\n";
     html_string = "";
