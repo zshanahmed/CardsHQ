@@ -17,26 +17,31 @@ class RoomsController < ApplicationController
   def new ; end
 
   def show
+    room_number = request.original_url.split('/')
+    if @current_user.room_id != room_number[room_number.length-1].to_i
+      redirect_to rooms_path
+    else
+      gon.room_id = @current_user.room_id.to_s
+      @num_cards = []
+      @room.users.all.each do |user|
+        @num_cards.append([user.username, Hand.where(user_id: user.id, room_id: user.room_id).length, user.score])
+      end
+      @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
+      @score = @current_user.score
+
+      played_cards = Card.where(room_id: @current_user.room_id, status: 3).order('updated_at DESC').first(6)
+      @player_info = []
+      played_cards.each do |a|
+        username = User.where(id: a.user_id).first.username
+        @player_info.append([username, a.suit, a.rank]) #0 is username, 1 is suit, 3 is rank
+      end
+
+      @num_discarded_cards = Card.where(room_id: @current_user.room_id, status: 1).count
+      @num_in_deck = Card.where(room_id: @current_user.room_id, status: 0).count
+      @num_deck = Card.where(room_id: @current_user.room_id).count / 52
+      @users_in_room = User.where(room_id: @current_user.room_id)
+    end
     # @room.users << User.where(session_token: session[:session_token]).first
-    gon.room_id = @current_user.room_id.to_s
-    @num_cards = []
-    @room.users.all.each do |user|
-      @num_cards.append([user.username, Hand.where(user_id: user.id, room_id: user.room_id).length, user.score])
-    end
-    @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
-    @score = @current_user.score
-
-    played_cards = Card.where(room_id: @current_user.room_id, status: 3).order('updated_at DESC').first(6)
-    @player_info = []
-    played_cards.each do |a|
-      username = User.where(id: a.user_id).first.username
-      @player_info.append([username, a.suit, a.rank]) #0 is username, 1 is suit, 3 is rank
-    end
-
-    @num_discarded_cards = Card.where(room_id: @current_user.room_id, status: 1).count
-    @num_in_deck = Card.where(room_id: @current_user.room_id, status: 0).count
-    @num_deck = Card.where(room_id: @current_user.room_id).count / 52
-    @users_in_room = User.where(room_id: @current_user.room_id)
   end
 
   def create
