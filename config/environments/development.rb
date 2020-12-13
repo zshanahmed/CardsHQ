@@ -67,4 +67,10 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
   #
 
+  Pusher.app_id= "1119298"
+  Pusher.key= "c1c5cb076e25349e91f6"
+  Pusher.secret= "1132a15252d752cdc4cf"
+  Pusher.cluster= "mt1"
+  Pusher.logger = Rails.logger
+  Pusher.encrypted = true
 end
