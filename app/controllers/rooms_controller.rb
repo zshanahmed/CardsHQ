@@ -75,7 +75,6 @@ class RoomsController < ApplicationController
       flash[:notice] = "Score must be less than 10 characters"
     end
     redirect_to room_path @current_user.room_id
-    flash[:notice] = "Score updated!"
   end
 
   def play_card
