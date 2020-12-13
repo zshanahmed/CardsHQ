@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
   def new ; end
 
   def show
-    @room.users << User.where(session_token: session[:session_token]).first
+    # @room.users << User.where(session_token: session[:session_token]).first
     gon.room_id = @current_user.room_id.to_s
     @num_cards = []
     @room.users.all.each do |user|
