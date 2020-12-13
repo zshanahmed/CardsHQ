@@ -19,6 +19,9 @@
 # Ignore .idea folder
 .idea
 /.idea/workspace.xml
+
+# Ignore application configuration
+/config/application.yml
 /.byebug_history/
 .byebug_history
 

@@ -43,6 +43,7 @@ describe RoomsController do
     @current_room = Room.where(id: @current_user.room_id)
     Card.create_deck_for_room(1)
     Card.create_deck_for_room(2)
+    get :show , {id: @current_user.room_id}
   end
 
   it 'Should flash a message when room is successfully created' do

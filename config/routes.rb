@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth', registrations: 'registrations' }
   devise_scope :user do
     authenticated :user do

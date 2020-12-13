@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+gem 'factory_bot_rails'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -37,6 +37,12 @@ gem 'activerecord-session_store', '~> 1.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# for real time updates
+gem 'pusher'
+gem 'figaro'
+
+# passes rails data to js
+gem 'gon'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'simplecov', require: false, group: :test
@@ -48,6 +54,10 @@ group :development, :test do
   gem 'rspec', '~>3.5'
   gem 'rspec-rails'
 
+  gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
+
+  gem 'jasmine-rails'
+  gem 'jasmine-jquery-rails'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.3.6'
 

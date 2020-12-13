@@ -1,14 +1,9 @@
 <style>
-  .btn{
+  #draw, #discard, #btn-dest, #btn-play, #updateScore{
       box-shadow: 2px 2px 6px gray;
   }
 
-  .btn-danger:hover{
-      background-color: white;
-      color: #dc3545;
-  }
-
-  .btn-primary:hover{
+  #btn-play:hover, #draw:hover, #updateScore:hover {
       background-color: white;
       color: #007bff;
   }
@@ -17,7 +12,14 @@
       background-color: white;
       color: #343a40;
   }
+  #btn-dest:hover{
+      background-color: white;
+      color: #dc3545;
+  }
 </style>
+<head>
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+</head>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
@@ -120,21 +122,26 @@
 
 <div class="col-lg-6">
   <div class="floatRight">
-    <h3 class="mt-4">Your Played Cards</h3>
+    <h3 class="mt-4">Played Cards</h3>
     <table id="played_cards" class="table table-striped">
       <thead>
       <tr>
+        <th>Player</th>
         <th>Card</th>
       </tr>
       </thead>
       <tbody>
-      <% @played_cards.each do |card| %>
+      <% @player_info.each do |played| %> <!-- 0 is name 1 is suit 2 is rank-->
         <tr>
           <td>
-            <% if card.rank == 'Ace' && card.suit == 'Diamond' %>
+            <%= played[0] %>
+          </td>
+
+          <td>
+            <% if played[1] == 'Diamond' && played[2] == 'Ace' %>
               <%= image_tag(src='AD1.png', width: '80', height: '122')%>
             <% else %>
-              <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
+              <%= image_tag(src=played[2][0] + played[1][0] + ".png", width: '80', height: '122') %>
             <% end %>
           </td>
         </tr>
@@ -142,7 +149,42 @@
       </tbody>
     </table>
   </div>
-  </div>
+</div>
   </div>
 </div>
 </div>
+
+<script type="text/javascript" charset="utf-8">
+    pusher = new Pusher('<%= Pusher.key %>');
+    var channel = pusher.subscribe(gon.room_id); //gon.room_id
+    channel.bind('new-action', function(data){
+        console.log("hey");
+        out_string = data.username + " " + data.action + ":\n";
+        html_string = "";
+        for(i = 0; i < data.info.length; i++)
+        {
+            out_string = out_string + data.info[i][0] + " of " + data.info[i][1] + "\n";
+            html_string = "<tr><td>" +data.username+"</td>";
+            img_tag = "";
+            if(data.action != "discarded") {
+                if (data.info[i][1] == 'Diamond' && data.info[i][0] == 'Ace') {
+                    img_tag = "<td><img width='80' height='122' src='app/assets/images/AD1.png' alt='Ace of Diamonds'></td></tr>";
+                    //img_tag = "<td>"+data.info[i][1]+"</td></tr>";
+                } else {
+                    name = 'app/assets/images/'+data.info[i][1][0] + data.info[i][0][0] + '.png';
+                    console.log(name);
+                    img_tag = "<td><img width='80' height='122' src=name alt=' "+ data.info[i][0] +" of "+ data.info[i][1]+"'></td></tr>";
+                    //console.log(img_tag);
+                    //img_tag = "<td>"+ data.info[i][0] + " of " +data.info[i][1]+"</td></tr>";
+                }
+                $("#played_cards tbody").prepend(html_string + img_tag);
+            }
+
+        }
+        console.log('here');
+        alert(out_string);
+        setInterval('window.location.reload()', 1000);
+        // alert(out_string);
+        console.log('after alert');
+    });
+</script>

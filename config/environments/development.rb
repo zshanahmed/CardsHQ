@@ -13,16 +13,6 @@ Rails.application.configure do
   # Email delivery method
   config.action_mailer.delivery_method = :smtp
 
-  # config.action_mailer.smtp_settings = {
-  #     user_name:      ENV['SENDMAIL_USERNAME'],
-  #     password:       ENV['SENDMAIL_PASSWORD'],
-  #     domain:         ENV['MAIL_HOST'],
-  #     address:       'smtp.gmail.com',
-  #     port:          '587',
-  #     authentication: :plain,
-  #     enable_starttls_auto: true
-  # }
-  #
   config.action_mailer.smtp_settings = {
       user_name: ENV['SENDGRID_USERNAME'],
       password: ENV['SENDGRID_PASSWORD'],
@@ -65,4 +55,13 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  #
+
+  require 'pusher'
+  Pusher.app_id= "1119298"
+  Pusher.key= "c1c5cb076e25349e91f6"
+  Pusher.secret= "1132a15252d752cdc4cf"
+  Pusher.cluster= "mt1"
+  Pusher.logger = Rails.logger
+  Pusher.encrypted = true
 end
