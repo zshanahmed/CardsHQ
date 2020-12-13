@@ -14,15 +14,34 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'simplecov'
+require 'rubygems'
+
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path("../../config/environment", __FILE__)
+require 'rspec/rails'
+
+Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
+ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
+
 SimpleCov.profiles.define 'no_spec_coverage' do
   load_profile 'rails'
-  add_filter 'spec' # Don't include spec folder
+  add_filter 'spec'
+  add_filter 'app/controllers/registrations_controller.rb'
+  add_filter 'app/controllers/site_controller.rb'
+  add_filter 'app/helpers/'
+  add_filter 'app/models/user.rb'
 end
 SimpleCov.start 'no_spec_coverage'
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  config.include FactoryGirl::Syntax::Methods
+
+  config.infer_base_class_for_anonymous_controllers = false
+
+  config.order = "random"
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
@@ -42,7 +61,6 @@ RSpec.configure do |config|
     # `true` in RSpec 4.
     mocks.verify_partial_doubles = true
   end
-
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
   # have no way to turn it off -- the option exists only for backwards
   # compatibility in RSpec 3). It causes shared context metadata to be
@@ -50,6 +68,60 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
+  OmniAuth.config.test_mode = true
+  omniauth_hash = { 'provider' => 'twitter',
+                    'uid' => '12345',
+                    'info' => {
+                      'name' => 'test',
+                      'email' => 'test@test.com',
+                      'nickname' => 'testnick'
+                    },
+                    'extra' => {
+                      'raw_info' =>
+                                  { 
+                                    'location' => 'Coralvilleo'
+                                  }
+                    }
+  }
+
+  omniauth_hash_fb = { 'provider' => 'facebook',
+                       'uid' => '12345',
+                       'info' => {
+                         'name' => 'test',
+                         'email' => 'test@testsomething.com'
+                       },
+                       'extra' => {'raw_info' =>
+                                    { 'location' => 'Chicago'
+                                    }
+                    }
+  }
+
+  omniauth_hash_fail = { 'provider' => 'facebook',
+                         'uid' => '12345',
+                         'info' => {
+
+                       },
+                         'extra' => {'raw_info' =>
+                                       { 'location' => 'Chicago'
+                                       }
+                       }
+  }
+  omniauth_hash_fail_2 = { 'provider' => 'facebook',
+                           'uid' => '12345',
+                           'info' => {
+
+                         },
+                           'extra' => {'raw_info' =>
+                                         { 'location' => 'Chicago'
+                                         }
+                         }
+  }
+  omniauth_hash_fail_complete = { 'provider' => 'twitter'}
+  OmniAuth.config.add_mock(:twitter, omniauth_hash)
+  OmniAuth.config.add_mock(:facebook, omniauth_hash_fb)
+  OmniAuth.config.add_mock(:facebook_fail, omniauth_hash_fail)
+  OmniAuth.config.add_mock(:twitter_fail, omniauth_hash_fail_2)
+  OmniAuth.config.add_mock(:facebook_fail_complete, omniauth_hash_fail_complete)
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
@@ -80,7 +152,7 @@ RSpec.configure do |config|
     # unless a formatter has already been configured
     # (e.g. via a command-line flag).
     config.default_formatter = "doc"
-  end
+ # end
 
   # Print the 10 slowest examples and example groups at the
   # end of the spec run, to help surface which specs are running

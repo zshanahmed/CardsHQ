@@ -19,4 +19,14 @@
 # Ignore .idea folder
 .idea
 /.idea/workspace.xml
-.byebug_history/
+
+# Ignore application configuration
+/config/application.yml
+/.byebug_history/
+.byebug_history
+
+#Ignore .env file
+.env
+
+# Ignore Coverage files
+coverage/

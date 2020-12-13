@@ -7,7 +7,8 @@
       background-color: white;
       color: #007bff;
   }
-  #discard:hover{
+
+  .btn-dark:hover{
       background-color: white;
       color: #343a40;
   }
@@ -16,22 +17,27 @@
       color: #dc3545;
   }
 </style>
+<head>
+  <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+</head>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
       <h2 class="mt-3">Welcome to the room <span class="font-weight-normal"><%="#{@room.name}"%></span></h2>
       <h4>Please share the following invitation token with your friends/family: <span class="font-weight-normal"><%="#{@room.invitation_token}"%></span></h4>
+      <h4>Number of decks: <%="#{@num_deck}"%>, Discarded: <%= "#{@num_discarded_cards}" %>, left in deck: <%= "#{@num_in_deck}" %></h4>
     </div>
   </div>
   <div class="row justify-content-lg-center">
     <%= button_to 'Destroy Room', room_del_path, method: :delete, class:'btn btn-danger p-2 m-2', id:'btn-dest' %>
     <%= button_to 'Reset Room', rooms_reset_path, class:'btn btn-danger p-2 m-2', id:'reset'%>
+    <%= button_to 'Add Deck', rooms_addDeck_path, class:'btn btn-primary p-2 m-2', id:'addDeck' %>
   </div>
 <%=form_tag rooms_update_score_path :class => 'form' do %>
     <div class="row p-3">
       <div class="col-lg-6">
     <div class="input-group mb-3 mt-3">
-  <%= text_field :user , 'score' , :id => 'score', class:'form-control' %>
+  <%= text_field :user , 'score' , :id => 'score',placeholder: "Enter Score Here", class:'form-control' %>
   <%= submit_tag 'Update Score', :id => 'updateScore', class:'btn btn-primary ml-3' %>
 <%end %>
   </div>
@@ -65,12 +71,14 @@
   </div>
   <div class="row justify-content-lg-center">
       <%= button_to 'Draw' , user_draw_path, id: "draw", class:'btn btn-primary'%>
+      <%= link_to 'Trade' , trade_index_path, id: "trade", class:'btn btn-primary ml-3'%>
+      <%= link_to "Discard", discard_index_path, id: "discard", class:'btn btn-primary ml-3'%>
   </div>
 <div class="container">
   <div class="row">
     <div class="col-lg-6">
   <div class="floatLeft">
-<%= form_tag  rooms_play_card_path, :method => :post, :id => 'rooms_play_card_path' do%>
+<%= form_tag  rooms_play_card_path do%>
   <br>
   <% if !@hand.blank? %>
         <h3>Player Hand</h3>
@@ -106,10 +114,7 @@
   <%end %>
       <div class="row justify-content-lg-center">
         <div class="col col-md-auto">
-        <%= button_to 'Play' , rooms_play_card_path, class: 'btn btn-primary', id:'btn-play' %>
-        </div>
-        <div class="col col-md-auto">
-          <%= link_to "Discard", discard_index_path, id: "discard", class:'btn btn-dark'%>
+        <%= submit_tag 'Play', class: 'btn btn-primary', id:'Play_Button' %>
         </div>
       </div>
 <% end %>
@@ -117,21 +122,26 @@
 
 <div class="col-lg-6">
   <div class="floatRight">
-    <h3 class="mt-4">Your Played Cards</h3>
+    <h3 class="mt-4">Played Cards</h3>
     <table id="played_cards" class="table table-striped">
       <thead>
       <tr>
+        <th>Player</th>
         <th>Card</th>
       </tr>
       </thead>
       <tbody>
-      <% @played_cards.each do |card| %>
+      <% @player_info.each do |played| %> <!-- 0 is name 1 is suit 2 is rank-->
         <tr>
           <td>
-            <% if card.rank == 'Ace' && card.suit == 'Diamond' %>
+            <%= played[0] %>
+          </td>
+
+          <td>
+            <% if played[1] == 'Diamond' && played[2] == 'Ace' %>
               <%= image_tag(src='AD1.png', width: '80', height: '122')%>
             <% else %>
-              <%= image_tag(src=card.rank[0] + card.suit[0] + ".png", width: '80', height: '122') %>
+              <%= image_tag(src=played[2][0] + played[1][0] + ".png", width: '80', height: '122') %>
             <% end %>
           </td>
         </tr>
@@ -141,3 +151,40 @@
   </div>
 </div>
   </div>
+</div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+    pusher = new Pusher('<%= Pusher.key %>');
+    var channel = pusher.subscribe(gon.room_id); //gon.room_id
+    channel.bind('new-action', function(data){
+        console.log("hey");
+        out_string = data.username + " " + data.action + ":\n";
+        html_string = "";
+        for(i = 0; i < data.info.length; i++)
+        {
+            out_string = out_string + data.info[i][0] + " of " + data.info[i][1] + "\n";
+            html_string = "<tr><td>" +data.username+"</td>";
+            img_tag = "";
+            if(data.action != "discarded") {
+                if (data.info[i][1] == 'Diamond' && data.info[i][0] == 'Ace') {
+                    img_tag = "<td><img width='80' height='122' src='app/assets/images/AD1.png' alt='Ace of Diamonds'></td></tr>";
+                    //img_tag = "<td>"+data.info[i][1]+"</td></tr>";
+                } else {
+                    name = 'app/assets/images/'+data.info[i][1][0] + data.info[i][0][0] + '.png';
+                    console.log(name);
+                    img_tag = "<td><img width='80' height='122' src=name alt=' "+ data.info[i][0] +" of "+ data.info[i][1]+"'></td></tr>";
+                    //console.log(img_tag);
+                    //img_tag = "<td>"+ data.info[i][0] + " of " +data.info[i][1]+"</td></tr>";
+                }
+                $("#played_cards tbody").prepend(html_string + img_tag);
+            }
+
+        }
+        console.log('here');
+        alert(out_string);
+        setInterval('window.location.reload()', 1000);
+        // alert(out_string);
+        console.log('after alert');
+    });
+</script>
