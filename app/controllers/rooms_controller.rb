@@ -94,7 +94,7 @@ class RoomsController < ApplicationController
                        action: 'played',
                        info: store_arr
                      })
-
+      flash[:notice] = "Cards played"
       redirect_to room_path @current_user.room_id
     end
 
