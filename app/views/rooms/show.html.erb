@@ -181,9 +181,9 @@
             }
 
         }
-        var r = confirm(out_string);    if (r == true){     window.location.reload();    }
         console.log('here');
-        alert(out_string);
+        var r = alert(out_string);    if (r == true){   setInterval('window.location.reload()', 30000);    }
+        // alert(out_string);
         console.log('after alert');
     });
 </script>
