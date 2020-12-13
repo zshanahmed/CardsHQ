@@ -1,6 +1,7 @@
 pusher = new Pusher('<%= Pusher.key %>');
 var channel = pusher.subscribe('new'); //gon.room_id
 channel.bind('new-action', function(data){
+    console.log("hey");
     out_string = data.username + " " + data.action + ":\n";
     html_string = "";
     for(i = 0; i < data.info.length; i++)
