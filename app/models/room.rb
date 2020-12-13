@@ -5,7 +5,6 @@ class Room < ActiveRecord::Base
 
   def set_invitation_token
     self.invitation_token = generate_token
-    self.id = generate_token
   end
 
   def generate_token
