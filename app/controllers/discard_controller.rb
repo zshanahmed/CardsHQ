@@ -14,7 +14,7 @@ class DiscardController < ApplicationController
     if !cards.nil?
       store_arr = []
       cards.each do |card_id,junk| 
-        Card.add_in_play(card_id, @current_user.id, 2)
+        Card.add_in_play(card_id, @current_user.id, 1)
         store_arr.append([Card.where(id: card_id).first.rank, Card.where(id:card_id).first.suit])
       end
       Pusher.trigger(@current_user.room_id.to_s, 'new-action', { # @current_user.room_id.to_s

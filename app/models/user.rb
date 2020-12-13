@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :room
   has_many :hands
   has_many :cards, through: :hand
+  validates_length_of :score, maximum: 10, allow_blank: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,7 +17,7 @@ class User < ActiveRecord::Base
     user.email = provider_data.info.email
     user.username = if provider_data.provider == "twitter"
                       provider_data.info.nickname
-                    else
+                    elsif user.email
                       user.email.split('@')[0]
                     end
     user.password = Devise.friendly_token[0, 20]

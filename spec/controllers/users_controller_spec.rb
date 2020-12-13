@@ -20,11 +20,6 @@ describe UsersController do
     end
   end
     ########################
-  #
-  # #https://stackoverflow.com/questions/6040479/rspec-testing-redirect-to-back
-  # before(:each) do
-  #   request.env["HTTP_REFERER"] = "where_i_came_from"
-  # end
 
   before(:each) do
     @test_room = Room.create!({name: "silly_room"})
@@ -35,25 +30,6 @@ describe UsersController do
   after(:all) do
     DatabaseCleaner.clean
   end
-
-  testing123 = [{username: '', password: '', email: ''},
-                {username: 'glunk', password: 'chunk', email: ''},
-                {username: 'bump', password: '', email: 'fump'},
-                {username: 'b1po8rc3r^^O(*SADAOql2keudaf[;][/]', password: '', email: 'fump'},
-                {username: 'fasdfl', password: '        ', email: 'fpoiadsf'},
-                {username: '     ', password: 'pas sword', email: '     '}]
-
-  testing345 = [{username: 'meltybuttyboi',password: "haxxorr",email: "holisticpanda"},
-                {username: 'meltybuttyboi',password: "haxxorr",email: "holisticpanda"}]
-
-  testing567= [{username: 'I_am_great', password: 'But_dont_mind_me', email: 'chumbleGUmpus'},
-               {username: 'hello_123',password: 'big', email: 'boi'}]
-
-  test_valid = {username: 'helloalphatest', password: 'namesbond', email: 'hello@alpha.com'}
-
-
-  invalid = "Invalid entry in one of the text-boxes"
-
 
   it 'Should flash a message if user successfully joins a room' do
     post :join_room, user: {room_id: @test_room.invitation_token}

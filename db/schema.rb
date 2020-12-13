@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20201206214104) do
     t.integer  "user_id"
     t.integer  "room_id"
     t.integer  "status"
-    t.string   "deckNumber"
+    t.string "deckNumber"
   end
 
   add_index "cards", ["room_id"], name: "index_cards_on_room_id"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20201206214104) do
 
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
+  add_index "cards", ["deckNumber"], name: "index_cards_on_deckNumber"
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
