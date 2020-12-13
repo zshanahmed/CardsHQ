@@ -84,11 +84,12 @@ class RoomsController < ApplicationController
       end
 
 
-      Pusher.trigger(@current_user.room_id.to_s, 'new-action', {
+      Pusher.trigger('new', 'new-action', { #@current_user.room_id.to_s
                        username: @current_user.username,
                        action: 'played',
                        info: store_arr
                      })
+
       redirect_to room_path @current_user.room_id
     end
   end

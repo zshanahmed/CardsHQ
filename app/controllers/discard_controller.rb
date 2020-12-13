@@ -17,7 +17,7 @@ class DiscardController < ApplicationController
         Card.add_in_play(card_id, @current_user.id, 2)
         store_arr.append([Card.where(id: card_id).first.rank, Card.where(id:card_id).first.suit])
       end
-      Pusher.trigger(@current_user.room_id.to_s, 'new-action', {
+      Pusher.trigger('new', 'new-action', { # @current_user.room_id.to_s
           username: @current_user.username,
           action: "discarded",
           info: store_arr
