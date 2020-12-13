@@ -99,13 +99,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  # require 'pusher'
-  #
-  # Pusher.app_id= "1119297"
-  # Pusher.key= "2361ec2ae8ef558636d8"
-  # Pusher.secret= "4ba278a6ee9aa13fe3dc"
-  # Pusher.cluster= "mt1"
-  # Pusher.logger = Rails.logger
-  # Pusher.encrypted = true
 
 end

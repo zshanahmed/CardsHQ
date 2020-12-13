@@ -17,7 +17,7 @@ class RoomsController < ApplicationController
   def new ; end
 
   def show
-    @room.users << User.where(session_token: session[:session_token]).first
+    # @room.users << User.where(session_token: session[:session_token]).first
     gon.room_id = @current_user.room_id.to_s
     @num_cards = []
     @room.users.all.each do |user|
@@ -75,7 +75,6 @@ class RoomsController < ApplicationController
       flash[:notice] = "Score must be less than 10 characters"
     end
     redirect_to room_path @current_user.room_id
-    flash[:notice] = "Score updated!"
   end
 
   def play_card
@@ -95,7 +94,7 @@ class RoomsController < ApplicationController
                        action: 'played',
                        info: store_arr
                      })
-
+      flash[:notice] = "Cards played"
       redirect_to room_path @current_user.room_id
     end
 
