@@ -1,5 +1,5 @@
-pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>', {
-    cluster: '<%= ENV["PUSHER_CLUSTER"] %>',
+pusher = new Pusher('1119297', {
+    cluster: 'mt1',
     encrypted: true
 });
 var channel = pusher.subscribe(gon.room_id);
