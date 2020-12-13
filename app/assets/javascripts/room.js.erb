@@ -1,0 +1,29 @@
+pusher = new Pusher('<%= Pusher.key %>');
+var channel = pusher.subscribe(gon.room_id); //gon.room_id
+channel.bind('new-action', function(data){
+    console.log("hey");
+    out_string = data.username + " " + data.action + ":\n";
+    html_string = "";
+    for(i = 0; i < data.info.length; i++)
+    {
+        out_string = out_string + data.info[i][0] + " of " + data.info[i][1] + "\n";
+        html_string = "<tr><td>" +data.username+"</td>";
+        img_tag = "";
+        if(data.action != "discarded") {
+            if (data.info[i][1] == 'Diamond' && data.info[i][0] == 'Ace') {
+                img_tag = "<td><img width='80' height='122' src='app/assets/images/AD1.png' alt='Ace of Diamonds'></td></tr>";
+                //img_tag = "<td>"+data.info[i][1]+"</td></tr>";
+            } else {
+                name = 'app/assets/images/'+data.info[i][1][0] + data.info[i][0][0] + '.png';
+                console.log(name);
+                img_tag = "<td><img width='80' height='122' src=name alt=' "+ data.info[i][0] +" of "+ data.info[i][1]+"'></td></tr>";
+                //console.log(img_tag);
+                //img_tag = "<td>"+ data.info[i][0] + " of " +data.info[i][1]+"</td></tr>";
+            }
+            $("#played_cards tbody").prepend(html_string + img_tag);
+        }
+
+    }
+    alert(out_string);
+
+});
