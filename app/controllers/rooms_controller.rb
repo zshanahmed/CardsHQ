@@ -17,12 +17,10 @@ class RoomsController < ApplicationController
   def new ; end
 
   def show
-    byebug
     room_number = request.original_url.split('/')
     if @current_user.room_id != room_number[room_number.length-1].to_i
       redirect_to rooms_path
     else
-      byebug
       gon.room_id = @current_user.room_id.to_s
       @num_cards = []
       @room.users.all.each do |user|
