@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :room
   has_many :hands
   has_many :cards, through: :hand
+  validates_length_of :score, maximum: 10, allow_blank: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

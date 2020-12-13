@@ -25,6 +25,9 @@ class RoomsController < ApplicationController
     @hand = Hand.where(user_id: @current_user.id, room_id: @current_user.room_id)
     @score = @current_user.score
     @played_cards = Card.where(user_id: @current_user.id, room_id: @current_user.room_id, status: 3)
+    @num_discarded_cards = Card.where(room_id: @current_user.room_id, status: 1).count
+    @num_in_deck = Card.where(room_id: @current_user.room_id, status: 0).count
+    @num_deck = Card.where(room_id: @current_user.room_id).count / 52
     @users_in_room = User.where(room_id: @current_user.room_id)
   end
 
@@ -57,9 +60,13 @@ class RoomsController < ApplicationController
 
   def update_new_score
     @current_user.score = params[:user][:score]
-    @current_user.save
+    valid = @current_user.save
+    if valid
+      flash[:notice] = "Score updated!"
+    else
+      flash[:notice] = "Score must be less than 10 characters"
+    end
     redirect_to room_path @current_user.room_id
-    flash[:notice] = "Score updated!"
   end
 
   def play_card
