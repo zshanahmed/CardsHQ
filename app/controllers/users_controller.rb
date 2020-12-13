@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       # shuffle and get first
       card = cards.shuffle.first
       # change status for card
-      card.update(status: 1, user_id: @current_user.id)
+      card.update(status: 2, user_id: @current_user.id)
       # set card id for user
       @current_user.card_id = card.id
       # check for duplicate cards if they exist redirect to a different path
