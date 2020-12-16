@@ -28,5 +28,3 @@
 #Ignore .env file
 .env
 
-# Ignore Coverage files
-coverage/
