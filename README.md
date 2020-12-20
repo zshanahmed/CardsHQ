@@ -25,4 +25,9 @@ Once all the required software is installed. Open the project in ruby mine and f
 6. bundle exec rake routes 
 7. bundle exec rails server ( to start and run the server)
 
+Our SAAS app can be accessed by visiting
+
+https://fall2020-team01-sprint3.herokuapp.com/
+
+
 # There are more upcoming changes.
