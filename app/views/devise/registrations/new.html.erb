@@ -6,12 +6,12 @@
     }
 
     body{
-        background-color: #e5e4e4;
+        background-color: hsl(0 0% 0% / 0.05);
     }
     .row{
         background-color: white;
         border-radius: 20px;
-        box-shadow: 2px 2px 4px lightgray;
+        box-shadow: 0 0 4px lightgray;
     }
     img{
         border-top-left-radius: 20px;
@@ -53,6 +53,7 @@
 
     #logo{
         text-decoration: none;
+        font-weight: 300;
         color: black;
         text-shadow: 2px 2px 4px #c4c4c4;
     }
@@ -66,7 +67,7 @@
         <%= image_tag("home-cards.jpg", class: "img-contain", id: "login-img") %>
       </div>
       <div class="col-lg-7 px-5 pt-3">
-        <h1 class="font-weight-bold py-2" id="logo">CardsHQ</h1>
+        <h1 class="py-2" id="logo"><span class="font-weight-bold">Cards</span>HQ</h1>
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
 
