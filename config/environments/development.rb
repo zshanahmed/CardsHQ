@@ -14,8 +14,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
-      user_name: ENV['SENDGRID_USERNAME'],
-      password: ENV['SENDGRID_PASSWORD'],
+      user_name: ENV['SENDGRID_USER'],
+      password: ENV['SENDGRID_API_KEY'],
       domain: ENV['MAIL_HOST'],
       address: 'smtp.sendgrid.net',
       port: '587',
@@ -58,10 +58,10 @@ Rails.application.configure do
   #
 
   require 'pusher'
-  Pusher.app_id= "1119298"
-  Pusher.key= "c1c5cb076e25349e91f6"
-  Pusher.secret= "1132a15252d752cdc4cf"
-  Pusher.cluster= "mt1"
+  Pusher.app_id = ENV["PUSHER_APP_ID"]
+  Pusher.key = ENV["PUSHER_KEY"]
+  Pusher.secret = ENV["PUSHER_SECRET"]
+  Pusher.cluster = ENV["PUSHER_CLUSTER"]
   Pusher.logger = Rails.logger
   Pusher.encrypted = true
 end

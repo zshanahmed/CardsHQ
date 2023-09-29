@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = "Confirmation Instructions <zshanahmed2@gmail.com>"
+  config.mailer_sender = "Confirmation Instructions <zshanahmed@hotmail.com>"
   #config.mailer_sender = ENV['EMAIL_TITLE'] + ' <' + ENV['EMAIL_ADDRESS'] + '>'
   #config.mailer_sender = 'Devise Omniauth <awsomecasts@gmail.com>'
 

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.6.6'
+ruby '2.7.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.11.3'
 
@@ -36,6 +36,7 @@ gem 'sendgrid-ruby'
 gem 'activerecord-session_store', '~> 1.0'
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'bigdecimal', '1.3.5'
 
 # for real time updates
 gem 'pusher'

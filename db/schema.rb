@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(version: 20201206214104) do
 
   create_table "cards", force: :cascade do |t|
-    t.string   "deckNumber"
     t.string   "suit"
     t.string   "rank"
     t.datetime "created_at", null: false
@@ -22,6 +21,7 @@ ActiveRecord::Schema.define(version: 20201206214104) do
     t.integer  "user_id"
     t.integer  "room_id"
     t.integer  "status"
+    t.string   "deckNumber"
   end
 
   add_index "cards", ["room_id"], name: "index_cards_on_room_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20201206214104) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "password"
+    t.string   "email"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "session_token"
@@ -89,7 +90,6 @@ ActiveRecord::Schema.define(version: 20201206214104) do
     t.integer  "failed_attempts",        default: 0, null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.string   "email"
     t.string   "name"
     t.string   "token"
     t.string   "secret"
@@ -98,7 +98,6 @@ ActiveRecord::Schema.define(version: 20201206214104) do
 
   add_index "users", ["card_id"], name: "index_users_on_card_id"
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["room_id"], name: "index_users_on_room_id"
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true
