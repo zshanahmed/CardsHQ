@@ -4,7 +4,7 @@ class RemoveInvitationParamsFromUsers < ActiveRecord::Migration
     add_column :users, :token, :string
     add_column :users, :secret, :string
     add_column :users, :profile_image, :string
-    remove_column :users, :invited_by_id
+    # remove_column :users, :invited_by_id
     remove_column :users, :invitations_count
     remove_column :users, :invitation_limit
     remove_column :users, :invited_by_type
