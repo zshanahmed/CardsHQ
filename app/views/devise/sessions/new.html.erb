@@ -5,13 +5,10 @@
         box-sizing: border-box;
     }
 
-    body{
-        background-color: #e5e4e4;
-    }
     .row{
         background-color: white;
         border-radius: 20px;
-        box-shadow: 12px 12px 22px gray;
+        box-shadow: 0 0 6px lightgray;
     }
     img{
         border-top-left-radius: 20px;
@@ -20,38 +17,54 @@
     .btn1 {
         border:none;
         outline: none;
-        height: 50px;
-        width: 70%;
         border-radius: 4px;
         color: white;
         background-color: black;
+        font-size: 1.1em;
         font-weight: bold;
         box-shadow: 2px 2px 10px gray;
+        margin-bottom: 4px;
+        padding: 0.5em 0.8em;
+        transition: 0.3s all ease-in-out;
     }
 
     .btn1:hover {
-        border: 2px solid black;
+        box-shadow: 0 0 0 2px black;
         background-color: white;
         color: black;
     }
 
+    .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 85vh;
+    }
+
+    .img-contain {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
     #logo{
         text-decoration: none;
+        font-weight: 300;
         color: black;
         text-shadow: 2px 2px 4px #c4c4c4;
     }
 </style>
 
-<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<section class="Form my-4 mx-5">
+<section class="form">
   <div class="container">
     <div class="row no-gutters">
       <div class="col-lg-5">
-        <%= image_tag("How-to-play-newmarket.jpg", class: "img-fluid", id: "login-img") %>
+        <%= image_tag("home-cards.jpg", class: "img-contain", id: "login-img") %>
       </div>
       <div class="col-lg-7 px-5 pt-3">
-        <h1 class="font-weight-bold py-3" id="logo">SELT 2020</h1>
+        <h1 class="py-2" id="logo"><span class="font-weight-bold">Cards</span>HQ</h1>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
           <div class="form-row">
             <div class="col-lg-7">
               <%= f.label :email %><br />
@@ -66,7 +79,7 @@
           </div>
 
     <% if devise_mapping.rememberable? %>
-            <div class="form-row mt-2">
+            <div class="form-row">
               <div class="col-lg-7">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
@@ -75,13 +88,13 @@
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in", class:'btn btn-primary mt-3', id: 'btm1'%>
+      <%= f.submit "Log in", class:'mt-3 btn1', id: 'btm1'%>
     </div>
   <% end %>
-
-   <%= render "devise/shared/links" %>
+      <div class="mt-2">
+        <%= render "devise/shared/links" %>
+      </div>
       </div>
     </div>
-  </div>
   </div>
 </section>

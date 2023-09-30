@@ -27,5 +27,6 @@
 
 #Ignore .env file
 .env
+.DS_Store
 
 sendgrid.env
